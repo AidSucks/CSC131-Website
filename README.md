@@ -2,6 +2,15 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
+## Installation
+For first-time setup, install the project dependencies by running:
+
+```bash
+npm install
+```
+This will download and install all necessary dependencies specified in `package.json`.
+
+## Running the Project
 First, run the development server:
 
 ```bash
