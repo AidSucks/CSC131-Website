@@ -10,12 +10,12 @@ export default function RootLayout(
     <body>
       <div>
         <Header/>
-          <main>
+          <main style={{minHeight: '100vh'}}>
             {children}
           </main>
         <Footer />
 
-        {/* Back to  button */}
+        {/* Back to  button - Need Fix*/}
         <a href="#" className="btn btn-lg btn-primary btn-lg-square rounded back-to-top">
           <i className="bi bi-arrow-up"></i></a>
 
