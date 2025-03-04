@@ -1,0 +1,78 @@
+'use client'
+import { useState } from 'react';
+import {clsx} from "clsx";
+import {usePathname} from "next/navigation";
+
+import Link from 'next/link';
+
+export default function Navbar() {
+  // Toggle navbar hamburger menu.
+  const [isOpen, setIsOpen] = useState(false);
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
+  // Set isHovered to true when user hovers over a dropdown menu.
+  const [isHovered, setIsHovered] = useState(false);
+
+  const currentPath = usePathname();
+
+  return (
+    <div className="container-fluid position-relative p-0">
+      <nav className="navbar navbar-expand-lg navbar-dark px-5 py-3 py-lg-0">
+      <Link href="/" className="navbar-brand p-0">
+        <h1 className="m-0"><i className="fa fa-user-tie me-2"></i>Ron Smithey Financial Services</h1>
+      </Link>
+      <button
+        className="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarCollapse"
+        onClick={toggleMenu}
+      >
+        <span className="fa fa-bars"></span>
+      </button>
+
+      {/* Nav links */}
+      <div className={`collapse navbar-collapse ${isOpen ? 'show': ''}`} id="navbarCollapse">
+        <div className="navbar-nav ms-auto py-0">
+          <Link href="/" className={clsx("nav-item nav-link", {"active": currentPath === "/"})}>
+              Home</Link>
+
+          <Link href="/about" className={clsx("nav-item nav-link", {"active": currentPath === "/about"})}>
+              About Us</Link>
+
+          <div className="nav-item dropdown">
+            <Link
+              href="/services"
+              className="nav-link dropdown-toggle"
+              data-bs-toggle="dropdown"
+              onMouseEnter={() => setIsHovered(true)}
+              onMouseLeave={() => setIsHovered(false)}
+              >Services</Link>
+
+            <div className={`dropdown-menu m-0 ${isHovered ? 'show': ''}`} 
+                        onMouseEnter={() => setIsHovered(true)}
+                        onMouseLeave={() => setIsHovered(false)}>
+              <Link href="/services/advisory" className="dropdown-item">Financial Planning & Advisory</Link>
+              <Link href="/services/wealth-mangement" className="dropdown-item">Wealth Management</Link>
+            </div>
+          </div>
+          
+          <Link href="/resources" className={clsx("nav-item nav-link", {"active": currentPath === "/resource"})}>
+          Resources</Link>
+
+          <Link href="/contact" className={clsx("nav-item nav-link", {"active": currentPath === "/contact"})}>
+              Contact Us</Link>
+
+        </div>
+
+        <Link href="/#" className="btn btn-primary py-2 px-5 ms-5">Sign-Up</Link>
+
+      </div>
+      
+      
+    </nav>  
+  </div>
+  );
+};
