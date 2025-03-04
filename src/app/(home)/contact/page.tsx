@@ -70,7 +70,8 @@ export default function ContactPage() {
           <div className="card mb-4 p-4">
             <h2 className="mb-3">Contact Us</h2>
             <p><strong>Company Name:</strong> Ron Smithey Financial Services</p>
-            <p><strong>Address:</strong> TBA</p>
+            <p><strong>Address:</strong> 5101 East La Palma Avenue, Suite #202-D
+              Anaheim Hills, CA 92807</p>
             <p><strong>Phone:</strong> 619-244-0868</p>
             <p><strong>Email:</strong> ronniedeansmithey@yahoo.com</p>
 
