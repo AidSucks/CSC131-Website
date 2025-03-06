@@ -1,6 +1,10 @@
 import Link from "next/link";
 
-export function Footer() {
+import { fetchClientInfo } from "./ClientInfo";
+
+export default async function Footer() {
+  const  clientInfo  = await fetchClientInfo();
+
     return (
         <>
         <div className="container-fluid bg-dark text-light mt-5 wow fadeInUp" data-wow-delay="0.1s">
@@ -39,15 +43,15 @@ export function Footer() {
                   </div>
                   <div className="d-flex mb-2">
                     <i className="bi bi-geo-alt text-primary me-2"></i>
-                    <p className="mb-0">405 South Magnolia Avenue, El Cajon, CA 92020</p>
+                      <p className="mb-0">{clientInfo.address}</p>
                   </div>
                   <div className="d-flex mb-2">
                     <i className="bi bi-envelope-open text-primary me-2"></i>
-                    <p className="mb-0">ron.smithey@lpl.com</p>
+                    <p className="mb-0">{clientInfo.email}</p>
                   </div>
                   <div className="d-flex mb-2">
                     <i className="bi bi-telephone text-primary me-2"></i>
-                    <p className="mb-0">(619) 588-8820</p>
+                    <p className="mb-0">{clientInfo.phone}</p>
                   </div>
                   <div className="d-flex mt-4">
                     <Link className="btn btn-primary btn-square me-2" href="#"><i className="fab fa-twitter fw-normal"></i></Link>

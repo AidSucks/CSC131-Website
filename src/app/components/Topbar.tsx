@@ -1,12 +1,16 @@
-export default function Topbar() {
+import { fetchClientInfo } from "./ClientInfo";
+
+export default async function Topbar() {
+  const  clientInfo  = await fetchClientInfo();
+
   return (
     <div className="container-fluid bg-dark px-5 d-none d-lg-block">
     <div className="row gx-0">
       <div className="col-lg-8 text-center text-lg-start mb-2 mb-lg-0">
         <div className="d-inline-flex align-items-center" style={{height: 45}}>
-          <small className="me-3 text-light"><i className="fa fa-map-marker-alt me-2"></i>405 South Magnolia Avenue, El Cajon, CA 92020</small>
-          <small className="me-3 text-light"><i className="fa fa-phone-alt me-2"></i>(619) 588-8820</small>
-          <small className="text-light"><i className="fa fa-envelope-open me-2"></i>ron.smithey@lpl.com</small>
+          <small className="me-3 text-light"><i className="fa fa-map-marker-alt me-2"></i>{clientInfo.address}</small>
+          <small className="me-3 text-light"><i className="fa fa-phone-alt me-2"></i>{clientInfo.phone}</small>
+          <small className="text-light"><i className="fa fa-envelope-open me-2"></i>{clientInfo.email}</small>
         </div>
       </div>
       <div className="col-lg-4 text-center text-lg-end">

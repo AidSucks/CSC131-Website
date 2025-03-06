@@ -1,6 +1,8 @@
-import Link from "next/link";
+interface Props {
+    title: string;
+  }
 
-export default function PageTitle(props : any) {
+export default function PageTitle(props : Props ) {
     return (
         <div className="container-fluid bg-primary py-5 bg-header" style={{marginBottom: '90px'}}>
             <div className="row py-5">
