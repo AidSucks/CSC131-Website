@@ -1,21 +1,20 @@
 'use client'
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 import Image from "next/image";
 import Link from "next/link";
-import { clearInterval } from 'timers';
 
 export default function Carousel() {
 
     let carouselItems: HTMLCollection;
-    var carouselItemsCount = 0;
-    var currentItem = 0;
+    let carouselItemsCount = 0;
+    let currentItem = 0;
 
     let intervalID: NodeJS.Timeout;
 
     function nextCarouselItem() {
         clearTimeout(intervalID);
-        var prevItem = currentItem;
+        const prevItem = currentItem;
         currentItem = (currentItem === carouselItemsCount-1) ? 0 : currentItem+1;
         
         activateNewItem(prevItem); 
@@ -23,7 +22,7 @@ export default function Carousel() {
 
     function prevCarouselItem() {
         clearTimeout(intervalID);
-        var prevItem = currentItem;
+        const prevItem = currentItem;
         currentItem = (currentItem === 0) ? carouselItemsCount-1 : currentItem-1;
         
         activateNewItem(prevItem);
@@ -53,7 +52,7 @@ export default function Carousel() {
         data-bs-ride="carousel">
         <div className="carousel-inner">
           <div className="carousel-item active">
-            <Image src="/img/carousel-1.jpg" width={1920} height={1080} style={{width: '100%', height: 'auto'}} alt="Image" />
+            <Image src="/img/carousel-1.jpg" priority={true} width={1920} height={1080} style={{width: '100%', height: 'auto'}} alt="Image" />
             <div
               className="carousel-caption d-flex flex-column align-items-center justify-content-center">
               <div className="p-3" style={{maxWidth: '900px'}}>
