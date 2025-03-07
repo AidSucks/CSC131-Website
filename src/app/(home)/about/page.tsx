@@ -1,12 +1,13 @@
 import PageTitle from "@/app/components/PageTitle";
-import AboutPageComponent from "../../components/AboutPageComponent";
+import {AboutPageComponent} from "@/app/components/PageComponents";
 
-export default function Page() {  
+
+export default function Page() {
   return(
     <div>
       <PageTitle title="About Us" />
-      
-      <AboutPageComponent />
+
+      <AboutPageComponent/>
     </div>
   );
 }

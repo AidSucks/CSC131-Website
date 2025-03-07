@@ -1,7 +1,6 @@
 import Carousel from "@/app/components/Carousel"
 
-import AboutPageComponent from "../components/AboutPageComponent";
-import ContactPageComponent from "../components/ContactPageComponent"
+import {AboutPageComponent, ContactPageComponent} from "@/app/components/PageComponents";
 
 
 export default function Home() {
