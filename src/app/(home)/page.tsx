@@ -1,4 +1,4 @@
-import Carousel from "@/app/components/Carousel"
+import CarouselSlides from "@/app/components/CarouselSlides"
 
 import {AboutPageComponent, ContactPageComponent} from "@/app/components/PageComponents";
 
@@ -6,7 +6,7 @@ import {AboutPageComponent, ContactPageComponent} from "@/app/components/PageCom
 export default function Home() {
   return (
     <div>
-      <Carousel />
+      <CarouselSlides />
 
       <h1>Home Page</h1>
       <p>
