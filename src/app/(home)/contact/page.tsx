@@ -27,7 +27,8 @@ export default function ContactPage() {
     const [messageLength, setMessageLength] = useState(0);
     const [error, setError] = useState("");
 
-    const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+
+    const handleChange = (event: ChangeEvent<HTMLInputElement & HTMLTextAreaElement>) => {
         const { name, value, type, checked } = event.target;
         if (type === "checkbox") {
             setFormData((prev) => ({
@@ -66,13 +67,13 @@ export default function ContactPage() {
 
     return (
         <>
+            <PageTitle title="Contact Us" />
+
             <Head>
                 <title>Contact Us</title>
             </Head>
 
             <div className="container mt-4">
-                <PageTitle title="Contact Us" />
-
                 <div className="card mb-4 p-4">
                     <h2 className="mb-3">Contact Us</h2>
                     <p><strong>Company Name:</strong> Ron Smithey Financial Services</p>
