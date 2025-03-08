@@ -5,6 +5,8 @@ import {usePathname} from "next/navigation";
 
 import Link from 'next/link';
 
+import businessInfo from "../../../public/data/businessInfo.json";
+
 export default function Navbar() {
   // Toggle navbar hamburger menu.
   const [isOpen, setIsOpen] = useState(false);
@@ -21,7 +23,7 @@ export default function Navbar() {
     <div className="container-fluid position-relative p-0">
       <nav className="navbar navbar-expand-lg navbar-dark px-5 py-3 py-lg-0">
       <Link href="/" className="navbar-brand p-0">
-        <h1 className="m-0"><i className="fa fa-user-tie me-2"></i>Ron Smithey Financial Services</h1>
+        <h1 className="m-0"><i className="fa fa-user-tie me-2"></i>{businessInfo.name}</h1>
       </Link>
       <button
         className="navbar-toggler"

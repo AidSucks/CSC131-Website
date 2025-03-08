@@ -4,6 +4,8 @@ import Head from "next/head";
 import { Instagram, Facebook, Youtube, Linkedin, TwitterX } from "react-bootstrap-icons";
 import PageTitle from "@/app/components/PageTitle";
 
+import businessInfo from "../../../../public/data/businessInfo.json";
+
 export default function ContactPage() {
     const [formData, setFormData] = useState({
         name: "",
@@ -75,10 +77,10 @@ export default function ContactPage() {
 
                 <div className="card mb-4 p-4">
                     <h2 className="mb-3">Contact Us</h2>
-                    <p><strong>Company Name:</strong> Ron Smithey Financial Services</p>
-                    <p><strong>Address:</strong> 5101 East La Palma Avenue, Suite #202-D, Anaheim Hills, CA 92807</p>
-                    <p><strong>Phone:</strong> 619-244-0868</p>
-                    <p><strong>Email:</strong> ron.smithey@lpl.com</p>
+                    <p><strong>Company Name: </strong> {businessInfo.name}</p>
+                    <p><strong>Address: </strong>{businessInfo.address}</p>
+                    <p><strong>Phone: </strong>{businessInfo.phone}</p>
+                    <p><strong>Email: </strong>{businessInfo.email}</p>
 
                     {/* Social Media Links */}
                     <div className="mt-3">
