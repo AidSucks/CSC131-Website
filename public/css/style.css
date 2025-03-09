@@ -490,3 +490,8 @@ h6,
         margin-bottom: -75px;
     }
 }
+
+.quick-access-btn:hover {
+    background-color: #091e3e;
+    color: white;
+}

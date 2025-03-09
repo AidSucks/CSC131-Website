@@ -1,13 +1,14 @@
 import CarouselSlides from "@/app/components/CarouselSlides"
 
 import {AboutPageComponent, ContactPageComponent} from "@/app/components/PageComponents";
-
+import QuickAccess from "../components/QuickAccess";
 
 export default function Home() {
   return (
     <>
       <CarouselSlides />
-      
+      <QuickAccess />
+
       <div>
         <h1>Home Page</h1>
         <p>
