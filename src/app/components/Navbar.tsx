@@ -1,5 +1,5 @@
 'use client'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {clsx} from "clsx";
 import {usePathname} from "next/navigation";
 
@@ -17,13 +17,34 @@ export default function Navbar() {
   // Set isHovered to true when user hovers over a dropdown menu.
   const [isHovered, setIsHovered] = useState(false);
 
+  // Sticky Navbar
+  const [isScrolledDown, setIsScrolledDown] = useState(false);
+  useEffect(() => {
+      const handleScroll = () => {
+        const scrollTop = window.scrollY || document.documentElement.scrollTop;
+        
+        if (scrollTop > 300) {
+          setIsScrolledDown(true);
+        }
+        else {
+          setIsScrolledDown(false);
+        }
+      };
+  
+      window.addEventListener('scroll', handleScroll);
+  
+      return () => {
+        window.removeEventListener('scroll', handleScroll);
+      };
+    }, []);
+
   const currentPath = usePathname();
 
   return (
     <div className="container-fluid position-relative p-0">
-      <nav className="navbar navbar-expand-lg navbar-dark px-5 py-3 py-lg-0">
+      <nav className={`navbar navbar-expand-lg navbar-dark px-5 py-3 py-lg-0 ${isScrolledDown ? 'sticky-top shadow-sm' : ''}`}>
       <Link href="/" className="navbar-brand p-0">
-        <h1 className="m-0"><i className="fa fa-user-tie me-2"></i>{businessInfo.name}</h1>
+        <h1 className="m-0"><i className="fa fa-user-tie me-2"></i>Ron Smithey<br/>Financial Services</h1>
       </Link>
       <button
         className="navbar-toggler"
