@@ -1,7 +1,6 @@
 import CarouselSlides from "@/app/components/CarouselSlides"
 
-import { AboutPageComponent } from "./about/page";
-import { ContactPageComponent } from "./contact/page"
+import {AboutPageComponent, ContactPageComponent} from "@/app/components/PageComponents";
 
 
 export default function Home() {
