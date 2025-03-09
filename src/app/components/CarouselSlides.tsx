@@ -2,13 +2,18 @@ import { Carousel, CarouselItem, CarouselCaption } from "react-bootstrap";
 
 import Image from "next/image";
 import Link from "next/link";
+import { relative } from "path";
 
 export default function CarouselSlides() {
     return(
         <Carousel fade>
-            <CarouselItem style={{height: 900}}> 
-                <Image src="/img/carousel-1.jpg" priority={true} width={1920} height={1080}
-                    style={{marginTop: '-200px', width: '100%', height: 'auto'}} alt="Image" />
+            <CarouselItem className="carousel-item"> 
+                <div style={{maxHeight: '900px'}}>
+                    <Image src="/img/carousel-1.jpg" priority={true} width={1920} height={1080}
+                        style={{
+                            width: '100%',
+                            height: 'auto'}} alt="Image" />
+                </div>
                 <CarouselCaption className="d-flex flex-column align-items-center justify-content-center">
                     <div className="p-3" style={{maxWidth: '900px'}}>
                         <h5 className="text-white text-uppercase mb-3 animated slideInDown">
@@ -28,9 +33,13 @@ export default function CarouselSlides() {
                     </div>
                 </CarouselCaption>
             </CarouselItem>
-            <CarouselItem style={{height: 900}}> 
-                <Image src="/img/carousel-2.jpg" priority={true} width={1920} height={1080}
-                        style={{marginTop: '-200px', width: '100%', height: 'auto'}} alt="Image" />
+            <CarouselItem className="carousel-item"> 
+                <div style={{maxHeight: '900px'}}>
+                    <Image src="/img/carousel-2.jpg" priority={true} width={1920} height={1080}
+                        style={{
+                            width: '100%',
+                            height: 'auto'}} alt="Image" />
+                </div>
                 <CarouselCaption className="d-flex flex-column align-items-center justify-content-center">
                     <div className="p-3" style={{maxWidth: '900px'}}>
                         <h5 className="text-white text-uppercase mb-3 animated slideInDown">
