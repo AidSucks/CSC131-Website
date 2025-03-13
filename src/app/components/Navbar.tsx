@@ -85,6 +85,9 @@ export default function Navbar() {
           <Link href="/resources" className={clsx("nav-item nav-link", {"active": currentPath === "/resource"})}>
           Resources</Link>
 
+          <Link href="/community" className={clsx("nav-item nav-link", {"active": currentPath === "/community"})}>
+              Community</Link>
+
           <Link href="/contact" className={clsx("nav-item nav-link", {"active": currentPath === "/contact"})}>
               Contact Us</Link>
 
