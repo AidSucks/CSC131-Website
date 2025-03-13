@@ -16,12 +16,17 @@ export default function Page() {
         }
     };
 
-    const handleReplySubmit = (postIndex, reply) => {
-        if (reply.trim()) {
+    const handleReplySubmit = (postIndex, e) => {
+        e.preventDefault();
+        const replyInput = e.currentTarget.elements.reply; // Access the reply input field
+        const reply = replyInput.value.trim(); // Get the reply value and trim whitespace
+
+        if (reply) {
             const updatedPosts = [...posts];
             const replyTimestamp = new Date().toLocaleString(); // Get current timestamp for reply
             updatedPosts[postIndex].replies.push({ content: reply, timestamp: replyTimestamp });
             setPosts(updatedPosts);
+            replyInput.value = ""; // Clear the input field after submission
         }
     };
 
@@ -111,12 +116,7 @@ export default function Page() {
                                         ))}
                                     </ul>
 
-                                    <form onSubmit={(e) => {
-                                        e.preventDefault();
-                                        const replyInput = e.target.elements.reply;
-                                        handleReplySubmit(postIndex, replyInput.value);
-                                        replyInput.value = ""; // Clear the input field
-                                    }}>
+                                    <form onSubmit={(e) => handleReplySubmit(postIndex, e)}>
                                         <input
                                             name="reply"
                                             type="text"
