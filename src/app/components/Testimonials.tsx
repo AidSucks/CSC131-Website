@@ -25,7 +25,7 @@ export default function Testimonials() {
         <div className="container-fluid py-5 fadeInUp">
           <div className="container py-5">
               <div className="section-title text-center position-relative pb-3 mb-4 mx-auto" style={{maxWidth: '600px'}}>
-                  <h2 className="fw-bold text-primary text-uppercase">Testimonial</h2>
+                  <h2 className="fw-bold text-primary text-uppercase">Testimonials</h2>
                   <h4 className="mb-0">What Our Clients Say about Our Services</h4>
               </div>
               <Carousel className="carousel">
