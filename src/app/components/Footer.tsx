@@ -1,6 +1,9 @@
+import "bootstrap-icons/font/bootstrap-icons.css";
+
 import Link from "next/link";
 
 import businessInfo from "../../../public/data/businessInfo.json";
+import SocialMedia from "../../../public/data/SocialMedia.json";
 
 export default function Footer() {
     return (
@@ -52,10 +55,10 @@ export default function Footer() {
                     <p className="mb-0">{businessInfo.phone}</p>
                   </div>
                   <div className="d-flex mt-4">
-                    <Link className="btn btn-primary btn-square me-2" href="#"><i className="fab fa-twitter fw-normal"></i></Link>
-                    <Link className="btn btn-primary btn-square me-2" href="#"><i className="fab fa-facebook-f fw-normal"></i></Link>
-                    <Link className="btn btn-primary btn-square me-2" href="#"><i className="fab fa-linkedin-in fw-normal"></i></Link>
-                    <Link className="btn btn-primary btn-square" href="#"><i className="fab fa-instagram fw-normal"></i></Link>
+                    <Link className="btn btn-primary btn-square me-2" href={SocialMedia.twitterX} target="_blank"><i className="bi bi-twitter-x"></i></Link>
+                    <Link className="btn btn-primary btn-square me-2" href={SocialMedia.facebook} target="_blank"><i className="fab fa-facebook-f fw-normal"></i></Link>
+                    <Link className="btn btn-primary btn-square me-2" href={SocialMedia.linkedin} target="_blank"><i className="fab fa-linkedin-in fw-normal"></i></Link>
+                    <Link className="btn btn-primary btn-square" href={SocialMedia.instagram} target="_blank"><i className="fab fa-instagram fw-normal"></i></Link>
                   </div>
                 </div>
                 <div className="col-lg-4 col-md-12 pt-0 pt-lg-5 mb-5">
