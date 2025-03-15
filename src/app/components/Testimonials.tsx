@@ -1,5 +1,5 @@
 import { Carousel, CarouselItem} from "react-bootstrap";
-import Stack from "./Stack";
+import Stack from 'react-bootstrap/Stack';
 
 import testimonials from "../../../public/data/Testimonials.json";
 
@@ -34,7 +34,7 @@ export default function Testimonials() {
                   <Stack
                     direction="horizontal"
                     className="h-100 justify-content-center align-items-center"
-                    gap="1rem">
+                    gap={3}>
   
                     {row.map((col, colIndex) => (
                       <div key={colIndex} className={colIndex === 1 ? "shadow bg-white z-0" : ""} style={{minWidth: "20rem"}}>
