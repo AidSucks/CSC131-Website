@@ -1,5 +1,3 @@
-import "bootstrap-icons/font/bootstrap-icons.css";
-
 import Link from "next/link";
 
 import businessInfo from "../../../public/data/businessInfo.json";

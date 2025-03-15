@@ -1,5 +1,3 @@
-import "bootstrap-icons/font/bootstrap-icons.css";
-
 import PageTitle from "@/app/components/PageTitle";
 import Testimonials from "@/app/components/Testimonials";
 

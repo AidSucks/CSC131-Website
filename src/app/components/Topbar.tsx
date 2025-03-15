@@ -1,5 +1,3 @@
-import "bootstrap-icons/font/bootstrap-icons.css";
-
 import businessInfo from "../../../public/data/businessInfo.json";
 import SocialMedia from "../../../public/data/SocialMedia.json";
 
