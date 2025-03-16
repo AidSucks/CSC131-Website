@@ -6,7 +6,7 @@ import SocialMedia from "../../../public/data/SocialMedia.json";
 export default function Footer() {
     return (
         <>
-        <div className="container-fluid bg-dark text-light mt-5 wow fadeInUp" data-wow-delay="0.1s">
+        <div className="container-fluid bg-dark text-light mt-5 fadeInUp">
         <div className="container">
           <div className="row gx-5">
             <div className="col-lg-4 col-md-6 footer-about">
@@ -72,17 +72,19 @@ export default function Footer() {
                   </div>
                 </div>
                 <div className="col-lg-4 col-md-12 pt-0 pt-lg-5 mb-5">
-                  <div
-                    className="section-title section-title-sm position-relative pb-3 mb-4"
-                  >
-                    <h3 className="text-light mb-0">Popular Links</h3>
+                  <div className="section-title section-title-sm position-relative pb-3 mb-4">
+                    <h3 className="text-light mb-0">Compliance</h3>
                   </div>
-                  <div className="link-animated d-flex flex-column justify-content-start">
-                    <Link className="text-light mb-2" href="/"><i className="bi bi-arrow-right text-primary me-2"></i>Home</Link>
-                    <Link className="text-light mb-2" href="/about"><i className="bi bi-arrow-right text-primary me-2"></i>About Us</Link>
-                    <Link className="text-light mb-2" href="/services"><i className="bi bi-arrow-right text-primary me-2"></i>Our Services</Link>
-                    <Link className="text-light" href="/contact"><i className="bi bi-arrow-right text-primary me-2"></i>Contact Us</Link>
-                  </div>
+                  <div className="">
+                    <p>Securities offered through LPL Financial, Member FINRA/SIPC.</p>
+                    <br/>
+                    <p>The LPL FinSecurities offered through LPL Financial, Member FINRA/SIPC.</p>
+                    <br/>
+                    <p>
+                      The LPL Financial Registered Representative associated with this site may only discuss and/or transact securities business with residents
+                       of the following states: AR, AZ, CA, FL,TN, ID.
+                    </p>
+                    </div>
                 </div>
               </div>
             </div>
