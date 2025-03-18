@@ -11,7 +11,7 @@ export default function Page() {
 
       {/* <AboutPageComponent/> */}
 
-      <div className="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
+      <div className="container-fluid py-5 fadeInUp">
         <div className="container py-5">
             <div className="row g-5">
                 <div className="col-lg-7">

@@ -1,4 +1,5 @@
 import businessInfo from "../../../public/data/businessInfo.json";
+import SocialMedia from "../../../public/data/SocialMedia.json";
 
 export default function Topbar() {
   return (
@@ -15,19 +16,19 @@ export default function Topbar() {
         <div className="d-inline-flex align-items-center" style={{height: 45}}>
           <a
             className="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2"
-            href=""><i className="fab fa-twitter fw-normal"></i></a>
+            href={SocialMedia.twitterX} target="_blank"><i className="bi bi-twitter-x"></i></a>
           <a
             className="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2"
-            href=""><i className="fab fa-facebook-f fw-normal"></i></a>
+            href={SocialMedia.facebook} target="_blank"><i className="fab fa-facebook-f fw-normal"></i></a>
           <a
             className="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2"
-            href=""><i className="fab fa-linkedin-in fw-normal"></i></a>
+            href={SocialMedia.linkedin} target="_blank"><i className="fab fa-linkedin-in fw-normal"></i></a>
           <a
             className="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2"
-            href=""><i className="fab fa-instagram fw-normal"></i></a>
+            href={SocialMedia.instagram} target="_blank"><i className="fab fa-instagram fw-normal"></i></a>
           <a
             className="btn btn-sm btn-outline-light btn-sm-square rounded-circle"
-            href=""><i className="fab fa-youtube fw-normal"></i></a>
+            href={SocialMedia.youtube} target="_blank"><i className="fab fa-youtube fw-normal"></i></a>
         </div>
       </div>
     </div>
