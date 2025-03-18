@@ -1,7 +1,7 @@
-'use server'
+'use server';
 
-import prisma from "@/app/lib/prisma";
+import {signOut} from "@/auth";
 
-export async function fetchUser() {
-  return await prisma.user.findFirst();
+export async function logOut() {
+  await signOut({redirectTo: "/"});
 }

@@ -7,6 +7,7 @@ import {usePathname} from "next/navigation";
 import {Dropdown, Nav} from "react-bootstrap";
 
 import React from "react";
+import {logOut} from "@/app/lib/actions";
 
 const adminLinks = [
   {name: "Dashboard", href: "/dashboard", icon: House},
@@ -59,7 +60,7 @@ export function DashboardSidebar() {
           <Dropdown.Item href={"#"}>Settings</Dropdown.Item>
           <Dropdown.Item href={"#"}>Profile</Dropdown.Item>
           <Dropdown.Divider/>
-          <Dropdown.Item href={"#"}>Sign out</Dropdown.Item>
+          <Dropdown.Item onClick={async () => logOut()}>Sign out</Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
 
