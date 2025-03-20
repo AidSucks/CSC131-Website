@@ -8,13 +8,13 @@ export default function RootLayout(
   { children }: Readonly<{ children: React.ReactNode; }>) {
 
   return (
-        <body>
-            <Header/>
-                <main style={{minHeight: '100vh'}}>
-                    {children}
-                </main>
-                <BackToTopButton/>
-            <Footer />
-        </body>
+    <body>
+        <Header/>
+          <main style={{minHeight: '100vh'}}>
+            {children}
+          </main>
+          <BackToTopButton/>
+        <Footer />
+    </body>
   );
 }
