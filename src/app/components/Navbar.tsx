@@ -88,9 +88,9 @@ export default function Navbar() {
 
               <Link href={"/resources"} className={"nav-link dropdown-toggle"}>Resources</Link>
               <div className={`dropdown-menu m-0 ${isHovered ? 'show': ''}`}>
-                  <Link href={"resources/news"} className={"dropdown-item"}>News</Link>
-                  <Link href={"resources/guidestutorials"} className={"dropdown-item"}>Guides & Tutorials</Link>
-                  <Link href={"resources/faqs"} className={"dropdown-item"}>FAQs</Link>
+                  <Link href={"/resources/news"} className={"dropdown-item"}>News</Link>
+                  <Link href={"/resources/guidestutorials"} className={"dropdown-item"}>Guides & Tutorials</Link>
+                  <Link href={"/resources/faqs"} className={"dropdown-item"}>FAQs</Link>
               </div>
 
           </div>
