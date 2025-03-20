@@ -6,11 +6,15 @@ import Link from "next/link";
 import {usePathname} from "next/navigation";
 import {Dropdown, Nav} from "react-bootstrap";
 
+import React from "react";
+import {logOut} from "@/app/lib/actions";
+
 const adminLinks = [
   {name: "Dashboard", href: "/dashboard", icon: House},
   {name: "Customers", href: "/dashboard/customers", icon: People},
   {name: "Posts", href: "/dashboard/posts", icon: Postcard},
-  {name: "Appointments", href: "/dashboard/appointments", icon: Calendar}
+  {name: "Appointments", href: "/dashboard/appointments", icon: Calendar},
+  {name: "Users", href: "/dashboard/users", icon: People}
 ];
 
 export function DashboardSidebar() {
@@ -56,7 +60,7 @@ export function DashboardSidebar() {
           <Dropdown.Item href={"#"}>Settings</Dropdown.Item>
           <Dropdown.Item href={"#"}>Profile</Dropdown.Item>
           <Dropdown.Divider/>
-          <Dropdown.Item href={"#"}>Sign out</Dropdown.Item>
+          <Dropdown.Item onClick={async () => logOut()}>Sign out</Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
 
