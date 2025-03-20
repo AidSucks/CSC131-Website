@@ -90,7 +90,7 @@ export default function Navbar() {
 
         </div>
 
-        <Link href="/api/auth/signin" className="btn btn-primary py-2 px-5 ms-5">Sign In</Link>
+        <Link href="/dashboard" className="btn btn-primary py-2 px-5 ms-5">Sign In</Link>
 
       </div>
       
