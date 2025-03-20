@@ -1,5 +1,4 @@
 import CarouselSlides from "@/app/components/CarouselSlides"
-
 import {AboutPageComponent, ContactPageComponent} from "@/app/components/PageComponents";
 import QuickAccess from "../components/QuickAccess";
 
