@@ -82,8 +82,18 @@ export default function Navbar() {
             </div>
           </div>
           
-          <Link href="/resources" className={clsx("nav-item nav-link", {"active": currentPath === "/resource"})}>
-          Resources</Link>
+          <div className={"nav-item dropdown"}
+                onMouseEnter={() => setIsHovered(true)}
+                onMouseLeave={() => setIsHovered(false)}>
+
+              <Link href={"/resources"} className={"nav-link dropdown-toggle"}>Resources</Link>
+              <div className={`dropdown-menu m-0 ${isHovered ? 'show': ''}`}>
+                  <Link href={"/resources/news"} className={"dropdown-item"}>News</Link>
+                  <Link href={"/resources/guidestutorials"} className={"dropdown-item"}>Guides & Tutorials</Link>
+                  <Link href={"/resources/faqs"} className={"dropdown-item"}>FAQs</Link>
+              </div>
+
+          </div>
 
           <Link href="/contact" className={clsx("nav-item nav-link", {"active": currentPath === "/contact"})}>
               Contact Us</Link>
@@ -93,6 +103,8 @@ export default function Navbar() {
         <Link href="/dashboard" className="btn btn-primary py-2 px-5 ms-5">Sign In</Link>
 
       </div>
+
+
       
       
     </nav>  
