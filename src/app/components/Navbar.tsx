@@ -1,11 +1,12 @@
 'use client'
+
 import { useState, useEffect } from 'react';
-import {clsx} from "clsx";
 import {usePathname} from "next/navigation";
 
 import Link from 'next/link';
 
 import businessInfo from "../../../public/data/businessInfo.json";
+import {Button, Dropdown, NavItem, NavLink} from "react-bootstrap";
 
 export default function Navbar() {
   // Toggle navbar hamburger menu.
@@ -14,8 +15,8 @@ export default function Navbar() {
     setIsOpen(!isOpen);
   };
 
-  // Set isHovered to true when user hovers over a dropdown menu.
-  const [isHovered, setIsHovered] = useState(false);
+  const [servicesHovered, setServicesHovered] = useState(false);
+  const [resourcesHovered, setResourcesHovered] = useState(false);
 
   // Sticky Navbar
   const [isScrolledDown, setIsScrolledDown] = useState(false);
@@ -59,54 +60,60 @@ export default function Navbar() {
       {/* Nav links */}
       <div className={`collapse navbar-collapse ${isOpen ? 'show': ''}`} id="navbarCollapse">
         <div className="navbar-nav ms-auto py-0">
-          <Link href="/" className={clsx("nav-item nav-link", {"active": currentPath === "/"})}>
-              Home</Link>
 
-          <Link href="/about" className={clsx("nav-item nav-link", {"active": currentPath === "/about"})}>
-              About Us</Link>
+          <NavItem>
+            <NavLink as={Link} href={"/"} active={currentPath === "/"}>Home</NavLink>
+          </NavItem>
 
-          <div className="nav-item dropdown">
-            <Link
-              href="/services"
-              className="nav-link dropdown-toggle"
-              data-bs-toggle="dropdown"
-              onMouseEnter={() => setIsHovered(true)}
-              onMouseLeave={() => setIsHovered(false)}
-              >Services</Link>
+          <NavItem>
+            <NavLink as={Link} href={"/about"} active={currentPath === "/about"}>About Us</NavLink>
+          </NavItem>
 
-            <div className={`dropdown-menu m-0 ${isHovered ? 'show': ''}`} 
-                        onMouseEnter={() => setIsHovered(true)}
-                        onMouseLeave={() => setIsHovered(false)}>
-              <Link href="/services/advisory" className="dropdown-item">Financial Planning & Advisory</Link>
-              <Link href="/services/wealth-mangement" className="dropdown-item">Wealth Management</Link>
-            </div>
-          </div>
-          
-          <div className={"nav-item dropdown"}
-                onMouseEnter={() => setIsHovered(true)}
-                onMouseLeave={() => setIsHovered(false)}>
+          {/* Services Dropdown */}
+          <Dropdown
+            defaultShow={false}
+            align={"start"}
+            onMouseEnter={() => setServicesHovered(true)}
+            onMouseLeave={() => setServicesHovered(false)}
+            show={servicesHovered}>
 
-              <Link href={"/resources"} className={"nav-link dropdown-toggle"}>Resources</Link>
-              <div className={`dropdown-menu m-0 ${isHovered ? 'show': ''}`}>
-                  <Link href={"/resources/news"} className={"dropdown-item"}>News</Link>
-                  <Link href={"/resources/guidestutorials"} className={"dropdown-item"}>Guides & Tutorials</Link>
-                  <Link href={"/resources/faqs"} className={"dropdown-item"}>FAQs</Link>
-              </div>
+            <Dropdown.Toggle as={Link} href={"/resources"} className={"nav-link"}>Services</Dropdown.Toggle>
 
-          </div>
+            <Dropdown.Menu className={"m-0"} >
+              <Dropdown.Item as={Link} href={"/services/advisory"}>Financial Planning & Advisory</Dropdown.Item>
+              <Dropdown.Item as={Link} href={"/services/wealth-management"}>Wealth Management</Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
 
-          <Link href="/contact" className={clsx("nav-item nav-link", {"active": currentPath === "/contact"})}>
-              Contact Us</Link>
+          {/* Resources Dropdown */}
+          <Dropdown
+            defaultShow={false}
+            align={"start"}
+            onMouseEnter={() => setResourcesHovered(true)}
+            onMouseLeave={() => setResourcesHovered(false)}
+            show={resourcesHovered}>
+
+            <Dropdown.Toggle as={Link} href={"/resources"} className={"nav-link"}>Resources</Dropdown.Toggle>
+
+            <Dropdown.Menu className={"m-0"} >
+              <Dropdown.Item as={Link} href={"/resources/news"}>News</Dropdown.Item>
+              <Dropdown.Item as={Link} href={"/resources/guidestutorials"}>Guides & Tutorials</Dropdown.Item>
+              <Dropdown.Item as={Link} href={"/resources/faqs"}>FAQs</Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+
+          <NavItem>
+            <NavLink as={Link} href={"/contact"} active={currentPath === "/contact"}>Contact Us</NavLink>
+          </NavItem>
 
         </div>
 
-        <Link href="/dashboard" className="btn btn-primary py-2 px-5 ms-5">Sign In</Link>
+          <Button variant={"primary"} className={"py-2 px-5 ms-4"} href={"/dashboard"}>
+            Sign In
+          </Button>
 
       </div>
 
-
-      
-      
     </nav>  
   </div>
   );
