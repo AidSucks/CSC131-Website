@@ -49,7 +49,7 @@ export default function CarouselSlides() {
                             Commitment to Trusted Financial Guidance
                         </h1>
                         <Link
-                        href="/#"
+                        href="/appointment"
                         className="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft"
                         >Book an Appointment</Link>
                     </div>
