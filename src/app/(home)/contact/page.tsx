@@ -1,8 +1,9 @@
 "use client";
+
+import PageTitle from "@/app/components/PageTitle";
 import React, { useState, ChangeEvent } from "react";
 import Head from "next/head";
 import { Instagram, Facebook, Youtube, Linkedin, TwitterX } from "react-bootstrap-icons";
-import PageTitle from "@/app/components/PageTitle";
 
 import businessInfo from "../../../../public/data/businessInfo.json";
 
