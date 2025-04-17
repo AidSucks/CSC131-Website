@@ -1,23 +1,27 @@
 'use client';
 
-import {Bootstrap, House, People, Postcard, Calendar} from "react-bootstrap-icons";
+import {Bootstrap, House, People, Postcard, Calendar, InfoSquare} from "react-bootstrap-icons";
 
 import Link from "next/link";
+import Image from "next/image";
 import {usePathname} from "next/navigation";
 import {Dropdown, Nav} from "react-bootstrap";
 
 import React from "react";
 import {logOut} from "@/app/lib/actions";
+import {User} from "next-auth";
 
 const adminLinks = [
   {name: "Dashboard", href: "/dashboard", icon: House},
   {name: "Customers", href: "/dashboard/customers", icon: People},
   {name: "Posts", href: "/dashboard/posts", icon: Postcard},
   {name: "Appointments", href: "/dashboard/appointments", icon: Calendar},
-  {name: "Users", href: "/dashboard/users", icon: People}
+  {name: "Users", href: "/dashboard/users", icon: People},
+  {name: "Business Info", href: "/dashboard/business-info", icon: InfoSquare}
 ];
 
-export function DashboardSidebar() {
+export function DashboardSidebar(
+  {userData}: {userData: User}) {
 
   const currentPath = usePathname();
 
@@ -52,9 +56,10 @@ export function DashboardSidebar() {
 
       <hr/>
 
-      <Dropdown>
-        <Dropdown.Toggle variant={"outline-secondary"} aria-expanded={false} className={"d-flex align-items-center link-body-emphasis text-decoration-none"}>
-          <strong>Test User</strong>
+      <Dropdown className={"d-flex justify-content-start"}>
+        <Dropdown.Toggle variant={"primary"} aria-expanded={false} className={"d-flex align-items-center link-body-emphasis text-decoration-none"}>
+          <Image width={32} height={32} src={userData.image ?? "/img/user.jpg"} alt={"User profile image"} className={"rounded-5 me-3"}/>
+          <strong>{userData.name ? userData.name.split(" ")[0] : "Unknown"}</strong>
         </Dropdown.Toggle>
         <Dropdown.Menu className={"shadow"}>
           <Dropdown.Item href={"#"}>Settings</Dropdown.Item>
