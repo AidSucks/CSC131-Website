@@ -77,7 +77,7 @@ export default function Navbar() {
             onMouseLeave={() => setServicesHovered(false)}
             show={servicesHovered}>
 
-            <Dropdown.Toggle as={Link} href={"/resources"} className={"nav-link"}>Services</Dropdown.Toggle>
+            <Dropdown.Toggle as={Link} href={"/services"} className={"nav-link"}>Services</Dropdown.Toggle>
 
             <Dropdown.Menu className={"m-0"} >
               <Dropdown.Item as={Link} href={"/services/advisory"}>Financial Planning & Advisory</Dropdown.Item>
@@ -101,6 +101,10 @@ export default function Navbar() {
               <Dropdown.Item as={Link} href={"/resources/faqs"}>FAQs</Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
+
+          <NavItem>
+            <NavLink as={Link} href={"/community"} active={currentPath === "/community"}>Community</NavLink>
+          </NavItem>
 
           <NavItem>
             <NavLink as={Link} href={"/contact"} active={currentPath === "/contact"}>Contact Us</NavLink>
