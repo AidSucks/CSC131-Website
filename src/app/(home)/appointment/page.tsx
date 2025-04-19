@@ -1,6 +1,10 @@
 'use client'
 import { useEffect, useState } from "react";
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
 import PageTitle from "@/app/components/PageTitle";
+import dayjs from "dayjs";
 
 type AvailabilityRule = {
   id: number;
@@ -30,14 +34,14 @@ export default function Page() {
     e.preventDefault();
     setStatus("Sending...");
 
-    const res = await fetch("/api/book-appointment", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({...form, date: selectedDate, hour: selectedHour}),
-    });
+    // const res = await fetch("/api/book-appointment", {
+    //   method: "POST",
+    //   headers: { "Content-Type": "application/json" },
+    //   body: JSON.stringify({...form, date: selectedDate, hour: selectedHour}),
+    // });
 
-    const result = await res.json();
-    setStatus(result.message);
+    // const result = await res.json();
+    // setStatus(result.message);
   };
 
   const availableHours = () => {
@@ -58,6 +62,13 @@ export default function Page() {
     return hours; 
   }
 
+  function getMinDate() {
+    const minDate = new Date();
+    minDate.setDate(minDate.getDate() + 1); // Offset it by 1 day. User can't book an appointment until next day.
+    return minDate.toISOString().split("T")[0];
+  }
+  
+
   return (
     <div>
         <PageTitle title="Book a Consultation Appointment" />
@@ -68,16 +79,31 @@ export default function Page() {
             <input name="phoneNumber" type="tel" placeholder="Your Phone Number" onChange={handleChange} required />
             <textarea name="comment" placeholder="Any comments?" onChange={handleChange} />
 
-            <label>Select Date:</label>
-            <input
-              type="date"
-              value={selectedDate}
-              onChange={(e) => {
-                setSelectedDate(e.target.value);
-                setSelectedHour(null);
-              }}
-              required
-            />
+            <div>
+              <label>Selected Date:</label>
+              <h4 id="date-display"></h4>
+              <LocalizationProvider dateAdapter={AdapterDayjs}>
+                <DateCalendar
+                disablePast={true}
+
+                minDate={dayjs(getMinDate())}
+
+                // Disable Saturday and Sunday in the datepicker.
+                shouldDisableDate={(date) => {
+                  const dayOfWeek = new Date(date).getDay();
+                  if (dayOfWeek === 0 || dayOfWeek === 6)
+                  return true
+                }}
+                
+                onChange={(newValue) => {
+                  setSelectedDate(newValue);
+                  setSelectedHour(null);
+                  setForm({ ...form, date: newValue });
+                  document.getElementById("date-display").innerText = newValue;
+                }}
+                />
+              </LocalizationProvider>
+            </div>
 
             <div className="space-x-2">
               {
