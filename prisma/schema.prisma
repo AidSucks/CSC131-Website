@@ -60,3 +60,20 @@ model VerificationToken {
 
   @@id([identifier, token])
 }
+
+model AppointmentSlot {
+  id Int @id @default(autoincrement())
+  date DateTime
+  available Boolean @default(true)
+  name String?
+  email String?
+  phoneNumber String?
+  comment String?
+}
+
+model AvailabilityRule {
+  id Int @id @default(autoincrement())
+  dayOfWeek Int // 0=Sunday, 1=Monday, etc.
+  startHour Int
+  endHour Int
+}

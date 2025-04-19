@@ -1,10 +1,27 @@
 import { NextResponse } from "next/server";
+import prisma  from "../../lib/prisma";
 import nodemailer from "nodemailer";
 
 
 export async function POST(req: Request) {
   try {
-    const { name, email, date } = await req.json();
+    const { name, email, phoneNumber, comment, date, hour } = await req.json();
+
+    const appointmentDate = new Date(date);
+    appointmentDate.setHours(hour, 0, 0, 0);
+
+    const newApptSlot = await prisma.appointmentSlot.create({
+      data: {
+        date: appointmentDate,
+        available: false,
+        name: name,
+        email: email,
+        phoneNumber: phoneNumber,
+        comment: comment,
+      }
+    });
+    
+    const formattedDate = appointmentDate.toLocaleString();
 
     const transporter = nodemailer.createTransport({
       service: "gmail",
@@ -18,12 +35,14 @@ export async function POST(req: Request) {
       {
         to: email,
         subject: "Your Appointment is Booked",
-        text: `Hi ${name},\n\nYour appointment is confirmed for ${date}.`,
+        text: `Hi ${name},\n\nYour appointment is confirmed for ${formattedDate}.
+        \n\nComments: ${comment}`,
       },
       {
         to: process.env.SMTP_USER,
         subject: "New Appointment Booked",
-        text: `New appointment booked:\nName: ${name}\nEmail: ${email}\nDate: ${date}`,
+        text: `New appointment booked:\nName: ${name}\nEmail: ${email}\nPhone Number: ${phoneNumber}
+        \nDate: ${formattedDate}\nComment: ${comment}`,
       },
     ];
 
