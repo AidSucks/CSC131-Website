@@ -16,7 +16,7 @@ type AvailabilityRule = {
 export default function Page() {
   const [availabilityRules, setAvailabilityRules] = useState<AvailabilityRule[]>([]);
   const [selectedDate, setSelectedDate] = useState<string>("");
-  const [selectedHour, setSelectedHour] = useState<number | null>(null);
+  const [selectedTime, setSelectedTime] = useState<number | null>(null);
   const [form, setForm] = useState({ name: "", email: "", phoneNumber: "", comment: "" });
   const [status, setStatus] = useState("");
 
@@ -34,14 +34,14 @@ export default function Page() {
     e.preventDefault();
     setStatus("Sending...");
 
-    // const res = await fetch("/api/book-appointment", {
-    //   method: "POST",
-    //   headers: { "Content-Type": "application/json" },
-    //   body: JSON.stringify({...form, date: selectedDate, hour: selectedHour}),
-    // });
+    const res = await fetch("/api/book-appointment", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({...form, date: selectedDate, time: selectedTime}),
+    });
 
-    // const result = await res.json();
-    // setStatus(result.message);
+    const result = await res.json();
+    setStatus(result.message);
   };
 
   const availableHours = () => {
@@ -54,12 +54,15 @@ export default function Page() {
     if(!rule)
       return [];
 
-    const hours = [];
+    let timeslots : Date[] = [];
     for (let h = rule.startHour; h <= rule.endHour; h++) {
-      hours.push(h);
+      let appointmentTime = new Date();
+      appointmentTime.setHours(h, 0, 0, 0);
+
+      timeslots.push(appointmentTime);
     }
 
-    return hours; 
+    return timeslots; 
   }
 
   function getMinDate() {
@@ -73,7 +76,8 @@ export default function Page() {
     <div>
         <PageTitle title="Book a Consultation Appointment" />
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <div className="container-fluid py-5">
+          <form onSubmit={handleSubmit} className="container py-5">
             <input name="name" placeholder="Your Name" onChange={handleChange} required />
             <input name="email" type="email" placeholder="Your Email" onChange={handleChange} required />
             <input name="phoneNumber" type="tel" placeholder="Your Phone Number" onChange={handleChange} required />
@@ -82,6 +86,12 @@ export default function Page() {
             <div>
               <label>Selected Date:</label>
               <h4 id="date-display"></h4>
+
+              <label>Selected Time:</label>
+              <h4 id="time-display"></h4>
+            </div>
+
+            <div style={{paddingRight: "100%"}}>
               <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <DateCalendar
                 disablePast={true}
@@ -89,38 +99,44 @@ export default function Page() {
                 minDate={dayjs(getMinDate())}
 
                 // Disable Saturday and Sunday in the datepicker.
-                shouldDisableDate={(date) => {
-                  const dayOfWeek = new Date(date).getDay();
+                shouldDisableDate={(day) => {
+                  const dayOfWeek = dayjs(day).day();
+                  let shouldDisable = false;
+
                   if (dayOfWeek === 0 || dayOfWeek === 6)
-                  return true
+                    shouldDisable = true;
+
+                  return shouldDisable;
                 }}
                 
                 onChange={(newValue) => {
-                  setSelectedDate(newValue);
-                  setSelectedHour(null);
-                  setForm({ ...form, date: newValue });
-                  document.getElementById("date-display").innerText = newValue;
+                  setSelectedDate(`${newValue}`);
+                  setSelectedTime(null);
+                  (document.getElementById("date-display") as HTMLDivElement).innerText = `${newValue?.format('dddd, MMMM D, YYYY')}`;
                 }}
                 />
               </LocalizationProvider>
             </div>
-
+              
             <div className="space-x-2">
               {
-                availableHours().map((hour) => (
-                  <button type="button" key={hour}
-                  className={`px-4 py-2 border rounded ${selectedHour === hour ? "bg-blue-500 text-white": ""}`}
-                  onClick={() => setSelectedHour(hour)}>
-                    {`${hour}:00`}
+                availableHours().map((appointmentTime) => (
+                  <button type="button" key={appointmentTime.getTime()}
+                  className={`px-4 py-2 border rounded ${selectedTime === appointmentTime.getTime() ? "bg-blue-500 text-white": ""}`}
+                  onClick={() => {
+                    setSelectedTime(appointmentTime.getTime());
+                    (document.getElementById("time-display") as HTMLDivElement).innerText = appointmentTime.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+                    }}>
+                    {`${appointmentTime.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })}`}
                   </button>
                 ))
               }
             </div>
 
-            <button type="submit" disabled={!selectedHour}>Book Appointment</button>
+            <button type="submit" disabled={!selectedTime}>Book Appointment</button>
             <p>{status}</p>
         </form>
+        </div>
     </div>
-
   );
 }

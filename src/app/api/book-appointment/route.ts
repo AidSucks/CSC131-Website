@@ -5,10 +5,10 @@ import nodemailer from "nodemailer";
 
 export async function POST(req: Request) {
   try {
-    const { name, email, phoneNumber, comment, date, hour } = await req.json();
+    const { name, email, phoneNumber, comment, date, time } = await req.json();
 
     const appointmentDate = new Date(date);
-    appointmentDate.setHours(hour, 0, 0, 0);
+    appointmentDate.setTime(time);
 
     const newApptSlot = await prisma.appointmentSlot.create({
       data: {
@@ -46,11 +46,13 @@ export async function POST(req: Request) {
       },
     ];
 
-    await Promise.all(
-      mailOptions.map((mail) =>
-        transporter.sendMail({ from: process.env.SMTP_USER, ...mail })
-      )
-    );
+    // await Promise.all(
+    //   mailOptions.map((mail) =>
+    //     transporter.sendMail({ from: process.env.SMTP_USER, ...mail })
+    //   )
+    // );
+
+    console.log(mailOptions);
 
     return NextResponse.json({ message: "Appointment booked successfully" });
   } catch (error) {
