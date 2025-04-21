@@ -74,68 +74,96 @@ export default function Page() {
 
   return (
     <div>
-        <PageTitle title="Book a Consultation Appointment" />
+        <PageTitle title="Schedule a Consultation Appointment" />
 
         <div className="container-fluid py-5">
-          <form onSubmit={handleSubmit} className="container py-5">
-            <input name="name" placeholder="Your Name" onChange={handleChange} required />
-            <input name="email" type="email" placeholder="Your Email" onChange={handleChange} required />
-            <input name="phoneNumber" type="tel" placeholder="Your Phone Number" onChange={handleChange} required />
-            <textarea name="comment" placeholder="Any comments?" onChange={handleChange} />
-
-            <div>
-              <label>Selected Date:</label>
-              <h4 id="date-display"></h4>
-
-              <label>Selected Time:</label>
-              <h4 id="time-display"></h4>
+          <div className="container py-5">
+            <div className="section-title text-center position-relative pb-3 mb-5 mx-auto" style={{maxWidth: "600px"}}>
+                <h5 className="fw-bold text-primary text-uppercase">Schedule Here</h5>
+                <h1 className="mb-0">Please fill out the appointment form</h1>
             </div>
 
-            <div style={{paddingRight: "100%"}}>
-              <LocalizationProvider dateAdapter={AdapterDayjs}>
-                <DateCalendar
-                disablePast={true}
+            <form onSubmit={handleSubmit} className="container py-5" style={{maxWidth: '900px'}}>
+                <div className="row g-3">
+                  <div className="col-12">
+                      <input name="name" placeholder="Your Name" 
+                        className="form-control border-0 bg-light px-4" style={{height: '55px'}} onChange={handleChange} required />
+                    </div>
+                  <div className="col-12">
+                      <input name="email" type="email" placeholder="Your Email" 
+                        className="form-control border-0 bg-light px-4" style={{height: '55px'}} onChange={handleChange} required />
+                  </div>
+                    <div className="col-12">
+                      <input name="phoneNumber" type="tel" placeholder="Your Phone Number" 
+                        className="form-control border-0 bg-light px-4" style={{height: '55px'}} onChange={handleChange} required />
+                    </div>
+                  <div className="col-12">
+                      <textarea name="comment" placeholder="Any comments?" 
+                        className="form-control border-0 bg-light px-4" rows={3} onChange={handleChange} required />
+                    </div>
+                  </div>
 
-                minDate={dayjs(getMinDate())}
+                  <div className="col-12">
+                    <label className="mt-4 px-4" >Select Date and Time:</label>
+                  </div>
 
-                // Disable Saturday and Sunday in the datepicker.
-                shouldDisableDate={(day) => {
-                  const dayOfWeek = dayjs(day).day();
-                  let shouldDisable = false;
+                <div className="col-12">
+                  <LocalizationProvider dateAdapter={AdapterDayjs}>
+                    <DateCalendar
+                    disablePast={true}
 
-                  if (dayOfWeek === 0 || dayOfWeek === 6)
-                    shouldDisable = true;
+                    minDate={dayjs(getMinDate())}
 
-                  return shouldDisable;
-                }}
+                    // Disable Saturday and Sunday in the datepicker.
+                    shouldDisableDate={(day) => {
+                      const dayOfWeek = dayjs(day).day();
+                      let shouldDisable = false;
+
+                      if (dayOfWeek === 0 || dayOfWeek === 6)
+                        shouldDisable = true;
+
+                      return shouldDisable;
+                    }}
+                    
+                    onChange={(newValue) => {
+                      setSelectedDate(`${newValue}`);
+                      setSelectedTime(null);
+                      (document.getElementById("date-display") as HTMLDivElement).innerText = `${newValue?.format('dddd, MMMM D, YYYY')}`;
+                      (document.getElementById("time-display") as HTMLDivElement).innerText = "";
+                    }}
+                    />
+                  </LocalizationProvider>
+                </div>
+                  
+                <div className="col-12">
+                  {
+                    availableHours().map((appointmentTime) => (
+                      <button type="button" key={appointmentTime.getTime()}
+                      className={`px-4 py-2 border rounded ${selectedTime === appointmentTime.getTime() ? "bg-blue-500 text-white": ""}`}
+                      onClick={() => {
+                        setSelectedTime(appointmentTime.getTime());
+                        (document.getElementById("time-display") as HTMLDivElement).innerText = appointmentTime.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+                        }}>
+                        {`${appointmentTime.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })}`}
+                      </button>
+                    ))
+                  }
+                </div>
+
+                <div className="col-12 py-5">
+                  <label className="mt-4 px-4">Selected Date:</label>
+                  <h5 className="mt-4 px-4" id="date-display"></h5>
+
+                  <label className="mt-4 px-4">Selected Time:</label>
+                  <h5 className="mt-4 px-4" id="time-display"></h5>
+                </div>
                 
-                onChange={(newValue) => {
-                  setSelectedDate(`${newValue}`);
-                  setSelectedTime(null);
-                  (document.getElementById("date-display") as HTMLDivElement).innerText = `${newValue?.format('dddd, MMMM D, YYYY')}`;
-                }}
-                />
-              </LocalizationProvider>
-            </div>
-              
-            <div className="space-x-2">
-              {
-                availableHours().map((appointmentTime) => (
-                  <button type="button" key={appointmentTime.getTime()}
-                  className={`px-4 py-2 border rounded ${selectedTime === appointmentTime.getTime() ? "bg-blue-500 text-white": ""}`}
-                  onClick={() => {
-                    setSelectedTime(appointmentTime.getTime());
-                    (document.getElementById("time-display") as HTMLDivElement).innerText = appointmentTime.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
-                    }}>
-                    {`${appointmentTime.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })}`}
-                  </button>
-                ))
-              }
-            </div>
-
-            <button type="submit" disabled={!selectedTime}>Book Appointment</button>
-            <p>{status}</p>
-        </form>
+                <div className="col-12">
+                  <button type="submit" className="btn btn-primary py-3" style={{minWidth: '50%', marginLeft: '25%'}} disabled={!selectedTime}>Book Appointment</button>
+                </div>
+                <p>{status}</p>
+            </form>
+          </div>
         </div>
     </div>
   );

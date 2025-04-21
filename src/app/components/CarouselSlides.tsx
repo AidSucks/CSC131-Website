@@ -51,7 +51,7 @@ export default function CarouselSlides() {
                         <Link
                         href="/appointment"
                         className="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft"
-                        >Book an Appointment</Link>
+                        >Schedule your Appointment</Link>
                     </div>
                 </CarouselCaption>
             </CarouselItem>
