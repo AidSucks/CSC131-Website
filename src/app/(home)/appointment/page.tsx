@@ -135,11 +135,11 @@ export default function Page() {
                   </LocalizationProvider>
                 </div>
                   
-                <div className="col-12">
+                <div className="mx-4 col-12">
                   {
                     availableHours().map((appointmentTime) => (
                       <button type="button" key={appointmentTime.getTime()}
-                      className={`px-4 py-2 border rounded ${selectedTime === appointmentTime.getTime() ? "bg-blue-500 text-white": ""}`}
+                      className={`btn btn-primary mx-2 my-2 py-3 px-4 border rounded ${selectedTime === appointmentTime.getTime() ? "bg-blue-500 text-white disabled": "active"}`}
                       onClick={() => {
                         setSelectedTime(appointmentTime.getTime());
                         (document.getElementById("time-display") as HTMLDivElement).innerText = appointmentTime.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
@@ -152,10 +152,10 @@ export default function Page() {
 
                 <div className="col-12 py-5">
                   <label className="mt-4 px-4">Selected Date:</label>
-                  <h5 className="mt-4 px-4" id="date-display"></h5>
+                  <h5 className="mt-2 px-5" id="date-display"></h5>
 
                   <label className="mt-4 px-4">Selected Time:</label>
-                  <h5 className="mt-4 px-4" id="time-display"></h5>
+                  <h5 className="mt-2 px-5" id="time-display"></h5>
                 </div>
                 
                 <div className="col-12">
