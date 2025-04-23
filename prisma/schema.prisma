@@ -64,7 +64,6 @@ model VerificationToken {
 model AppointmentSlot {
   id Int @id @default(autoincrement())
   date DateTime
-  available Boolean @default(true)
   name String?
   email String?
   phoneNumber String?
@@ -76,4 +75,11 @@ model AvailabilityRule {
   dayOfWeek Int // 0=Sunday, 1=Monday, etc.
   startHour Int
   endHour Int
+  incrementTimeMins Int
+}
+
+model CalendarSettings {
+  id Int @id @default(autoincrement())
+  minDays Int
+  maxDays Int
 }

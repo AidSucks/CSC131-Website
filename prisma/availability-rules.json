@@ -2,26 +2,31 @@
     {
         "dayOfWeek": 1,
         "startHour": 9,
-        "endHour": 12
+        "endHour": 12,
+        "incrementTimeMins": 15
     },
     {
         "dayOfWeek": 2,
         "startHour": 13,
-        "endHour": 16
+        "endHour": 16,
+        "incrementTimeMins": 30
     },
     {
         "dayOfWeek": 3,
         "startHour": 10,
-        "endHour": 15
+        "endHour": 15,
+        "incrementTimeMins": 45
     },
     {
         "dayOfWeek": 4,
         "startHour": 9,
-        "endHour": 17
+        "endHour": 17,
+        "incrementTimeMins": 50
     },
     {
         "dayOfWeek": 5,
         "startHour": 9,
-        "endHour": 12
+        "endHour": 12,
+        "incrementTimeMins": 60
     }
 ]

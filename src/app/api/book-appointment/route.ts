@@ -13,7 +13,6 @@ export async function POST(req: Request) {
     const newApptSlot = await prisma.appointmentSlot.create({
       data: {
         date: appointmentDate,
-        available: false,
         name: name,
         email: email,
         phoneNumber: phoneNumber,

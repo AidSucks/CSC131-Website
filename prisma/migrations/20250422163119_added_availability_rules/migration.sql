@@ -2,7 +2,6 @@
 CREATE TABLE "AppointmentSlot" (
     "id" SERIAL NOT NULL,
     "date" TIMESTAMP(3) NOT NULL,
-    "available" BOOLEAN NOT NULL DEFAULT true,
     "name" TEXT,
     "email" TEXT,
     "phoneNumber" TEXT,
@@ -17,6 +16,9 @@ CREATE TABLE "AvailabilityRule" (
     "dayOfWeek" INTEGER NOT NULL,
     "startHour" INTEGER NOT NULL,
     "endHour" INTEGER NOT NULL,
+    "incrementTimeMins" INTEGER NOT NULL,
+    "minDays" INTEGER NOT NULL,
+    "maxDays" INTEGER NOT NULL,
 
     CONSTRAINT "AvailabilityRule_pkey" PRIMARY KEY ("id")
 );
