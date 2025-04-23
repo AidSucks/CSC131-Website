@@ -36,9 +36,17 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     })
   ],
   callbacks: {
-    async signIn() {
-      console.log("Called Sign In Callback");
-      return true;
+    async signIn({profile}) {
+
+      if(!profile?.email) return false;
+
+      const authorizedUser = await prisma.authorizedUser.findUnique({
+        where: {
+          email: profile.email
+        }
+      });
+
+      return authorizedUser !== null;
     },
     async session({session}) {
       console.log("Called Session Callback");

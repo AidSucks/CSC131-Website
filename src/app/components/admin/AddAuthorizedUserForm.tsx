@@ -2,21 +2,22 @@
 
 import {Col, Row, Form, Button} from "react-bootstrap";
 import {PlusCircle} from "react-bootstrap-icons";
+import {createAuthorizedUser} from "@/app/lib/actions";
 
 export function AddAuthorizedUserForm() {
   return (
-    <Form>
+    <Form action={createAuthorizedUser}>
       <h6>Add an authorized user:</h6>
       <Row>
         <Form.Group as={Col} controlId="formGridEmail">
           <Form.Label>Email</Form.Label>
-          <Form.Control size={"sm"} type="email" placeholder="Enter email" />
+          <Form.Control name={"email"} size={"sm"} type="email" placeholder="Enter email" />
         </Form.Group>
 
         <Form.Group as={Col} controlId={"roleGridSelect"}>
           <Form.Label>Role</Form.Label>
-          <Form.Select size={"sm"} defaultValue="Choose...">
-            <option>Admin</option>
+          <Form.Select name={"role"} size={"sm"} defaultValue="Choose...">
+            <option>Administrator</option>
             <option>Moderator</option>
           </Form.Select>
         </Form.Group>
