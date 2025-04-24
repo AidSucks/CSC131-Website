@@ -76,3 +76,36 @@ model CustomerInquiry {
   servicesRequested String[]
   message           String?
 }
+
+model CustomerAppointment {
+  id               String   @id @default(cuid())
+  fullName         String
+  contactEmail     String
+  contactPhone     String?
+  message          String?
+  submittedDate    DateTime
+  appointmentStart DateTime
+  appointmentEnd   DateTime
+}
+
+model AvailabilityRule {
+  dayOfWeek           DayOfWeek @id
+  allowedAppointments Json[]
+}
+
+model SpecialUnavailabilityRule {
+  id        String   @id @default(cuid())
+  note      String?
+  startDate DateTime
+  endDate   DateTime
+}
+
+enum DayOfWeek {
+  MONDAY
+  TUESDAY
+  WEDNESDAY
+  THURSDAY
+  FRIDAY
+  SATURDAY
+  SUNDAY
+}
