@@ -11,19 +11,28 @@ type AvailabilityRule = {
   dayOfWeek: number;
   startHour: number;
   endHour: number;
+  incrementTimeMins: number;
 }
 
 export default function Page() {
   const [availabilityRules, setAvailabilityRules] = useState<AvailabilityRule[]>([]);
+  const [calendarSetting, setCalendarSetting] = useState({minDays: 0, maxDays: 0});
   const [selectedDate, setSelectedDate] = useState<string>("");
   const [selectedTime, setSelectedTime] = useState<number | null>(null);
   const [form, setForm] = useState({ name: "", email: "", phoneNumber: "", comment: "" });
   const [status, setStatus] = useState("");
 
   useEffect(() => {
-    fetch("api/slot-availability")
-      .then((res) => res.json())
-      .then(setAvailabilityRules);
+    async function fetchAvailabilityRules() {
+      setAvailabilityRules(await fetch("api/slot-availability").then((res) => res.json()));
+    }
+
+    async function fetchCalendarSettings() {
+      setCalendarSetting(await fetch("/api/calendar-settings").then(res => res.json()));
+    }
+
+      fetchAvailabilityRules();
+      fetchCalendarSettings();
   }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement & HTMLTextAreaElement>) => {
@@ -54,12 +63,25 @@ export default function Page() {
     if(!rule)
       return [];
 
+    const incrementTime = rule.incrementTimeMins;
     let timeslots : Date[] = [];
-    for (let h = rule.startHour; h <= rule.endHour; h++) {
-      let appointmentTime = new Date();
-      appointmentTime.setHours(h, 0, 0, 0);
+    
+    let m = 0;
+    let h = rule.startHour;
+    while (h <= rule.endHour) {
+      while (m < 60) {
+        let appointmentTime = new Date();
+        appointmentTime.setHours(h, m, 0, 0);
+        timeslots.push(appointmentTime);
+        
+        m += incrementTime;
+      }
 
-      timeslots.push(appointmentTime);
+      if(m >= 60) {
+        m -= 60;
+      }
+
+      h++;
     }
 
     return timeslots; 
@@ -67,8 +89,14 @@ export default function Page() {
 
   function getMinDate() {
     const minDate = new Date();
-    minDate.setDate(minDate.getDate() + 1); // Offset it by 1 day. User can't book an appointment until next day.
+    minDate.setDate(minDate.getDate() + calendarSetting.minDays); // The nearest available appointment date is 1 day from today.
     return minDate.toISOString().split("T")[0];
+  }
+
+  function getMaxDate() {
+    const maxDate = new Date();
+    maxDate.setDate(maxDate.getDate()+ calendarSetting.maxDays); // The latest available appointment date is 90 days from today.
+    return maxDate.toISOString().split("T")[0];
   }
   
 
@@ -113,6 +141,7 @@ export default function Page() {
                     disablePast={true}
 
                     minDate={dayjs(getMinDate())}
+                    maxDate={dayjs(getMaxDate())}
 
                     // Disable Saturday and Sunday in the datepicker.
                     shouldDisableDate={(day) => {
@@ -138,7 +167,7 @@ export default function Page() {
                 <div className="mx-4 col-12">
                   {
                     availableHours().map((appointmentTime) => (
-                      <button type="button" key={appointmentTime.getTime()}
+                      <button type="button" key={appointmentTime.getTime()} style={{minWidth: '8rem'}}
                       className={`btn btn-primary mx-2 my-2 py-3 px-4 border rounded ${selectedTime === appointmentTime.getTime() ? "bg-blue-500 text-white disabled": "active"}`}
                       onClick={() => {
                         setSelectedTime(appointmentTime.getTime());

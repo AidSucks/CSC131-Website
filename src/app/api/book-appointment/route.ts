@@ -7,21 +7,23 @@ export async function POST(req: Request) {
   try {
     const { name, email, phoneNumber, comment, date, time } = await req.json();
 
+    const appointmentTime = new Date(time);
+
     const appointmentDate = new Date(date);
-    appointmentDate.setTime(time);
+    appointmentDate.setHours(appointmentTime.getHours());
+    appointmentDate.setMinutes(appointmentTime.getMinutes());
+
+    const formattedDate = appointmentDate.toLocaleString();
 
     const newApptSlot = await prisma.appointmentSlot.create({
       data: {
         date: appointmentDate,
-        available: false,
         name: name,
         email: email,
         phoneNumber: phoneNumber,
         comment: comment,
       }
     });
-    
-    const formattedDate = appointmentDate.toLocaleString();
 
     const transporter = nodemailer.createTransport({
       service: "gmail",
@@ -46,13 +48,11 @@ export async function POST(req: Request) {
       },
     ];
 
-    // await Promise.all(
-    //   mailOptions.map((mail) =>
-    //     transporter.sendMail({ from: process.env.SMTP_USER, ...mail })
-    //   )
-    // );
-
-    console.log(mailOptions);
+    await Promise.all(
+      mailOptions.map((mail) =>
+        transporter.sendMail({ from: process.env.SMTP_USER, ...mail })
+      )
+    );
 
     return NextResponse.json({ message: "Appointment booked successfully" });
   } catch (error) {
