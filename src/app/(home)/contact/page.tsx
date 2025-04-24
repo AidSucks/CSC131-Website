@@ -6,6 +6,7 @@ import PageTitle from "@/app/components/PageTitle";
 
 import businessInfo from "../../../../public/data/businessInfo.json";
 import socialMedia from "../../../../public/data/SocialMedia.json";
+import {CustomerInquiryForm} from "@/app/components/CustomerInquiryForm";
 
 export default function ContactPage() {
     const [formData, setFormData] = useState({
@@ -106,101 +107,7 @@ export default function ContactPage() {
                 </div>
 
                 <h2 className="mb-4">Inquiry Form</h2>
-                <form onSubmit={handleSubmit}>
-                    <h5>Personal Information</h5>
-                    <div className="form-group">
-                        <label htmlFor="name">Full Name</label>
-                        <input
-                            type="text"
-                            name="name"
-                            className="form-control"
-                            id="name"
-                            placeholder="Enter your full name"
-                            value={formData.name}
-                            onChange={handleChange}
-                            required
-                        />
-                    </div>
-
-                    <div className="form-group mt-3">
-                        <label htmlFor="email">Email Address</label>
-                        <input
-                            type="email"
-                            name="email"
-                            className="form-control"
-                            id="email"
-                            placeholder="Enter your email"
-                            value={formData.email}
-                            onChange={handleChange}
-                            required
-                        />
-                    </div>
-
-                    <div className="form-group mt-3">
-                        <label htmlFor="phone">Phone Number</label>
-                        <input
-                            type="tel"
-                            name="phone"
-                            className="form-control"
-                            id="phone"
-                            placeholder="Enter your phone number"
-                            value={formData.phone}
-                            onChange={handleChange}
-                            required
-                        />
-                    </div>
-
-                    <h5 className="mt-4">Select Services Requested</h5>
-                    <div className="form-group">
-                        {Object.keys(formData.services).map((service) => {
-                            let formattedService = service
-                                .replace(/([A-Z])/g, " $1")
-                                .replace(/^./, (str) => str.toUpperCase());
-
-                            if (service === "rollover401k") {
-                                formattedService = "Rollover 401(k)";
-                            }
-
-                            return (
-                                <div className="form-check" key={service}>
-                                    <input
-                                        type="checkbox"
-                                        name={service}
-                                        className="form-check-input"
-                                        id={service}
-                                        checked={formData.services[service as keyof typeof formData.services]}
-                                        onChange={handleChange}
-                                    />
-                                    <label className="form-check-label" htmlFor={service}>
-                                        {formattedService}
-                                    </label>
-                                </div>
-                            );
-                        })}
-                    </div>
-
-                    {error && <div className="text-danger mt-2">{error}</div>}
-
-                    <div className="form-group mt-3">
-                        <label htmlFor="message">Message (Optional)</label>
-                        <textarea
-                            name="message"
-                            className="form-control"
-                            id="message"
-                            rows={4}
-                            placeholder="Enter any additional details..."
-                            value={formData.message}
-                            onChange={handleChange}
-                            required
-                            maxLength={300}
-                        />
-                        <small className="form-text text-muted">
-                            {300 - messageLength} characters remaining
-                        </small>
-                    </div>
-
-                    <button type="submit" className="btn btn-primary mt-3">Submit</button>
-                </form>
+                <CustomerInquiryForm/>
             </div>
         </>
     );

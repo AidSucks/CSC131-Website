@@ -67,3 +67,12 @@ enum Role {
   MODERATOR
   ADMINISTRATOR
 }
+
+model CustomerInquiry {
+  id                String   @id @default(cuid())
+  fullName          String
+  contactEmail      String
+  contactPhone      String?
+  servicesRequested String[]
+  message           String?
+}
