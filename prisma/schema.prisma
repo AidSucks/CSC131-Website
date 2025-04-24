@@ -68,25 +68,44 @@ enum Role {
   ADMINISTRATOR
 }
 
-model AppointmentSlot {
-  id Int @id @default(autoincrement())
-  date DateTime
-  name String?
-  email String?
-  phoneNumber String?
-  comment String?
+model CustomerInquiry {
+  id                String   @id @default(cuid())
+  fullName          String
+  contactEmail      String
+  contactPhone      String?
+  servicesRequested String[]
+  message           String?
+}
+
+model CustomerAppointment {
+  id               String   @id @default(cuid())
+  fullName         String
+  contactEmail     String
+  contactPhone     String?
+  message          String?
+  submittedDate    DateTime
+  appointmentStart DateTime
+  appointmentEnd   DateTime
 }
 
 model AvailabilityRule {
-  id Int @id @default(autoincrement())
-  dayOfWeek Int // 0=Sunday, 1=Monday, etc.
-  startHour Int
-  endHour Int
-  incrementTimeMins Int
+  dayOfWeek           DayOfWeek @id
+  allowedAppointments Json[]
 }
 
-model CalendarSettings {
-  id Int @id @default(autoincrement())
-  minDays Int
-  maxDays Int
+model SpecialUnavailabilityRule {
+  id        String   @id @default(cuid())
+  note      String?
+  startDate DateTime
+  endDate   DateTime
+}
+
+enum DayOfWeek {
+  MONDAY
+  TUESDAY
+  WEDNESDAY
+  THURSDAY
+  FRIDAY
+  SATURDAY
+  SUNDAY
 }
