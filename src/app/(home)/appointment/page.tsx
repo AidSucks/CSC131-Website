@@ -3,6 +3,10 @@ import { useEffect, useState } from "react";
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
+import { useEffect, useState } from "react";
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
 import PageTitle from "@/app/components/PageTitle";
 import dayjs from "dayjs";
 
@@ -46,6 +50,7 @@ export default function Page() {
     const res = await fetch("/api/book-appointment", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({...form, date: selectedDate, time: selectedTime}),
       body: JSON.stringify({...form, date: selectedDate, time: selectedTime}),
     });
 
@@ -102,6 +107,7 @@ export default function Page() {
 
   return (
     <div>
+        <PageTitle title="Schedule a Consultation Appointment" />
         <PageTitle title="Schedule a Consultation Appointment" />
 
         <div className="container-fluid py-5">

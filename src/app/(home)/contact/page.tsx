@@ -107,7 +107,7 @@ export default function ContactPage() {
 
                 <h2 className="mb-4">Inquiry Form</h2>
                 <form onSubmit={handleSubmit}>
-                    <p>Personal Information</p>
+                    <h5>Personal Information</h5>
                     <div className="form-group">
                         <label htmlFor="name">Full Name</label>
                         <input
@@ -150,7 +150,7 @@ export default function ContactPage() {
                         />
                     </div>
 
-                    <h3 className="mt-4">Select Services Required</h3>
+                    <h5 className="mt-4">Select Services Requested</h5>
                     <div className="form-group">
                         {Object.keys(formData.services).map((service) => {
                             let formattedService = service
@@ -182,7 +182,7 @@ export default function ContactPage() {
                     {error && <div className="text-danger mt-2">{error}</div>}
 
                     <div className="form-group mt-3">
-                        <label htmlFor="message">Inquiry</label>
+                        <label htmlFor="message">Message (Optional)</label>
                         <textarea
                             name="message"
                             className="form-control"
@@ -192,10 +192,10 @@ export default function ContactPage() {
                             value={formData.message}
                             onChange={handleChange}
                             required
-                            maxLength={1500}
+                            maxLength={300}
                         />
                         <small className="form-text text-muted">
-                            {1500 - messageLength} characters remaining
+                            {300 - messageLength} characters remaining
                         </small>
                     </div>
 

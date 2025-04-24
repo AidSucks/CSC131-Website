@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import prisma  from "../../lib/prisma";
+import prisma  from "../../lib/prisma";
 import nodemailer from "nodemailer";
 
 
@@ -36,15 +37,26 @@ export async function POST(req: Request) {
         subject: "Your Appointment is Booked",
         text: `Hi ${name},\n\nYour appointment is confirmed for ${formattedDate}.
         \n\nComments: ${comment}`,
+        text: `Hi ${name},\n\nYour appointment is confirmed for ${formattedDate}.
+        \n\nComments: ${comment}`,
       },
       {
         to: process.env.SMTP_USER,
         subject: "New Appointment Booked",
         text: `New appointment booked:\nName: ${name}\nEmail: ${email}\nPhone Number: ${phoneNumber}
         \nDate: ${formattedDate}\nComment: ${comment}`,
+        text: `New appointment booked:\nName: ${name}\nEmail: ${email}\nPhone Number: ${phoneNumber}
+        \nDate: ${formattedDate}\nComment: ${comment}`,
       },
     ];
 
+    // await Promise.all(
+    //   mailOptions.map((mail) =>
+    //     transporter.sendMail({ from: process.env.SMTP_USER, ...mail })
+    //   )
+    // );
+
+    console.log(mailOptions);
     // await Promise.all(
     //   mailOptions.map((mail) =>
     //     transporter.sendMail({ from: process.env.SMTP_USER, ...mail })
