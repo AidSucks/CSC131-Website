@@ -2,24 +2,18 @@
 
 import {signOut} from "@/auth";
 import prisma from "@/app/lib/prisma";
-import {z} from "zod";
 import {revalidatePath} from "next/cache";
 import {redirect} from "next/navigation";
 import {cache} from "react";
 
-const AuthorizedUserSchema = z.object({
-  email: z.string().email({message: "Invalid Email"}),
-  username: z.string().default("New User"),
-  role: z.enum(["MODERATOR", "ADMINISTRATOR"])
-});
-
-const CustomerInquirySchema = z.object({
-  fullName: z.string().nonempty(),
-  contactEmail: z.string().email(),
-  contactPhone: z.string().optional(),
-  servicesRequested: z.string().array().default([]),
-  message: z.string().max(300).optional()
-})
+import {
+  AuthorizedUser,
+  CustomerInquiry,
+  AvailabilityRule,
+  AuthorizedUserSchema,
+  CustomerInquirySchema, UnavailabilityRule,
+} from "@/app/lib/zod-schemas";
+import dayjs from "dayjs";
 
 export async function logOut() {
   await signOut({redirectTo: "/"});
@@ -29,13 +23,28 @@ export async function logOut() {
 
 //TODO Further research react caching
 export const fetchAllUsers = cache(async () => {
-  return await prisma.authorizedUser.findMany();
+  const users: AuthorizedUser[] = await prisma.authorizedUser.findMany();
+  return users;
 });
 
 export async function fetchAllCustomerInquiries() {
-  return await prisma.customerInquiry.findMany();
+  const customers: CustomerInquiry[] = await prisma.customerInquiry.findMany();
+  return customers;
 }
 
+export async function fetchAvailabilityRules() {
+  const availabilityRules: AvailabilityRule[] = await prisma.availabilityRule.findMany({
+    include: {
+      allowedAppointments: true
+    }
+  });
+  return availabilityRules;
+}
+
+export async function fetchUnavailabilityRules() {
+  const unavailabilityRules: UnavailabilityRule[] = await prisma.specialUnavailabilityRule.findMany();
+  return unavailabilityRules;
+}
 
 // FORM METHODS
 
@@ -109,4 +118,10 @@ export async function createCustomerInquiry(formData: FormData) {
 
   revalidatePath("/contact");
   redirect("/");
+}
+
+export async function createCustomerAppointment(formData: FormData) {
+  console.log(formData);
+  console.log("Start: " + dayjs(formData.get("appointmentStart")?.toString()).format("MMMM DD YYYY @ h:mm A"));
+  console.log("End: " + dayjs(formData.get("appointmentEnd")?.toString()).format("MMMM DD YYYY @ h:mm A"));
 }
