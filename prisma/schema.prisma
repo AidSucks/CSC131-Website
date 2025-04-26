@@ -83,14 +83,26 @@ model CustomerAppointment {
   contactEmail     String
   contactPhone     String?
   message          String?
-  submittedDate    DateTime
+  submittedDate    DateTime @default(now())
   appointmentStart DateTime
   appointmentEnd   DateTime
 }
 
+model AppointmentTimeslot {
+  id        Int @id @default(autoincrement())
+  startHour Int
+  startMin  Int
+  endHour   Int
+  endMin    Int
+
+  availabilityRule AvailabilityRule[]
+
+  @@unique([startHour, endHour, startMin, endMin])
+}
+
 model AvailabilityRule {
-  dayOfWeek           DayOfWeek @id
-  allowedAppointments Json[]
+  dayOfWeek           DayOfWeek             @id @default(MONDAY)
+  allowedAppointments AppointmentTimeslot[]
 }
 
 model SpecialUnavailabilityRule {
