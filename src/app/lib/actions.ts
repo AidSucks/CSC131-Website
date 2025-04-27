@@ -1,6 +1,6 @@
 'use server';
 
-import {signOut} from "@/auth";
+import {signOut, signIn} from "@/auth";
 import prisma from "@/app/lib/prisma";
 import {revalidatePath} from "next/cache";
 import {redirect} from "next/navigation";
@@ -17,6 +17,10 @@ import dayjs from "dayjs";
 
 export async function logOut() {
   await signOut({redirectTo: "/"});
+}
+
+export async function logIn(provider: string) {
+  await signIn(provider, {redirectTo: "/dashboard"});
 }
 
 // DATA FETCHING METHODS
@@ -57,6 +61,7 @@ export async function createAuthorizedUser(formData: FormData) {
 
   const validatedFields = AuthorizedUserSchema.safeParse({
     email: formData.get("email"),
+    username: formData.get("username"),
     role: formData.get("role")?.toString().toUpperCase()
   });
 
@@ -123,6 +128,17 @@ export async function createCustomerInquiry(formData: FormData) {
 
   revalidatePath("/contact");
   redirect("/");
+}
+
+export async function removerCustomerInquiry(id: string) {
+  await prisma.customerInquiry.delete({
+    where: {
+      id: id
+    }
+  });
+
+  revalidatePath("/dashboard/customers");
+  redirect("/dashboard/customers");
 }
 
 export async function createCustomerAppointment(formData: FormData) {

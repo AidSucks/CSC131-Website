@@ -24,6 +24,10 @@ declare module "next-auth" {
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
   adapter: PrismaAdapter(prisma),
+  pages: {
+    signIn: "/login",
+    signOut: "/"
+  },
   session: {
     strategy: "database"
   },

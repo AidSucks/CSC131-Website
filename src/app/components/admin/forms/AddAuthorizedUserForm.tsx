@@ -9,6 +9,11 @@ export function AddAuthorizedUserForm() {
     <Form action={createAuthorizedUser}>
       <h6>Add an authorized user:</h6>
       <Row>
+        <Form.Group as={Col} controlId="formGridUsername">
+          <Form.Label>Username</Form.Label>
+          <Form.Control name={"username"} size={"sm"} type="text" placeholder="Enter a username" />
+        </Form.Group>
+
         <Form.Group as={Col} controlId="formGridEmail">
           <Form.Label>Email</Form.Label>
           <Form.Control name={"email"} size={"sm"} type="email" placeholder="Enter email" />
