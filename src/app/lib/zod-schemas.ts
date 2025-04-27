@@ -26,7 +26,12 @@ export interface CustomerInquiry {
   message: string | null
 }
 
-export interface CustomerAppointment extends CustomerInquiry {
+export interface CustomerAppointment {
+  id: string,
+  fullName: string,
+  contactEmail: string,
+  contactPhone: string | null,
+  message: string | null,
   submittedDate: Date,
   appointmentStart: Date,
   appointmentEnd: Date
@@ -70,4 +75,4 @@ export const CustomerAppointmentSchema = CustomerInquirySchema.extend({
   submittedDate: z.date(),
   appointmentStart: z.date(),
   appointmentEnd: z.date()
-});
+}).omit({servicesRequested: true});

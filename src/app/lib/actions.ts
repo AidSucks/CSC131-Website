@@ -11,7 +11,7 @@ import {
   CustomerInquiry,
   AvailabilityRule,
   AuthorizedUserSchema,
-  CustomerInquirySchema, UnavailabilityRule,
+  CustomerInquirySchema, UnavailabilityRule, CustomerAppointment,
 } from "@/app/lib/zod-schemas";
 import dayjs from "dayjs";
 
@@ -44,6 +44,11 @@ export async function fetchAvailabilityRules() {
 export async function fetchUnavailabilityRules() {
   const unavailabilityRules: UnavailabilityRule[] = await prisma.specialUnavailabilityRule.findMany();
   return unavailabilityRules;
+}
+
+export async function fetchCustomerAppointments() {
+  const customerAppointments: CustomerAppointment[] = await prisma.customerAppointment.findMany();
+  return customerAppointments;
 }
 
 // FORM METHODS
