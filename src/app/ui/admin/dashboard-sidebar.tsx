@@ -29,9 +29,11 @@ export function DashboardSidebar(
 
     <div className="d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary" style={{width: "280px"}}>
 
-      <Link href={"/"} className={"d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none"}>
-        <Bootstrap width={40} height={32}/>
-        <span className="fs-4">Sidebar</span>
+      <Link href={"/dashboard"} className={"d-flex text-decoration-none align-items-center text-body-emphasis"}>
+        <Bootstrap width={32} height={32}/>
+        <div className={"d-flex flex-grow-1 align-items-center justify-content-start ms-3"}>
+          <span className="fs-4">Dashboard</span>
+        </div>
       </Link>
 
       <hr/>
@@ -56,8 +58,8 @@ export function DashboardSidebar(
 
       <hr/>
 
-      <Dropdown className={"d-flex justify-content-start"}>
-        <Dropdown.Toggle variant={"primary"} aria-expanded={false} className={"d-flex align-items-center link-body-emphasis text-decoration-none"}>
+      <Dropdown className={"d-flex justify-content-center"}>
+        <Dropdown.Toggle variant={"outline-primary"} aria-expanded={false} className={"d-flex align-items-center link-body-emphasis text-decoration-none"}>
           <Image width={32} height={32} src={userData.image ?? "/img/user.jpg"} alt={"User profile image"} className={"rounded-5 me-3"}/>
           <strong>{userData.name ? userData.name.split(" ")[0] : "Unknown"}</strong>
         </Dropdown.Toggle>
