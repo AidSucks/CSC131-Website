@@ -1,7 +1,7 @@
-import CarouselSlides from "@/app/components/CarouselSlides"
+import CarouselSlides from "@/app/components/home/CarouselSlides"
 
-import {AboutPageComponent, ContactPageComponent} from "@/app/components/PageComponents";
-import QuickAccess from "../components/QuickAccess";
+import {AboutPageComponent, ContactPageComponent} from "@/app/components/home/PageComponents";
+import QuickAccess from "../components/home/QuickAccess";
 
 export default function Home() {
   return (

@@ -1,7 +1,7 @@
 import React from "react";
 
 import {auth} from "@/auth";
-import {DashboardSidebar} from "@/app/ui/admin/dashboard-sidebar";
+import {DashboardSidebar} from "@/app/components/admin/DashboardSidebar";
 import {redirect} from "next/navigation";
 
 export default function AdminDashboardLayout(

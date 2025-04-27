@@ -1,4 +1,4 @@
-import {BusinessInfoForm} from "@/app/components/admin/BusinessInfoForm";
+import {BusinessInfoForm} from "@/app/components/admin/forms/BusinessInfoForm";
 import {auth} from "@/auth";
 import {redirect, RedirectType} from "next/navigation";
 

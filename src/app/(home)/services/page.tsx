@@ -1,5 +1,5 @@
-import PageTitle from "@/app/components/PageTitle";
-import Testimonials from "@/app/components/Testimonials";
+import PageTitle from "@/app/components/home/PageTitle";
+import Testimonials from "@/app/components/home/Testimonials";
 
 
 export default function Page() {  

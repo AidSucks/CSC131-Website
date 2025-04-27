@@ -1,5 +1,5 @@
-import PageTitle from "@/app/components/PageTitle";
-import {ResourcesPageComponent} from "@/app/components/PageComponents";
+import PageTitle from "@/app/components/home/PageTitle";
+import {ResourcesPageComponent} from "@/app/components/home/PageComponents";
 import Link from "next/link";
 
 export default function Page() {  

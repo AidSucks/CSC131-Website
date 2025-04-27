@@ -1,7 +1,7 @@
 import { Carousel, CarouselItem} from "react-bootstrap";
 import Stack from 'react-bootstrap/Stack';
 
-import testimonials from "../../../public/data/Testimonials.json";
+import testimonials from "../../../../public/data/Testimonials.json";
 
 export default function Testimonials() {
     const maxCardsCount = 3;

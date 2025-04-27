@@ -1,6 +1,6 @@
-import PageTitle from "@/app/components/PageTitle";
+import PageTitle from "@/app/components/home/PageTitle";
 import {fetchAvailabilityRules, fetchUnavailabilityRules} from "@/app/lib/actions";
-import {AppointmentForm} from "@/app/components/AppointmentForm";
+import {AppointmentForm} from "@/app/components/home/forms/AppointmentForm";
 import {AvailabilityRule, DAYS} from "@/app/lib/zod-schemas";
 
 export default async function AppointmentPage() {

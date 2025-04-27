@@ -1,5 +1,10 @@
-import businessInfo from "../../../public/data/businessInfo.json";
-import SocialMedia from "../../../public/data/SocialMedia.json";
+import businessInfo from "../../../../public/data/businessInfo.json";
+import SocialMedia from "../../../../public/data/SocialMedia.json";
+
+import {
+  Facebook, Instagram, Linkedin,
+  TwitterX, Youtube
+} from "react-bootstrap-icons";
 
 export default function Topbar() {
   return (
@@ -16,19 +21,19 @@ export default function Topbar() {
         <div className="d-inline-flex align-items-center" style={{height: 45}}>
           <a
             className="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2"
-            href={SocialMedia.twitterX} target="_blank"><i className="bi bi-twitter-x"></i></a>
+            href={SocialMedia.twitterX} target="_blank"><TwitterX/></a>
           <a
             className="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2"
-            href={SocialMedia.facebook} target="_blank"><i className="fab fa-facebook-f fw-normal"></i></a>
+            href={SocialMedia.facebook} target="_blank"><Facebook/></a>
           <a
             className="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2"
-            href={SocialMedia.linkedin} target="_blank"><i className="fab fa-linkedin-in fw-normal"></i></a>
+            href={SocialMedia.linkedin} target="_blank"><Linkedin/></a>
           <a
             className="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2"
-            href={SocialMedia.instagram} target="_blank"><i className="fab fa-instagram fw-normal"></i></a>
+            href={SocialMedia.instagram} target="_blank"><Instagram/></a>
           <a
             className="btn btn-sm btn-outline-light btn-sm-square rounded-circle"
-            href={SocialMedia.youtube} target="_blank"><i className="fab fa-youtube fw-normal"></i></a>
+            href={SocialMedia.youtube} target="_blank"><Youtube/></a>
         </div>
       </div>
     </div>

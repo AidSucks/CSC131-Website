@@ -1,6 +1,6 @@
 'use client';
 
-import PageTitle from "@/app/components/PageTitle";
+import PageTitle from "@/app/components/home/PageTitle";
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';

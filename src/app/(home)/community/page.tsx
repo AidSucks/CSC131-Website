@@ -1,6 +1,6 @@
 "use client";
 
-import PageTitle from "@/app/components/PageTitle";
+import PageTitle from "@/app/components/home/PageTitle";
 import { useRouter } from "next/navigation";
 
 export default function Page() {

@@ -2,11 +2,11 @@
 import React, { useState, ChangeEvent } from "react";
 import Head from "next/head";
 import { Instagram, Facebook, Youtube, Linkedin, TwitterX } from "react-bootstrap-icons";
-import PageTitle from "@/app/components/PageTitle";
+import PageTitle from "@/app/components/home/PageTitle";
 
 import businessInfo from "../../../../public/data/businessInfo.json";
 import socialMedia from "../../../../public/data/SocialMedia.json";
-import {CustomerInquiryForm} from "@/app/components/CustomerInquiryForm";
+import {CustomerInquiryForm} from "@/app/components/home/forms/CustomerInquiryForm";
 
 export default function ContactPage() {
     const [formData, setFormData] = useState({

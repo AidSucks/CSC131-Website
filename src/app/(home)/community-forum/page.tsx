@@ -1,6 +1,6 @@
 "use client"; // Mark the file as a client component
 
-import PageTitle from "@/app/components/PageTitle";
+import PageTitle from "@/app/components/home/PageTitle";
 import { useState } from "react";
 
 export default function Page() {

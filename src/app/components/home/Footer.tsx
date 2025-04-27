@@ -1,7 +1,8 @@
 import Link from "next/link";
 
-import businessInfo from "../../../public/data/businessInfo.json";
-import SocialMedia from "../../../public/data/SocialMedia.json";
+import businessInfo from "../../../../public/data/businessInfo.json";
+import SocialMedia from "../../../../public/data/SocialMedia.json";
+import {Facebook, Instagram, Linkedin, TwitterX} from "react-bootstrap-icons";
 
 export default function Footer() {
     return (
@@ -11,7 +12,7 @@ export default function Footer() {
           <div className="row">
             <div className="col-lg-3 col-md-6 footer-about">
               <div className="d-flex flex-column align-items-center justify-content-center text-center h-100 bg-primary p-4">
-                <Link href="/" className="navbar-brand">
+                <Link href="/public" className="navbar-brand">
                   <h1 className="m-0 text-white">
                     <i className="fa fa-user-tie me-2"></i>Ron Smithey
                   </h1>
@@ -53,10 +54,10 @@ export default function Footer() {
                     <p className="mb-0">{businessInfo.phone}</p>
                   </div>
                   <div className="d-flex mt-4">
-                    <Link className="btn btn-primary btn-square me-2" href={SocialMedia.twitterX} target="_blank"><i className="bi bi-twitter-x"></i></Link>
-                    <Link className="btn btn-primary btn-square me-2" href={SocialMedia.facebook} target="_blank"><i className="fab fa-facebook-f fw-normal"></i></Link>
-                    <Link className="btn btn-primary btn-square me-2" href={SocialMedia.linkedin} target="_blank"><i className="fab fa-linkedin-in fw-normal"></i></Link>
-                    <Link className="btn btn-primary btn-square" href={SocialMedia.instagram} target="_blank"><i className="fab fa-instagram fw-normal"></i></Link>
+                    <Link className="btn btn-primary btn-square me-2" href={SocialMedia.twitterX} target="_blank"><TwitterX/></Link>
+                    <Link className="btn btn-primary btn-square me-2" href={SocialMedia.facebook} target="_blank"><Facebook/></Link>
+                    <Link className="btn btn-primary btn-square me-2" href={SocialMedia.linkedin} target="_blank"><Linkedin/></Link>
+                    <Link className="btn btn-primary btn-square" href={SocialMedia.instagram} target="_blank"><Instagram/></Link>
                   </div>
                 </div>
                 <div className="col-lg-3 col-md-12 pt-0 pt-lg-5 mb-5">
@@ -65,7 +66,7 @@ export default function Footer() {
                     <h3 className="text-light mb-0">Quick Links</h3>
                   </div>
                   <div className="link-animated d-flex flex-column justify-content-start">
-                    <Link className="text-light mb-2" href="/"><i className="bi bi-arrow-right text-primary me-2"></i>Home</Link>
+                    <Link className="text-light mb-2" href="/public"><i className="bi bi-arrow-right text-primary me-2"></i>Home</Link>
                     <Link className="text-light mb-2" href="/about"><i className="bi bi-arrow-right text-primary me-2"></i>About Us</Link>
                     <Link className="text-light mb-2" href="/services"><i className="bi bi-arrow-right text-primary me-2"></i>Our Services</Link>
                     <Link className="text-light" href="/contact"><i className="bi bi-arrow-right text-primary me-2"></i>Contact Us</Link>

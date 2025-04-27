@@ -1,8 +1,8 @@
 import React from "react";
 
-import {Header} from "../components/Header";
-import Footer from "../components/Footer";
-import BackToTopButton from "../components/BackToTopButton";
+import {Header} from "../components/home/Header";
+import Footer from "../components/home/Footer";
+import BackToTopButton from "../components/home/BackToTopButton";
 
 import "../../../public/lib/owlcarousel/assets/owl.carousel.min.css";
 import "../../../public/lib/animate/animate.min.css";

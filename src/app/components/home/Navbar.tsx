@@ -5,7 +5,6 @@ import {usePathname} from "next/navigation";
 
 import Link from 'next/link';
 
-import businessInfo from "../../../public/data/businessInfo.json";
 import {Button, Dropdown, NavItem, NavLink} from "react-bootstrap";
 
 export default function Navbar() {
@@ -44,7 +43,7 @@ export default function Navbar() {
   return (
     <div className="container-fluid position-relative p-0">
       <nav className={`navbar navbar-expand-lg navbar-dark px-5 py-3 py-lg-0 ${isScrolledDown ? 'sticky-top shadow-sm' : ''}`}>
-      <Link href="/" className="navbar-brand p-0">
+      <Link href="/public" className="navbar-brand p-0">
         <h1 className="m-0"><i className="fa fa-user-tie me-2"></i>Ron Smithey<br/>Financial Services</h1>
       </Link>
       <button

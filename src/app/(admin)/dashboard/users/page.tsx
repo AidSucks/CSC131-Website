@@ -2,7 +2,7 @@ import Stack from "react-bootstrap/Stack";
 import {fetchAllUsers, removeAuthorizedUser} from "@/app/lib/actions";
 import {Button} from "react-bootstrap";
 import {TrashFill} from "react-bootstrap-icons";
-import {AddAuthorizedUserForm} from "@/app/components/admin/AddAuthorizedUserForm";
+import {AddAuthorizedUserForm} from "@/app/components/admin/forms/AddAuthorizedUserForm";
 import {auth} from "@/auth";
 import {redirect} from "next/navigation";
 
