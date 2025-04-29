@@ -40,7 +40,7 @@ export default async function AppointmentPage() {
     <div>
         <PageTitle title="Schedule a Consultation Appointment" />
 
-        <div className="container-fluid py-5">
+        <div className="container-fluid py-5" style={{marginTop: '-150px', marginBottom: '-100px'}}>
           <div className="container py-5">
             <div className="section-title text-center position-relative pb-3 mb-5 mx-auto" style={{maxWidth: "600px"}}>
                 <h5 className="fw-bold text-primary text-uppercase">Schedule Here</h5>

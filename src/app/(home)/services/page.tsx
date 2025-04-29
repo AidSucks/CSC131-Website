@@ -7,7 +7,7 @@ export default function Page() {
     <>
       <PageTitle title="Services" />
 
-      <div className="container-fluid py-5">
+      <div className="container-fluid py-5" style={{marginTop:'-150px', marginBottom:'-100px'}}>
         <div className="container py-5">
             <div className="section-title text-center position-relative pb-3 mb-5 mx-auto" style={{maxWidth: '1000px'}}>
                 <h2 className="fw-bold text-primary text-uppercase">Our Services</h2>

@@ -58,7 +58,7 @@ export function CustomerInquiryForm() {
 
       <Form.Group>
 
-        <h5>Select Services Requested (Optional)</h5>
+        <h5 className="my-3">Select Services Requested (Optional)</h5>
 
         {servicesList.map((service) => {
           return (

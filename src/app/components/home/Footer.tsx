@@ -69,9 +69,10 @@ export default function Footer() {
                     <Link className="text-light mb-2" href="/public"><i className="bi bi-arrow-right text-primary me-2"></i>Home</Link>
                     <Link className="text-light mb-2" href="/about"><i className="bi bi-arrow-right text-primary me-2"></i>About Us</Link>
                     <Link className="text-light mb-2" href="/services"><i className="bi bi-arrow-right text-primary me-2"></i>Our Services</Link>
-                    <Link className="text-light" href="/contact"><i className="bi bi-arrow-right text-primary me-2"></i>Contact Us</Link>
-                    <Link className="text-light" href="/legal/privacy-policy"><i className="bi bi-arrow-right text-primary me-2"></i>Privacy Policy</Link>
-                    <Link className="text-light" href="/legal/terms-conditions"><i className="bi bi-arrow-right text-primary me-2"></i>Terms & Conditions</Link>
+                    <Link className="text-light mb-2" href="/resources"><i className="bi bi-arrow-right text-primary me-2"></i>Resources</Link>
+                    <Link className="text-light mb-2" href="/contact"><i className="bi bi-arrow-right text-primary me-2"></i>Contact Us</Link>
+                    <Link className="text-light mb-2" href="/legal/privacy-policy"><i className="bi bi-arrow-right text-primary me-2"></i>Privacy Policy</Link>
+                    <Link className="text-light mb-2" href="/legal/terms-conditions"><i className="bi bi-arrow-right text-primary me-2"></i>Terms & Conditions</Link>
                   </div>
                 </div>
                 <div className="col-lg-5 col-md-12 pt-0 pt-lg-5 mb-5">
