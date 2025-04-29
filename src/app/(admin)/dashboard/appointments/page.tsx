@@ -20,7 +20,7 @@ export default async function DashboardAppointmentsPage() {
   ];
 
   const tableData = customerAppointments.map(
-    (appointment, index) => {
+    (appointment) => {
       return [
         appointment.fullName,
         appointment.contactEmail,
