@@ -12,7 +12,7 @@ export default function Page() {
 
       {/* <AboutPageComponent/> */}
 
-      <div className="container-fluid py-5 fadeInUp">
+      <div className="container-fluid py-5 fadeInUp" style={{marginTop:'-150px', marginBottom:'-100px'}}>
         <div className="container py-5">
             <div className="row g-5">
                 <div className="col-lg-7">
