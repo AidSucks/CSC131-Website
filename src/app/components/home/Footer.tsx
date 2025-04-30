@@ -1,15 +1,29 @@
 import Link from "next/link";
 
-import businessInfo from "../../../../public/data/businessInfo.json";
-import SocialMedia from "../../../../public/data/SocialMedia.json";
-import {Facebook, Instagram, Linkedin, TwitterX} from "react-bootstrap-icons";
+import {
+  ArrowRight,
+  EnvelopeOpen,
+  Facebook,
+  GeoAlt,
+  Instagram,
+  Linkedin,
+  Telephone,
+  TwitterX, Youtube
+} from "react-bootstrap-icons";
+import {Button, Col, Stack} from "react-bootstrap";
+import {fetchBusinessInfo} from "@/app/lib/actions";
 
-export default function Footer() {
+export default async function Footer() {
+
+  const businessInfo = await fetchBusinessInfo();
+
     return (
         <>
         <div className="container-fluid bg-dark text-light mt-5 fadeInUp">
         <div className="container">
           <div className="row">
+
+            {/** About Miniature **/}
             <div className="col-lg-3 col-md-6 footer-about">
               <div className="d-flex flex-column align-items-center justify-content-center text-center h-100 bg-primary p-4">
                 <Link href="/public" className="navbar-brand">
@@ -22,59 +36,94 @@ export default function Footer() {
                   stet eos sit. Elitr dolor duo lorem, elitr clita ipsum sea. Diam
                   amet erat lorem stet eos. Diam amet et kasd eos duo.
                 </p>
-                <form action="">
-                  <div className="input-group">
-                    <input
-                      type="text"
-                      className="form-control border-white p-3"
-                      placeholder="Your Email"
-                    />
-                    <button className="btn btn-dark">Sign Up</button>
-                  </div>
-                </form>
+
               </div>
             </div>
+
+
             <div className="col-lg-9 col-md-6">
               <div className="row">
+
+                {/** Get In Touch/Contact **/}
                 <div className="col-lg-4 col-md-12 pt-5 mb-5">
-                  <div
-                    className="section-title section-title-sm position-relative pb-3 mb-4">
-                    <h3 className="text-light mb-0">Get In Touch</h3>
-                  </div>
-                  <div className="d-flex mb-2">
-                    <i className="bi bi-geo-alt text-primary me-2"></i>
-                      <p className="mb-0">{businessInfo.address}</p>
-                  </div>
-                  <div className="d-flex mb-2">
-                    <i className="bi bi-envelope-open text-primary me-2"></i>
-                    <p className="mb-0">{businessInfo.email}</p>
-                  </div>
-                  <div className="d-flex mb-2">
-                    <i className="bi bi-telephone text-primary me-2"></i>
-                    <p className="mb-0">{businessInfo.phone}</p>
-                  </div>
-                  <div className="d-flex mt-4">
-                    <Link className="btn btn-primary btn-square me-2" href={SocialMedia.twitterX} target="_blank"><TwitterX/></Link>
-                    <Link className="btn btn-primary btn-square me-2" href={SocialMedia.facebook} target="_blank"><Facebook/></Link>
-                    <Link className="btn btn-primary btn-square me-2" href={SocialMedia.linkedin} target="_blank"><Linkedin/></Link>
-                    <Link className="btn btn-primary btn-square" href={SocialMedia.instagram} target="_blank"><Instagram/></Link>
-                  </div>
+                  <Stack direction={"vertical"} gap={3}>
+                    <div
+                      className="section-title section-title-sm position-relative pb-3">
+                      <h3 className="text-light mb-0">Get In Touch</h3>
+                    </div>
+
+                    <Col className={"d-flex align-items-center"}>
+                      <GeoAlt size={18} className={"text-primary me-2"}/>
+                      <span className={"w-100"}>{businessInfo?.businessAddress}</span>
+                    </Col>
+
+                    <Col className={"d-flex align-items-center"}>
+                      <EnvelopeOpen size={18} className={"text-primary me-2"}/>
+                      <span className={"w-100"}>{businessInfo?.businessEmail}</span>
+                    </Col>
+
+                    <Col className={"d-flex align-items-center"}>
+                      <Telephone size={18} className={"text-primary me-2"}/>
+                      <span className={"w-100"}>{businessInfo?.businessPhone}</span>
+                    </Col>
+
+                    <Col className="d-flex mt-4">
+                      {businessInfo?.twitterX ?
+                          <Button href={businessInfo.twitterX} target={"_blank"} variant={"primary"} size={"sm"}
+                                  className={"d-flex align-items-center justify-content-center btn-square me-2"}>
+                            <TwitterX size={20}/>
+                          </Button>
+                          : null}
+                      {businessInfo?.facebook ?
+                        <Button href={businessInfo.facebook} target={"_blank"} variant={"primary"} size={"sm"}
+                                className={"d-flex align-items-center justify-content-center btn-square me-2"}>
+                          <Facebook size={20}/>
+                        </Button>
+                        : null}
+                      {businessInfo?.linkedin ?
+                        <Button href={businessInfo.linkedin} target={"_blank"} variant={"primary"} size={"sm"}
+                                className={"d-flex align-items-center justify-content-center btn-square me-2"}>
+                          <Linkedin size={20}/>
+                        </Button>
+                        : null}
+                      {businessInfo?.instagram ?
+                        <Button href={businessInfo.instagram} target={"_blank"} variant={"primary"} size={"sm"}
+                                className={"d-flex align-items-center justify-content-center btn-square me-2"}>
+                          <Instagram size={20}/>
+                        </Button>
+                        : null}
+                      {businessInfo?.youtube ?
+                        <Button href={businessInfo.youtube} target={"_blank"} variant={"primary"} size={"sm"}
+                                className={"d-flex align-items-center justify-content-center btn-square me-2"}>
+                          <Youtube size={20}/>
+                        </Button>
+                        : null}
+                    </Col>
+                  </Stack>
                 </div>
+
+
+                {/** Quick Links **/}
                 <div className="col-lg-3 col-md-12 pt-0 pt-lg-5 mb-5">
                   <div
                     className="section-title section-title-sm position-relative pb-3 mb-4">
                     <h3 className="text-light mb-0">Quick Links</h3>
                   </div>
                   <div className="link-animated d-flex flex-column justify-content-start">
-                    <Link className="text-light mb-2" href="/public"><i className="bi bi-arrow-right text-primary me-2"></i>Home</Link>
-                    <Link className="text-light mb-2" href="/about"><i className="bi bi-arrow-right text-primary me-2"></i>About Us</Link>
-                    <Link className="text-light mb-2" href="/services"><i className="bi bi-arrow-right text-primary me-2"></i>Our Services</Link>
-                    <Link className="text-light mb-2" href="/resources"><i className="bi bi-arrow-right text-primary me-2"></i>Resources</Link>
-                    <Link className="text-light mb-2" href="/contact"><i className="bi bi-arrow-right text-primary me-2"></i>Contact Us</Link>
-                    <Link className="text-light mb-2" href="/legal/privacy-policy"><i className="bi bi-arrow-right text-primary me-2"></i>Privacy Policy</Link>
-                    <Link className="text-light mb-2" href="/legal/terms-conditions"><i className="bi bi-arrow-right text-primary me-2"></i>Terms & Conditions</Link>
+                    <Stack direction={"vertical"} gap={2}>
+                      <Link className={"text-light"} href="/"><ArrowRight className={"text-primary me-2"}/>Home</Link>
+                      <Link className={"text-light"} href="/about"><ArrowRight className={"text-primary me-2"}/>About Us</Link>
+                      <Link className={"text-light"} href="/services"><ArrowRight className={"text-primary me-2"}/>Our Services</Link>
+                      <Link className={"text-light"} href="/resources"><ArrowRight className={"text-primary me-2"}/>Resources</Link>
+                      <Link className={"text-light"} href="/contact"><ArrowRight className={"text-primary me-2"}/>Contact Us</Link>
+                      <Link className={"text-light"} href="/legal/privacy-policy"><ArrowRight className={"text-primary me-2"}/>Privacy Policy</Link>
+                      <Link className={"text-light"} href="/legal/terms-conditions"><ArrowRight className={"text-primary me-2"}/>Terms & Conditions</Link>
+                    </Stack>
                   </div>
                 </div>
+
+
+                {/** Compliance & Legal Disclaimers **/}
                 <div className="col-lg-5 col-md-12 pt-0 pt-lg-5 mb-5">
                   <div className="section-title section-title-sm position-relative pb-3 mb-4">
                     <h3 className="text-light mb-0">Compliance</h3>
@@ -98,8 +147,13 @@ export default function Footer() {
                     </p>
                     </div>
                 </div>
+
+
               </div>
             </div>
+
+
+
           </div>
         </div>
       </div>

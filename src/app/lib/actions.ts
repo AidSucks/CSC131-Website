@@ -10,20 +10,29 @@ import {
   AuthorizedUser,
   CustomerInquiry,
   AvailabilityRule,
+  UnavailabilityRule,
+  CustomerAppointment,
+  BusinessInfo,
   AuthorizedUserSchema,
-  CustomerInquirySchema, UnavailabilityRule, CustomerAppointment,
+  CustomerInquirySchema, BusinessInfoSchema,
 } from "@/app/lib/zod-schemas";
+
 import dayjs from "dayjs";
 
 export async function logOut() {
   await signOut({redirectTo: "/"});
 }
 
-export async function logIn(provider: string) {
+export async function logIn(provider: "google" | "github") {
   await signIn(provider, {redirectTo: "/dashboard"});
 }
 
 // DATA FETCHING METHODS
+
+export async function fetchBusinessInfo() {
+  const businessInfo: BusinessInfo | null = await prisma.businessInformation.findFirst();
+  return businessInfo;
+}
 
 //TODO Further research react caching
 export const fetchAllUsers = cache(async () => {
@@ -128,6 +137,42 @@ export async function createCustomerInquiry(formData: FormData) {
 
   revalidatePath("/contact");
   redirect("/");
+}
+
+export async function updateBusinessInformation(formData: FormData) {
+
+  const data = {
+    businessEmail: formData.get("businessEmail"),
+    businessPhone: formData.get("businessPhone"),
+    facebook: formData.get("facebook"),
+    instagram: formData.get("instagram"),
+    linkedin: formData.get("linkedin"),
+    youtube: formData.get("youtube"),
+    twitterX: formData.get("twitterX"),
+    businessAddress: formData.get("businessAddress")
+  }
+
+  const validatedFields = BusinessInfoSchema.safeParse(data);
+
+  if(!validatedFields.success) {
+    console.log("Fields did not validate");
+    return;
+  }
+
+  const updatedInfo = await prisma.businessInformation.update({
+    where: {
+      id: "1"
+    },
+    data: validatedFields.data
+  });
+
+  if(!updatedInfo) {
+    console.log("Error updating business info");
+    return;
+  }
+
+  revalidatePath("/dashboard/business-info");
+  redirect("/dashboard/business-info");
 }
 
 export async function removerCustomerInquiry(id: string) {

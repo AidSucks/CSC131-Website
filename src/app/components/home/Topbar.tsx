@@ -1,42 +1,72 @@
-import businessInfo from "../../../../public/data/businessInfo.json";
-import SocialMedia from "../../../../public/data/SocialMedia.json";
-
 import {
-  Facebook, Instagram, Linkedin,
+  EnvelopeOpen,
+  Facebook, GeoAlt, Instagram, Linkedin, Telephone,
   TwitterX, Youtube
 } from "react-bootstrap-icons";
 
-export default function Topbar() {
+import {fetchBusinessInfo} from "@/app/lib/actions";
+import {Button, Col, Container, Row, Stack} from "react-bootstrap";
+
+export default async function Topbar() {
+
+  const businessInfo = await fetchBusinessInfo();
+
   return (
-    <div className="container-fluid bg-dark px-5 d-none d-lg-block">
-    <div className="row gx-0">
-      <div className="col-lg-8 text-center text-lg-start mb-2 mb-lg-0">
-        <div className="d-inline-flex align-items-center" style={{height: 45}}>
-          <small className="me-3 text-light"><i className="fa fa-map-marker-alt me-2"></i>{businessInfo.address}</small>
-          <small className="me-3 text-light"><i className="fa fa-phone-alt me-2"></i>{businessInfo.phone}</small>
-          <small className="text-light"><i className="fa fa-envelope-open me-2"></i>{businessInfo.email}</small>
-        </div>
-      </div>
-      <div className="col-lg-4 text-center text-lg-end">
-        <div className="d-inline-flex align-items-center" style={{height: 45}}>
-          <a
-            className="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2"
-            href={SocialMedia.twitterX} target="_blank"><TwitterX/></a>
-          <a
-            className="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2"
-            href={SocialMedia.facebook} target="_blank"><Facebook/></a>
-          <a
-            className="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2"
-            href={SocialMedia.linkedin} target="_blank"><Linkedin/></a>
-          <a
-            className="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2"
-            href={SocialMedia.instagram} target="_blank"><Instagram/></a>
-          <a
-            className="btn btn-sm btn-outline-light btn-sm-square rounded-circle"
-            href={SocialMedia.youtube} target="_blank"><Youtube/></a>
-        </div>
-      </div>
-    </div>
-  </div>
+    <Container fluid className={"px-5 d-none bg-dark d-lg-block"}>
+      <Row style={{height: 45}}>
+
+        <Col className={"d-flex"}>
+          <Stack direction={"horizontal"} gap={3} className={"text-light"}>
+            <div>
+              <GeoAlt size={18} className={"me-2"}/>
+              <small>{businessInfo?.businessAddress}</small>
+            </div>
+            <div className={"text-light"}>
+              <Telephone size={18} className={"me-2"}/>
+              <small>{businessInfo?.businessPhone}</small>
+            </div>
+            <div>
+              <EnvelopeOpen size={18} className={"me-2"}/>
+              <small>{businessInfo?.businessEmail}</small>
+            </div>
+          </Stack>
+        </Col>
+
+        <Col className={"d-flex justify-content-end"}>
+          <Stack direction={"horizontal"} gap={2}>
+            {businessInfo?.twitterX ?
+                <Button href={businessInfo.twitterX} target={"_blank"} variant={"outline-light"} size={"sm"}
+                        className={"rounded-circle"}>
+                  <TwitterX size={14}/>
+                </Button>
+                : null}
+            {businessInfo?.facebook ?
+              <Button href={businessInfo.facebook} target={"_blank"} variant={"outline-light"} size={"sm"}
+                      className={"rounded-circle"}>
+                <Facebook size={14}/>
+              </Button>
+              : null}
+            {businessInfo?.linkedin ?
+              <Button href={businessInfo.linkedin} target={"_blank"} variant={"outline-light"} size={"sm"}
+                      className={"rounded-circle"}>
+                <Linkedin size={14}/>
+              </Button>
+              : null}
+            {businessInfo?.instagram ?
+              <Button href={businessInfo.instagram} target={"_blank"} variant={"outline-light"} size={"sm"}
+                      className={"rounded-circle"}>
+                <Instagram size={14}/>
+              </Button>
+              : null}
+            {businessInfo?.youtube ?
+              <Button href={businessInfo.youtube} target={"_blank"} variant={"outline-light"} size={"sm"}
+                      className={"rounded-circle"}>
+                <Youtube size={14}/>
+              </Button>
+              : null}
+          </Stack>
+        </Col>
+      </Row>
+    </Container>
   )
 }

@@ -11,6 +11,18 @@ export enum DAYS {
   SATURDAY
 }
 
+export interface BusinessInfo {
+  id: string,
+  businessEmail: string | null,
+  businessPhone: string | null,
+  facebook: string | null,
+  instagram: string | null,
+  linkedin: string | null,
+  youtube: string | null,
+  twitterX: string | null,
+  businessAddress: string | null
+}
+
 export interface AuthorizedUser {
   email: string,
   username: string,
@@ -69,6 +81,17 @@ export const CustomerInquirySchema = z.object({
   contactPhone: z.string().optional(),
   servicesRequested: z.string().array().default([]),
   message: z.string().max(300).optional()
+});
+
+export const BusinessInfoSchema = z.object({
+  businessEmail: z.string().optional(),
+  businessPhone: z.string().optional(),
+  facebook: z.string().optional(),
+  instagram: z.string().optional(),
+  linkedin: z.string().optional(),
+  youtube: z.string().optional(),
+  twitterX: z.string().optional(),
+  businessAddress: z.string().optional()
 });
 
 export const CustomerAppointmentSchema = CustomerInquirySchema.extend({
