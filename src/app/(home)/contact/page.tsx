@@ -1,6 +1,3 @@
-"use client";
-import React, { useState, ChangeEvent } from "react";
-import Head from "next/head";
 import { Instagram, Facebook, Youtube, Linkedin, TwitterX } from "react-bootstrap-icons";
 import PageTitle from "@/app/components/home/PageTitle";
 
@@ -9,73 +6,9 @@ import socialMedia from "../../../../public/data/SocialMedia.json";
 import {CustomerInquiryForm} from "@/app/components/home/forms/CustomerInquiryForm";
 
 export default function ContactPage() {
-    const [formData, setFormData] = useState({
-        name: "",
-        email: "",
-        phone: "",
-        message: "",
-        services: {
-            rothIra: false,
-            traditionalIra: false,
-            rollover401k: false,
-            lifeInsurance: false,
-            setupCollegePlans: false,
-            healthInsurance: false,
-            longTermCare: false,
-            comprehensivePlan: false,
-            retirementPlanning: false,
-            other: false,
-        },
-    });
-
-    const [messageLength, setMessageLength] = useState(0);
-    const [error, setError] = useState("");
-
-
-    const handleChange = (event: ChangeEvent<HTMLInputElement & HTMLTextAreaElement>) => {
-        const { name, value, type, checked } = event.target;
-        if (type === "checkbox") {
-            setFormData((prev) => ({
-                ...prev,
-                services: {
-                    ...prev.services,
-                    [name]: checked,
-                },
-            }));
-        } else {
-            setFormData((prev) => ({
-                ...prev,
-                [name]: value,
-            }));
-
-            if (name === "message") {
-                setMessageLength(value.length);
-            }
-        }
-
-        setError("");
-    };
-
-    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-
-        const isServiceSelected = Object.values(formData.services).some((value) => value);
-        if (!isServiceSelected) {
-            setError("Please select at least one service.");
-            return;
-        }
-
-        console.log("Form submitted:", formData);
-        alert("Inquiry submitted successfully, we will contact you soon!");
-    };
-
     return (
         <>
             <PageTitle title="Contact Us" />
-
-            <Head>
-                <title>Contact Us</title>
-            </Head>
 
             <div style={{ marginTop: "-60px" }}>
                 <div className="container mt-4">

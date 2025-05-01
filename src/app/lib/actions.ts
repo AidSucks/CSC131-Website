@@ -105,17 +105,15 @@ export async function removeAuthorizedUser(email: string) {
   redirect("/dashboard/users");
 }
 
-export async function createCustomerInquiry(formData: FormData) {
+export async function createCustomerInquiry(selectedServices: string[], formData: FormData) {
 
   const data = {
     fullName: formData.get("fullName"),
     contactEmail: formData.get("contactEmail"),
     contactPhone: formData.get("contactPhone"),
-    servicesRequested: ["Test"],
+    servicesRequested: selectedServices,
     message: formData.get("message")
   }
-
-  console.log(data);
 
   const validatedFields = CustomerInquirySchema.safeParse(data);
 

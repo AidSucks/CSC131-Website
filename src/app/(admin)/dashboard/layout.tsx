@@ -8,7 +8,7 @@ export default function AdminDashboardLayout(
   { children }: Readonly<{ children: React.ReactNode; }>) {
 
   return (
-    <body data-bs-theme={"dark"}>
+    <body data-bs-theme={"light"}>
       <div className={"d-flex"}>
         <AdminDashboardSidebar/>
         <main className={"min-vh-100 d-flex flex-grow-1 p-3"}>

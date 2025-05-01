@@ -15,19 +15,38 @@ const servicesList = [
   "Comprehensive Plan",
   "Retirement Planning",
   "Other"
-]
+];
 
 export function CustomerInquiryForm() {
 
   const [messageLength, setMessageLength] = useState(0);
+  const [selectedServices, setSelectedServices] = useState(new Array<string>(0));
 
   const handleChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
     const { value } = event.target;
     setMessageLength(value.length);
   };
 
+  const handleCheckbox = (event: ChangeEvent<HTMLInputElement>) => {
+    const { value } = event.target;
+
+    const fromIndex: number = selectedServices.indexOf(value);
+
+    let newSelectedServices = selectedServices;
+
+    if(fromIndex !== -1) {
+      newSelectedServices.splice(fromIndex, 1);
+    }else {
+      newSelectedServices.push(value);
+    }
+
+    setSelectedServices(newSelectedServices);
+  };
+
+  // TODO Binding to the server action is hella hack, find a better way to implement this
+  // TODO Why the f**k does .bind() require in-order arguments??
   return (
-    <Form action={createCustomerInquiry}>
+    <Form action={createCustomerInquiry.bind(null, selectedServices)}>
 
       <Form.Group>
 
@@ -64,7 +83,7 @@ export function CustomerInquiryForm() {
           return (
             <div key={service}>
               <Form.Check type={"checkbox"}>
-                <Form.Check.Input type={"checkbox"}/>
+                <Form.Check.Input value={service} onChange={handleCheckbox} type={"checkbox"}/>
                 <Form.Check.Label>{service}</Form.Check.Label>
               </Form.Check>
             </div>
