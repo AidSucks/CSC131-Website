@@ -1,26 +1,27 @@
-import {BusinessInfoForm} from "@/app/components/admin/BusinessInfoForm";
+import {BusinessInfoForm} from "@/app/components/admin/forms/BusinessInfoForm";
 import {auth} from "@/auth";
-import {redirect, RedirectType} from "next/navigation";
+import {fetchAllUsers, fetchBusinessInfo} from "@/app/lib/actions";
+import {Stack} from "react-bootstrap";
 
 export default async function BusinessInfoPage() {
 
-  const testInfo = {
-    email: "testemail@somedomain.com",
-    facebook: "https://www.facebook.com/yourcompany",
-    instagram: "https://www.instagram.com/yourcompany",
-    linkedin: "https://www.linkedin.com/yourcompany",
-    youtube: "https://www.youtube.com/yourcompany",
-    twitterX: "https://x.com/yourcompany",
-    address: "5101 East La Palma Avenue, Suite #202-D, Anaheim Hills, CA 92807"
-  }
-
   const session = await auth();
+  const users = await fetchAllUsers();
 
-  // Or user does not have admin role
-  // Either redirect to dashboard or show not authorized page
-  if(!auth) redirect("/dashboard", RedirectType.replace);
+  const currentUser = users.find((user) => {
+    return user.email === session?.user?.email;
+  });
+
+  if(currentUser?.role !== "ADMINISTRATOR") return (
+    <h1>You are not authorized to view this page</h1>
+  );
+
+  const businessInfo = await fetchBusinessInfo();
 
   return (
-    <BusinessInfoForm businessInfo={testInfo}/>
+    <Stack direction={"vertical"} gap={3}>
+      <h3>Public Business Information</h3>
+      <BusinessInfoForm businessInfo={businessInfo}/>
+    </Stack>
   );
 }

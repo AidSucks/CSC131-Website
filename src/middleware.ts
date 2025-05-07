@@ -8,7 +8,6 @@ export default auth((req) => {
   if(!req.auth || !req.auth.user) {
 
     const signInRedirect = new URL("/api/auth/signin", req.url);
-    signInRedirect.searchParams.set("callbackUrl", req.url);
 
     return NextResponse.redirect(signInRedirect);
   }

@@ -1,7 +1,8 @@
-import PageTitle from "@/app/components/PageTitle";
-import {AboutPageComponent} from "@/app/components/PageComponents";
+import PageTitle from "@/app/components/home/PageTitle";
 
 import businessInfo from "../../../../public/data/businessInfo.json";
+import {TelephoneFill} from "react-bootstrap-icons";
+import Image from "next/image";
 
 
 export default function Page() {
@@ -11,7 +12,7 @@ export default function Page() {
 
       {/* <AboutPageComponent/> */}
 
-      <div className="container-fluid py-5 fadeInUp">
+      <div className="container-fluid py-5 fadeInUp" style={{marginTop:'-150px', marginBottom:'-100px'}}>
         <div className="container py-5">
             <div className="row g-5">
                 <div className="col-lg-7">
@@ -48,7 +49,7 @@ export default function Page() {
                     </div>
                     <div className="d-flex align-items-center mb-4 wow fadeIn" data-wow-delay="0.6s">
                         <div className="bg-primary d-flex align-items-center justify-content-center rounded" style={{width: '60px', height: '60px'}}>
-                            <i className="fa fa-phone-alt text-white"></i>
+                            <TelephoneFill color={"white"} width={32} height={32}/>
                         </div>
                         <div className="ps-4">
                             <h5 className="mb-2">Call to ask any question</h5>
@@ -59,7 +60,14 @@ export default function Page() {
                 </div>
                 <div className="col-lg-5" style={{minHeight: '500px'}}>
                     <div className="position-relative h-100">
-                        <img className="position-absolute w-100 h-100 rounded wow zoomIn" data-wow-delay="0.9s" src="img/about.jpg" style={{objectFit: 'cover'}} />
+                        <Image
+                          src={"/img/about.jpg"}
+                          alt={"About Image"}
+                          width={800}
+                          height={800}
+                          className={"position-absolute w-100 h-100 rounded wow zoomIn"}
+                          style={{objectFit: 'cover'}}
+                          data-wow-delay={"0.9s"}/>
                     </div>
                 </div>
             </div>

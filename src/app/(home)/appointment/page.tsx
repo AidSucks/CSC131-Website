@@ -1,42 +1,31 @@
-'use client'
-import { useState } from "react";
-import PageTitle from "@/app/components/PageTitle";
+import PageTitle from "@/app/components/home/PageTitle";
+import {fetchOrderedAvailabilityRules, fetchUnavailabilityRules} from "@/app/lib/actions";
+import {AppointmentForm} from "@/app/components/home/forms/AppointmentForm";
 
+export default async function AppointmentPage() {
 
-export default function Page() {
-  const [form, setForm] = useState({ name: "", email: "", date: "" });
-  const [status, setStatus] = useState("");
+  const availabilityRules = await fetchOrderedAvailabilityRules();
+  const unavailabilityRules = await fetchUnavailabilityRules();
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setStatus("Sending...");
-
-    const res = await fetch("/api/book-appointment", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(form),
-    });
-
-    const result = await res.json();
-    setStatus(result.message);
-  };
 
   return (
     <div>
-        <PageTitle title="Book a Consultation Appointment" />
+        <PageTitle title="Schedule a Consultation Appointment" />
 
-        <form onSubmit={handleSubmit} className="space-y-4">
-            <input name="name" placeholder="Your Name" onChange={handleChange} required />
-            <input name="email" type="email" placeholder="Your Email" onChange={handleChange} required />
-            <input name="date" type="datetime-local" onChange={handleChange} required />
-            <button type="submit">Book Appointment</button>
-            <p>{status}</p>
-        </form>
+        <div className="container-fluid py-5" style={{marginTop: '-150px', marginBottom: '-100px'}}>
+          <div className="container py-5">
+            <div className="section-title text-center position-relative pb-3 mb-5 mx-auto" style={{maxWidth: "600px"}}>
+                <h5 className="fw-bold text-primary text-uppercase">Schedule Here</h5>
+                <h1 className="mb-0">Please fill out the appointment form</h1>
+            </div>
+
+            <AppointmentForm
+              availability={availabilityRules}
+              unavailability={unavailabilityRules}
+            />
+
+          </div>
+        </div>
     </div>
-
   );
 }

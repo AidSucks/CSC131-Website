@@ -1,25 +1,24 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["driverAdapters"]
+}
+
 datasource db {
   provider  = "postgresql"
   url       = env("DATABASE_URL")
   directUrl = env("DATABASE_URL_UNPOOLED")
 }
 
-generator client {
-  provider        = "prisma-client-js"
-  previewFeatures = ["driverAdapters"]
-}
-
 model User {
   id            String    @id @default(cuid())
-  name          String?
   email         String    @unique
+  name          String?
+  createdAt     DateTime  @default(now())
   emailVerified DateTime?
   image         String?
+  updatedAt     DateTime  @updatedAt
   accounts      Account[]
   sessions      Session[]
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
 }
 
 model Account {
@@ -34,11 +33,9 @@ model Account {
   scope             String?
   id_token          String?
   session_state     String?
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@id([provider, providerAccountId])
 }
@@ -47,10 +44,9 @@ model Session {
   sessionToken String   @unique
   userId       String
   expires      DateTime
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
 }
 
 model VerificationToken {
@@ -59,4 +55,81 @@ model VerificationToken {
   expires    DateTime
 
   @@id([identifier, token])
+}
+
+model BusinessInformation {
+  id              String  @id @default(cuid())
+  businessEmail   String?
+  businessPhone   String?
+  facebook        String?
+  instagram       String?
+  linkedin        String?
+  youtube         String?
+  twitterX        String?
+  businessAddress String?
+}
+
+model AuthorizedUser {
+  email    String @id @unique
+  username String
+  role     Role
+}
+
+enum Role {
+  MODERATOR
+  ADMINISTRATOR
+}
+
+model CustomerInquiry {
+  id                String   @id @default(cuid())
+  fullName          String
+  contactEmail      String
+  contactPhone      String?
+  servicesRequested String[]
+  message           String?
+}
+
+model CustomerAppointment {
+  id               String   @id @default(cuid())
+  fullName         String
+  contactEmail     String
+  contactPhone     String?
+  message          String?
+  submittedDate    DateTime @default(now())
+  appointmentStart DateTime
+  appointmentEnd   DateTime
+}
+
+model AppointmentTimeslot {
+  id        Int @id @default(autoincrement())
+  startHour Int
+  startMin  Int
+  endHour   Int
+  endMin    Int
+
+  availabilityRule AvailabilityRule[]
+
+  @@unique([startHour, endHour, startMin, endMin])
+}
+
+model AvailabilityRule {
+  dayOfWeek           DayOfWeek             @id @default(MONDAY)
+  allowedAppointments AppointmentTimeslot[]
+}
+
+model SpecialUnavailabilityRule {
+  id        String   @id @default(cuid())
+  note      String?
+  startDate DateTime
+  endDate   DateTime
+}
+
+enum DayOfWeek {
+  MONDAY
+  TUESDAY
+  WEDNESDAY
+  THURSDAY
+  FRIDAY
+  SATURDAY
+  SUNDAY
 }

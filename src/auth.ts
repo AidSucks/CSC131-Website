@@ -24,6 +24,10 @@ declare module "next-auth" {
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
   adapter: PrismaAdapter(prisma),
+  pages: {
+    signIn: "/login",
+    signOut: "/"
+  },
   session: {
     strategy: "database"
   },
@@ -36,13 +40,20 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     })
   ],
   callbacks: {
-    async signIn() {
-      console.log("Called Sign In Callback");
-      return true;
+    async signIn({profile}) {
+
+      if(!profile?.email) return false;
+
+      const authorizedUser = await prisma.authorizedUser.findUnique({
+        where: {
+          email: profile.email
+        }
+      });
+
+      return authorizedUser !== null;
     },
     async session({session}) {
-      console.log("Called Session Callback");
-      return {...session};
+      return {...session}
     }
   }
 });

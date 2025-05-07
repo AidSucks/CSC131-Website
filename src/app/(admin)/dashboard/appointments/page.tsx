@@ -1,8 +1,11 @@
+import {fetchCustomerAppointments} from "@/app/lib/actions";
+import AppointmentsAdminDataGrid from "@/app/components/admin/AppointmentsAdminDataGrid";
 
-export default function DashboardAppointmentsPage() {
+export default async function DashboardAppointmentsPage() {
+
+  const customerAppointments = await fetchCustomerAppointments();
+
   return (
-    <div>
-      <h1>Appointments</h1>
-    </div>
+    <AppointmentsAdminDataGrid appointments={customerAppointments}/>
   );
 }

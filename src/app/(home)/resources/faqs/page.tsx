@@ -1,5 +1,5 @@
 'use client';
-import PageTitle from "@/app/components/PageTitle";
+import PageTitle from "@/app/components/home/PageTitle";
 import Accordion from 'react-bootstrap/Accordion';
 
 

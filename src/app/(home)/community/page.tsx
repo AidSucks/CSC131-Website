@@ -1,6 +1,6 @@
 "use client";
 
-import PageTitle from "@/app/components/PageTitle";
+import PageTitle from "@/app/components/home/PageTitle";
 import { useRouter } from "next/navigation";
 
 export default function Page() {
@@ -12,7 +12,7 @@ export default function Page() {
 
             <main>
                 {/* Community Forum Section */}
-                <div className="forum-section">
+                <div className="forum-section" style={{marginTop:'-50px', marginBottom:'50px'}}>
                     <h2>Community Forum</h2>
                     <p>
                         Join the discussion! Connect with other community members, ask questions, and share your experiences.

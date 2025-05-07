@@ -5,7 +5,6 @@ import {usePathname} from "next/navigation";
 
 import Link from 'next/link';
 
-import businessInfo from "../../../public/data/businessInfo.json";
 import {Button, Dropdown, NavItem, NavLink} from "react-bootstrap";
 
 export default function Navbar() {
@@ -80,6 +79,9 @@ export default function Navbar() {
             <Dropdown.Toggle as={Link} href={"/services"} className={"nav-link"}>Services</Dropdown.Toggle>
 
             <Dropdown.Menu className={"m-0"} >
+              <Dropdown.Item as={Link} href={"/appointment"}>Book an Appointment</Dropdown.Item>
+              <Dropdown.Item as={Link} href={"/services/advisory"}>Financial Planning & Advisory</Dropdown.Item>
+              <Dropdown.Item as={Link} href={"/services/wealth-management"}>Wealth Management</Dropdown.Item>
               <Dropdown.Item as={Link} href={"/services/financialtools"}>Financial Calculators</Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
