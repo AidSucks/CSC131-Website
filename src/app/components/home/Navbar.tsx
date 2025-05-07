@@ -80,8 +80,6 @@ export default function Navbar() {
 
             <Dropdown.Menu className={"m-0"} >
               <Dropdown.Item as={Link} href={"/appointment"}>Book an Appointment</Dropdown.Item>
-              <Dropdown.Item as={Link} href={"/services/advisory"}>Financial Planning & Advisory</Dropdown.Item>
-              <Dropdown.Item as={Link} href={"/services/wealth-management"}>Wealth Management</Dropdown.Item>
               <Dropdown.Item as={Link} href={"/services/financialtools"}>Financial Calculators</Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
