@@ -53,8 +53,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       return authorizedUser !== null;
     },
     async session({session}) {
-      console.log("Called Session Callback");
-      return {...session};
+      return {...session}
     }
   }
 });

@@ -79,20 +79,20 @@ export function AppointmentForm(
     <form action={createCustomerAppointment}  className="container py-5" style={{maxWidth: '900px'}}>
       <div className="row g-3">
         <div className="col-12">
-          <input name="name" placeholder="Your Name"
+          <input name="name" placeholder="Name"
                  className="form-control border-0 bg-light px-4" style={{height: '55px'}} required />
         </div>
         <div className="col-12">
-          <input name="email" type="email" placeholder="Your Email"
+          <input name="email" type="email" placeholder="Email"
                  className="form-control border-0 bg-light px-4" style={{height: '55px'}} required />
         </div>
         <div className="col-12">
-          <input name="phoneNumber" type="tel" placeholder="Your Phone Number"
-                 className="form-control border-0 bg-light px-4" style={{height: '55px'}} required />
+          <input name="phoneNumber" type="tel" placeholder="Phone Number (Optional)"
+                 className="form-control border-0 bg-light px-4" style={{height: '55px'}} />
         </div>
         <div className="col-12">
-                      <textarea name="comment" placeholder="Any comments?"
-                                className="form-control border-0 bg-light px-4" rows={3} required />
+                      <textarea name="comment" placeholder="Comments (Optional)"
+                                className="form-control border-0 bg-light px-4" rows={3}/>
         </div>
       </div>
 

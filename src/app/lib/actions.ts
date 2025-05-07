@@ -14,7 +14,7 @@ import {
   CustomerAppointment,
   BusinessInfo,
   AuthorizedUserSchema,
-  CustomerInquirySchema, BusinessInfoSchema,
+  CustomerInquirySchema, BusinessInfoSchema, DAYS,
 } from "@/app/lib/zod-schemas";
 
 import dayjs from "dayjs";
@@ -45,13 +45,35 @@ export async function fetchAllCustomerInquiries() {
   return customers;
 }
 
-export async function fetchAvailabilityRules() {
+export async function fetchOrderedAvailabilityRules() {
+
   const availabilityRules: AvailabilityRule[] = await prisma.availabilityRule.findMany({
     include: {
       allowedAppointments: true
+    },
+    orderBy: {
+      dayOfWeek: "asc"
     }
   });
-  return availabilityRules;
+
+  let fixedArray: (AvailabilityRule | null)[] = new Array(7).fill(null);
+
+  let idx = 0;
+
+  for(let i = 1; i <= 7; i++) {
+
+    let rule = availabilityRules[idx];
+
+    if(DAYS[i % 7] !== rule.dayOfWeek) continue;
+
+    rule.allowedAppointments.sort((a, b) =>
+      (a.startHour + a.startMin) - (b.startHour + b.startMin));
+
+    fixedArray[i % 7] = rule;
+    idx++;
+  }
+
+  return fixedArray;
 }
 
 export async function fetchUnavailabilityRules() {

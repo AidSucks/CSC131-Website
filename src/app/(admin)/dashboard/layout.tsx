@@ -11,7 +11,7 @@ export default function AdminDashboardLayout(
     <body data-bs-theme={"light"}>
       <div className={"d-flex"}>
         <AdminDashboardSidebar/>
-        <main className={"min-vh-100 d-flex flex-grow-1 p-3"}>
+        <main className={"min-vh-100 d-flex flex-grow-1 p-3 overflow-auto"}>
           {children}
         </main>
       </div>
