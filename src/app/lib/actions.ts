@@ -4,7 +4,6 @@ import {signOut, signIn} from "@/auth";
 import prisma from "@/app/lib/prisma";
 import {revalidatePath} from "next/cache";
 import {redirect} from "next/navigation";
-import {cache} from "react";
 
 import {
   AuthorizedUser,
@@ -13,8 +12,11 @@ import {
   UnavailabilityRule,
   CustomerAppointment,
   BusinessInfo,
+  DAYS,
   AuthorizedUserSchema,
-  CustomerInquirySchema, BusinessInfoSchema, DAYS,
+  CustomerInquirySchema,
+  BusinessInfoSchema,
+  CustomerAppointmentSchema,
 } from "@/app/lib/zod-schemas";
 
 import dayjs from "dayjs";
@@ -35,10 +37,16 @@ export async function fetchBusinessInfo() {
 }
 
 //TODO Further research react caching
-export const fetchAllUsers = cache(async () => {
-  const users: AuthorizedUser[] = await prisma.authorizedUser.findMany();
+export async function fetchAllUsers(sessionUserEmail?: string) {
+  const users: AuthorizedUser[] = await prisma.authorizedUser.findMany({
+    where: {
+      email: {
+        not: sessionUserEmail
+      }
+    }
+  });
   return users;
-});
+}
 
 export async function fetchAllCustomerInquiries() {
   const customers: CustomerInquiry[] = await prisma.customerInquiry.findMany();
@@ -207,7 +215,34 @@ export async function removerCustomerInquiry(id: string) {
 }
 
 export async function createCustomerAppointment(formData: FormData) {
-  console.log(formData);
-  console.log("Start: " + dayjs(formData.get("appointmentStart")?.toString()).format("MMMM DD YYYY @ h:mm A"));
-  console.log("End: " + dayjs(formData.get("appointmentEnd")?.toString()).format("MMMM DD YYYY @ h:mm A"));
+
+  const data = {
+    fullName: formData.get("name"),
+    contactEmail: formData.get("email"),
+    contactPhone: formData.get("phoneNumber"),
+    message: formData.get("comment"),
+    submittedDate: new Date(Date.now()),
+    appointmentStart: dayjs(formData.get("appointmentStart")?.toString()).toDate(),
+    appointmentEnd: dayjs(formData.get("appointmentEnd")?.toString()).toDate()
+  }
+
+  const validatedFields = CustomerAppointmentSchema.safeParse(data);
+
+  //TODO Change this!!!
+  if(!validatedFields.success) {
+    console.log("Fields did not validate");
+    return;
+  }
+
+  const appointment = await prisma.customerAppointment.create({
+    data: validatedFields.data
+  });
+
+  if(!appointment) {
+    console.log("Error adding appointment");
+    return;
+  }
+
+  revalidatePath("/appointment");
+  redirect("/");
 }

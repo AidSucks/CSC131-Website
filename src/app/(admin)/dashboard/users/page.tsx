@@ -4,6 +4,7 @@ import {AddAuthorizedUserForm} from "@/app/components/admin/forms/AddAuthorizedU
 import {auth} from "@/auth";
 import {redirect} from "next/navigation";
 import AuthorizedUserAdminDataGrid from "@/app/components/admin/AuthorizedUserAdminDataGrid";
+import prisma from "@/app/lib/prisma";
 
 export default async function AdminUsersPage() {
 
@@ -11,10 +12,12 @@ export default async function AdminUsersPage() {
 
   if(!session) redirect("/");
 
-  const users = await fetchAllUsers();
+  const users = await fetchAllUsers(session.user?.email ?? undefined);
 
-  const currentUser = users.find((user) => {
-    return user.email === session?.user?.email;
+  const currentUser = await prisma.authorizedUser.findUnique({
+    where: {
+      email: session.user?.email ?? ""
+    }
   });
 
   if(currentUser?.role !== "ADMINISTRATOR") return (
