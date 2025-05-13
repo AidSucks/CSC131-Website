@@ -43,8 +43,6 @@ export function CustomerInquiryForm() {
     setSelectedServices(newSelectedServices);
   };
 
-  // TODO Binding to the server action is hella hack, find a better way to implement this
-  // TODO Why the f**k does .bind() require in-order arguments??
   return (
     <Form action={createCustomerInquiry.bind(null, selectedServices)}>
 

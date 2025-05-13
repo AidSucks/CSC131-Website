@@ -17,10 +17,10 @@ export default function CarouselSlides() {
                 <CarouselCaption className="d-flex flex-column align-items-center justify-content-center">
                     <div className="p-3" style={{maxWidth: '900px'}}>
                         <h5 className="text-white text-uppercase mb-3 animated slideInDown">
-                            Introduction
+                            Welcome to our home page!
                         </h5>
                         <h1 className="display-1 text-white mb-md-4 animated zoomIn">
-                            Overview of Ron Smithey Financial Services
+                            Ron Smithey Financial Services
                         </h1>
                         <Link
                         href="/services"
@@ -42,11 +42,8 @@ export default function CarouselSlides() {
                 </div>
                 <CarouselCaption className="d-flex flex-column align-items-center justify-content-center">
                     <div className="p-3" style={{maxWidth: '900px'}}>
-                        <h5 className="text-white text-uppercase mb-3 animated slideInDown">
-                        Another Introduction
-                        </h5>
                         <h1 className="display-1 text-white mb-md-4 animated zoomIn">
-                            Commitment to Trusted Financial Guidance
+                            Book a consultation appointment today!
                         </h1>
                         <Link
                         href="/appointment"

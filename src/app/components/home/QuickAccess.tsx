@@ -31,10 +31,10 @@ export default function QuickAccess() {
           </div>
           <div className="col-lg-4 wow zoomIn" data-wow-delay="0.6s">
           <div className="bg-primary shadow d-flex flex-column align-items-center justify-content-center p-4" style={{height: '220px'}}>
-                <h2 className="pt-4 text-white mb-2">Videos</h2>
-                <h5 className="text-white text-break mb-0" style={{textAlign: "center"}}>We have interesting videos for you to watch on my site.</h5>
-                <Link href="#"
-                className="btn btn-light quick-access-btn px-4 mt-4 mb-4 py-md-3 px-md-5">View Videos</Link>
+                <h2 className="pt-4 text-white mb-2">Resources</h2>
+                <h5 className="text-white text-break mb-0" style={{textAlign: "center"}}>Check out some of the great resources we have available to you</h5>
+                <Link href="/resources"
+                className="btn btn-light quick-access-btn px-4 mt-4 mb-4 py-md-3 px-md-5">View Resources</Link>
             </div>
           </div>
         </div>

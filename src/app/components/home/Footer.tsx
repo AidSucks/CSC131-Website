@@ -32,9 +32,10 @@ export default async function Footer() {
                   </h1>
                 </Link>
                 <p className="mt-3 mb-4">
-                  Lorem diam sit erat dolor elitr et, diam lorem justo amet clita
-                  stet eos sit. Elitr dolor duo lorem, elitr clita ipsum sea. Diam
-                  amet erat lorem stet eos. Diam amet et kasd eos duo.
+                  Ronnie entered the financial field over 23 years ago, because he wanted to help
+                  individuals and business owners build, protect, and distribute their financial wealth.
+                  After all these years in the industry he continues to be passionate about helping his clients navigate
+                  their financial journeys from college saving plans, long term care and retirement.
                 </p>
 
               </div>

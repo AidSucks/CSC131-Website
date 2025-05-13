@@ -1,11 +1,14 @@
 import PageTitle from "@/app/components/home/PageTitle";
 
-import businessInfo from "../../../../public/data/businessInfo.json";
 import {TelephoneFill} from "react-bootstrap-icons";
 import Image from "next/image";
+import {fetchBusinessInfo} from "@/app/lib/actions";
 
 
-export default function Page() {
+export default async function Page() {
+
+    const businessInfo = await fetchBusinessInfo();
+
   return(
     <div>
       <PageTitle title="About Us" />
@@ -16,56 +19,53 @@ export default function Page() {
         <div className="container py-5">
             <div className="row g-5">
                 <div className="col-lg-7">
-                    <div className="section-title position-relative pb-3 mb-5">
+                    <div className="section-title position-relative pb-3 mb-4">
                         <h5 className="fw-bold text-primary text-uppercase">About Us</h5>
-                        <h1 className="mb-0">Mission Statement</h1>
+                        <h1 className="mb-0">Who is Ron?</h1>
                     </div>
                     <div className="mb-4">
+
                         <p>
-                            Our mission is to empower individuals with financial confidence, enabling them to live life fully,
-                            with control and clear purpose. We work to ease stress and uncertainty by guiding our clients through
-                            a thoughtful, deliberate process that answers three key questions:
+                            Ronnie’s journey as a Financial Advisor began over 23 years ago. He entered the financial field because he wanted to help individuals and business owners build, protect, and distribute their financial wealth. After all these years in the industry he continues to be passionate about helping his clients navigate their financial journeys from college saving plans, long term care and retirement.
                         </p>
-                        <ul>
-                            <li>Where are you now?</li>
-                            <li>Where do you want to go?</li>
-                            <li>How do you plan to get there?</li>
-                        </ul>
                         <p>
-                            Through this experience it is our desire to develop rich, long-term relationships rooted in trust, 
-                            confidence and mutual respect.
+                            Ronnie is well versed in all of the latest trends which enables him to successfully guide his clients through the highs and lows of economic cycles. He considers himself a partner in his clients financial journey, and continuously works towards building the strong foundations of a secure financial future. When he is not advising clients he enjoys spending time with his wife and four children. He is an active member in the local church and he volunteers his free time to his local Little League, having been a baseball coach for over 6 years and serving on the board for three years as the vice president and coaching coordinator.
+                        </p>
+                            Ronnie specializes in Retirement Planning, college planning, tax planning, and estate planning.
+                            Offer business owners and individuals life insurance, Health Insurance, Long term care insurance, disability insurance, alternatives, stocks, bonds mutual funds, IRA’s, 401(k)’s, retirement plan rollovers etc...
+
+                        <div className="section-title position-relative pb-3 my-4">
+                            <h1 className="mb-0">Career History</h1>
+                        </div>
+                        <p>
+                            Ronnie has been in the career field of financial advising since 2003.
+                            Currently a Registered Representative with LPL Financial, an independent Broker/ Dealer and Registered Investment Advisor. August 2005-Present
+                            Former Financial Advisor for Trilogy Financial Services Inc., a Registered Investment Advisory firm. August 2002-July 2005
+                            Education:
+                            BA Economics, University of Redlands
+                            Minor in Business, University of Redlands
                         </p>
                     </div>
                     <br/>
-                    <div className="row g-0 mb-3">
-                        <div className="col-sm-6 wow zoomIn" data-wow-delay="0.2s">
-                            <h5 className="mb-3"><i className="fa fa-check text-primary me-3"></i>Empowering</h5>
-                            <h5 className="mb-3"><i className="fa fa-check text-primary me-3"></i>Professional</h5>
-                        </div>
-                        <div className="col-sm-6 wow zoomIn" data-wow-delay="0.4s">
-                            <h5 className="mb-3"><i className="fa fa-check text-primary me-3"></i>Financial Confidence</h5>
-                            <h5 className="mb-3"><i className="fa fa-check text-primary me-3"></i>Trustworthy</h5>
-                        </div>
-                    </div>
                     <div className="d-flex align-items-center mb-4 wow fadeIn" data-wow-delay="0.6s">
                         <div className="bg-primary d-flex align-items-center justify-content-center rounded" style={{width: '60px', height: '60px'}}>
                             <TelephoneFill color={"white"} width={32} height={32}/>
                         </div>
                         <div className="ps-4">
-                            <h5 className="mb-2">Call to ask any question</h5>
-                            <h4 className="text-primary mb-0">{businessInfo.phone}</h4>
+                            <h5 className="mb-2">Still have questions? Give us a call!</h5>
+                            <h4 className="text-primary mb-0">{businessInfo?.businessPhone}</h4>
                         </div>
                     </div>
                     <a href="/contact" className="btn btn-primary py-3 px-5 mt-3 wow zoomIn" data-wow-delay="0.9s">Contact Us</a>
                 </div>
                 <div className="col-lg-5" style={{minHeight: '500px'}}>
-                    <div className="position-relative h-100">
+                    <div className="position-relative d-flex h-100">
                         <Image
-                          src={"/img/about.jpg"}
+                          src={"/img/about_us.jpg"}
                           alt={"About Image"}
-                          width={800}
-                          height={800}
-                          className={"position-absolute w-100 h-100 rounded wow zoomIn"}
+                          width={500}
+                          height={600}
+                          className={"position-absolute w-100 align-self-center rounded wow zoomIn"}
                           style={{objectFit: 'cover'}}
                           data-wow-delay={"0.9s"}/>
                     </div>

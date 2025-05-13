@@ -24,7 +24,6 @@ const adminLinks = [
   {name: "Customers", href: "/dashboard/customers", icon: People},
   {name: "Posts", href: "/dashboard/posts", icon: Postcard},
   {name: "Appointments", href: "/dashboard/appointments", icon: Calendar},
-  {name: "Emailing", href: "/dashboard/email", icon: Envelope},
   {name: "Users", href: "/dashboard/users", icon: People},
   {name: "Business Info", href: "/dashboard/business-info", icon: InfoSquare},
   {name: "Tools", href: "/dashboard/tools", icon: Tools}
