@@ -28,7 +28,7 @@ export default function Page() {
                     <p>See what our clients have to say about us:</p>
 
                     <div className="testimonial-card">
-                        <img src="/img/user.jpg" alt="Client 1" className="testimonial-image" />
+                        <img src="/img/testimonial-1.jpg" alt="Client 1" className="testimonial-image" />
                         <div className="testimonial-content">
                             <blockquote>
                                 "Good service, would recommend!"
@@ -38,7 +38,7 @@ export default function Page() {
                     </div>
 
                     <div className="testimonial-card">
-                        <img src="/img/user.jpg" alt="Client 2" className="testimonial-image" />
+                        <img src="/img/testimonial-2.jpg" alt="Client 2" className="testimonial-image" />
                         <div className="testimonial-content">
                             <blockquote>
                                 "I make money!"
@@ -48,7 +48,7 @@ export default function Page() {
                     </div>
 
                     <div className="testimonial-card">
-                        <img src="/img/user.jpg" alt="Client 3" className="testimonial-image" />
+                        <img src="/img/testimonial-3.jpg" alt="Client 3" className="testimonial-image" />
                         <div className="testimonial-content">
                             <blockquote>
                                 "Ron is the GOAT!!!!"
@@ -58,7 +58,7 @@ export default function Page() {
                     </div>
 
                     <div className="testimonial-card">
-                        <img src="/img/user.jpg" alt="Client 4" className="testimonial-image" />
+                        <img src="/img/testimonial-4.jpg" alt="Client 4" className="testimonial-image" />
                         <div className="testimonial-content">
                             <blockquote>
                                 "Got my bread up!"

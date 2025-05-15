@@ -9,7 +9,7 @@ export default function CarouselSlides() {
         <Carousel fade>
             <CarouselItem className="carousel-item"> 
                 <div style={{maxHeight: '900px'}}>
-                    <Image src="/img/carousel-1.jpg" priority={true} width={1920} height={1080}
+                    <Image src="/img/homepage.jpg" priority={true} width={1920} height={1080}
                         style={{
                             width: '100%',
                             height: 'auto'}} alt="Image" />
@@ -35,7 +35,7 @@ export default function CarouselSlides() {
             </CarouselItem>
             <CarouselItem className="carousel-item"> 
                 <div style={{maxHeight: '900px'}}>
-                    <Image src="/img/carousel-2.jpg" priority={true} width={1920} height={1080}
+                    <Image src="/img/lobby.jpg" priority={true} width={1920} height={1080}
                         style={{
                             width: '100%',
                             height: 'auto'}} alt="Image" />
