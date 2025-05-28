@@ -7,7 +7,6 @@ export default async function AppointmentPage() {
   const availabilityRules = await fetchOrderedAvailabilityRules();
   const unavailabilityRules = await fetchUnavailabilityRules();
 
-
   return (
     <div>
         <PageTitle title="Schedule a Consultation Appointment" />

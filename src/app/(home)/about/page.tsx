@@ -5,7 +5,7 @@ import Image from "next/image";
 import {fetchBusinessInfo} from "@/app/lib/actions";
 
 
-export default async function Page() {
+export default async function AboutPage() {
 
     const businessInfo = await fetchBusinessInfo();
 

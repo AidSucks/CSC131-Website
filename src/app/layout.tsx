@@ -8,11 +8,13 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import React from "react";
 
 const nunito = Nunito({
-  weight: ["400", "600", "700", "800"]
+  weight: ["400", "600", "700", "800"],
+  subsets: ["cyrillic", "cyrillic-ext", "latin", "latin-ext"]
 });
 
 const rubik = Rubik({
-  weight: ["400", "500", "600", "700"]
+  weight: ["400", "500", "600", "700"],
+  subsets: ["cyrillic", "cyrillic-ext", "latin", "latin-ext"]
 });
 
 export const metadata: Metadata = {
