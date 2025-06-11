@@ -1,3 +1,5 @@
+'use client';
+
 import Link from "next/link";
 
 import {
@@ -5,17 +7,14 @@ import {
   EnvelopeOpen,
   Facebook,
   GeoAlt,
-  Instagram,
   Linkedin,
   Telephone,
   TwitterX, Youtube
 } from "react-bootstrap-icons";
+
 import {Button, Col, Stack} from "react-bootstrap";
-import {fetchBusinessInfo} from "@/app/lib/actions";
 
-export default async function Footer() {
-
-  const businessInfo = await fetchBusinessInfo();
+export default function Footer() {
 
     return (
         <>
@@ -28,7 +27,7 @@ export default async function Footer() {
               <div className="d-flex flex-column align-items-center justify-content-center text-center h-100 bg-primary p-4">
                 <Link href="/public" className="navbar-brand">
                   <h1 className="m-0 text-white">
-                    <i className="fa fa-user-tie me-2"></i>Ron Smithey
+                    Ron Smithey
                   </h1>
                 </Link>
                 <p className="mt-3 mb-4">
@@ -55,50 +54,36 @@ export default async function Footer() {
 
                     <Col className={"d-flex align-items-center"}>
                       <GeoAlt size={18} className={"text-primary me-2"}/>
-                      <span className={"w-100"}>{businessInfo?.businessAddress}</span>
+                      <span className={"w-100"}>5101 East La Palma Avenue, Suite #202-D, Anaheim Hills, CA 92807</span>
                     </Col>
 
                     <Col className={"d-flex align-items-center"}>
                       <EnvelopeOpen size={18} className={"text-primary me-2"}/>
-                      <span className={"w-100"}>{businessInfo?.businessEmail}</span>
+                      <span className={"w-100"}>ron.smithey@lpl.com</span>
                     </Col>
 
                     <Col className={"d-flex align-items-center"}>
                       <Telephone size={18} className={"text-primary me-2"}/>
-                      <span className={"w-100"}>{businessInfo?.businessPhone}</span>
+                      <span className={"w-100"}>(714) 202-9858</span>
                     </Col>
 
                     <Col className="d-flex mt-4">
-                      {businessInfo?.twitterX ?
-                          <Button href={businessInfo.twitterX} target={"_blank"} variant={"primary"} size={"sm"}
-                                  className={"d-flex align-items-center justify-content-center btn-square me-2"}>
-                            <TwitterX size={20}/>
-                          </Button>
-                          : null}
-                      {businessInfo?.facebook ?
-                        <Button href={businessInfo.facebook} target={"_blank"} variant={"primary"} size={"sm"}
-                                className={"d-flex align-items-center justify-content-center btn-square me-2"}>
-                          <Facebook size={20}/>
-                        </Button>
-                        : null}
-                      {businessInfo?.linkedin ?
-                        <Button href={businessInfo.linkedin} target={"_blank"} variant={"primary"} size={"sm"}
-                                className={"d-flex align-items-center justify-content-center btn-square me-2"}>
-                          <Linkedin size={20}/>
-                        </Button>
-                        : null}
-                      {businessInfo?.instagram ?
-                        <Button href={businessInfo.instagram} target={"_blank"} variant={"primary"} size={"sm"}
-                                className={"d-flex align-items-center justify-content-center btn-square me-2"}>
-                          <Instagram size={20}/>
-                        </Button>
-                        : null}
-                      {businessInfo?.youtube ?
-                        <Button href={businessInfo.youtube} target={"_blank"} variant={"primary"} size={"sm"}
-                                className={"d-flex align-items-center justify-content-center btn-square me-2"}>
-                          <Youtube size={20}/>
-                        </Button>
-                        : null}
+                      <Button href={"https://x.com/RonSmitheyLPL"} target={"_blank"} variant={"primary"} size={"sm"}
+                              className={"d-flex align-items-center justify-content-center btn-square me-2"}>
+                        <TwitterX size={20}/>
+                      </Button>
+                      <Button href={"https://www.facebook.com"} target={"_blank"} variant={"primary"} size={"sm"}
+                              className={"d-flex align-items-center justify-content-center btn-square me-2"}>
+                        <Facebook size={20}/>
+                      </Button>
+                      <Button href={"https://www.linkedin.com/in/ron-smithey/"} target={"_blank"} variant={"primary"} size={"sm"}
+                              className={"d-flex align-items-center justify-content-center btn-square me-2"}>
+                        <Linkedin size={20}/>
+                      </Button>
+                      <Button href={"https://www.youtube.com/@RonSmithey"} target={"_blank"} variant={"primary"} size={"sm"}
+                              className={"d-flex align-items-center justify-content-center btn-square me-2"}>
+                        <Youtube size={20}/>
+                      </Button>
                     </Col>
                   </Stack>
                 </div>

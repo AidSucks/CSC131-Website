@@ -1,19 +1,18 @@
+'use client';
+
 import {
   EnvelopeOpen,
   Facebook,
   GeoAlt,
-  Instagram,
   Linkedin,
   Telephone,
   TwitterX,
   Youtube
 } from "react-bootstrap-icons";
 
-import { fetchBusinessInfo } from "@/app/lib/actions";
 import { Button, Col, Container, Row } from "react-bootstrap";
 
-export default async function Topbar() {
-  const businessInfo = await fetchBusinessInfo();
+export default function Topbar() {
 
   return (
       <>
@@ -24,46 +23,33 @@ export default async function Topbar() {
                 <div className="d-flex flex-column flex-lg-row justify-content-lg-start align-items-center gap-3">
                   <div className="d-flex align-items-center">
                     <GeoAlt size={18} className="me-2" />
-                    <small>{businessInfo?.businessAddress}</small>
+                    <small>5101 East La Palma Avenue, Suite #202-D, Anaheim Hills, CA 92807</small>
                   </div>
                   <div className="d-flex align-items-center">
                     <Telephone size={18} className="me-2" />
-                    <small>{businessInfo?.businessPhone}</small>
+                    <small>(714) 202-9858</small>
                   </div>
                   <div className="d-flex align-items-center">
                     <EnvelopeOpen size={18} className="me-2" />
-                    <small>{businessInfo?.businessEmail}</small>
+                    <small>ron.smithey@lpl.com</small>
                   </div>
                 </div>
               </Col>
 
               <Col lg={4} className="d-flex justify-content-center justify-content-lg-end mt-2 mt-lg-0">
                 <div className="d-flex gap-2">
-                  {businessInfo?.twitterX && (
-                      <Button href={businessInfo.twitterX} target="_blank" variant="outline-light" size="sm" className="rounded-circle">
-                        <TwitterX size={14} />
-                      </Button>
-                  )}
-                  {businessInfo?.facebook && (
-                      <Button href={businessInfo.facebook} target="_blank" variant="outline-light" size="sm" className="rounded-circle">
-                        <Facebook size={14} />
-                      </Button>
-                  )}
-                  {businessInfo?.linkedin && (
-                      <Button href={businessInfo.linkedin} target="_blank" variant="outline-light" size="sm" className="rounded-circle">
-                        <Linkedin size={14} />
-                      </Button>
-                  )}
-                  {businessInfo?.instagram && (
-                      <Button href={businessInfo.instagram} target="_blank" variant="outline-light" size="sm" className="rounded-circle">
-                        <Instagram size={14} />
-                      </Button>
-                  )}
-                  {businessInfo?.youtube && (
-                      <Button href={businessInfo.youtube} target="_blank" variant="outline-light" size="sm" className="rounded-circle">
-                        <Youtube size={14} />
-                      </Button>
-                  )}
+                    <Button href={"https://x.com/RonSmitheyLPL"} target="_blank" variant="outline-light" size="sm" className="rounded-circle">
+                      <TwitterX size={14} />
+                    </Button>
+                    <Button href={"https://www.facebook.com/"} target="_blank" variant="outline-light" size="sm" className="rounded-circle">
+                      <Facebook size={14} />
+                    </Button>
+                    <Button href={"https://www.linkedin.com/in/ron-smithey/"} target="_blank" variant="outline-light" size="sm" className="rounded-circle">
+                      <Linkedin size={14} />
+                    </Button>
+                    <Button href={"https://www.youtube.com/@RonSmithey"} target="_blank" variant="outline-light" size="sm" className="rounded-circle">
+                      <Youtube size={14} />
+                    </Button>
                 </div>
               </Col>
             </Row>

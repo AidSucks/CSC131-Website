@@ -2,11 +2,15 @@ import { Carousel, CarouselItem, CarouselCaption } from "react-bootstrap";
 
 import Image from "next/image";
 import Link from "next/link";
-import { relative } from "path";
+import {CaretLeftFill, CaretRightFill} from "react-bootstrap-icons";
 
 export default function CarouselSlides() {
+
     return(
-        <Carousel fade>
+        <Carousel
+          prevIcon={<CaretLeftFill size={32}/>}
+          nextIcon={<CaretRightFill size={32}/>}
+          fade touch>
             <CarouselItem className="carousel-item"> 
                 <div style={{maxHeight: '900px'}}>
                     <Image src="/img/homepage.jpg" priority={true} width={1920} height={1080}
@@ -43,12 +47,11 @@ export default function CarouselSlides() {
                 <CarouselCaption className="d-flex flex-column align-items-center justify-content-center">
                     <div className="p-3" style={{maxWidth: '900px'}}>
                         <h1 className="display-1 text-white mb-md-4 animated zoomIn">
-                            Book a consultation appointment today!
+                          Find out more about how you can grow your wealth today!
                         </h1>
-                        <Link
-                        href="/appointment"
-                        className="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft"
-                        >Schedule your Appointment</Link>
+                        <Link href={"/contact"} className={"btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft"}>
+                          Shoot us a message
+                        </Link>
                     </div>
                 </CarouselCaption>
             </CarouselItem>

@@ -5,7 +5,7 @@ import {usePathname} from "next/navigation";
 
 import Link from 'next/link';
 
-import {Button, Dropdown, NavItem, NavLink} from "react-bootstrap";
+import {Dropdown, NavItem, NavLink} from "react-bootstrap";
 
 export default function Navbar() {
   // Toggle navbar hamburger menu.
@@ -14,7 +14,6 @@ export default function Navbar() {
     setIsOpen(!isOpen);
   };
 
-  const [servicesHovered, setServicesHovered] = useState(false);
   const [resourcesHovered, setResourcesHovered] = useState(false);
 
   // Sticky Navbar
@@ -68,21 +67,9 @@ export default function Navbar() {
             <NavLink as={Link} href={"/about"} active={currentPath === "/about"}>About Us</NavLink>
           </NavItem>
 
-          {/* Services Dropdown */}
-          <Dropdown
-            defaultShow={false}
-            align={"start"}
-            onMouseEnter={() => setServicesHovered(true)}
-            onMouseLeave={() => setServicesHovered(false)}
-            show={servicesHovered}>
-
-            <Dropdown.Toggle as={Link} href={"/services"} className={"nav-link"}>Services</Dropdown.Toggle>
-
-            <Dropdown.Menu className={"m-0"} >
-              <Dropdown.Item as={Link} href={"/appointment"}>Book an Appointment</Dropdown.Item>
-              <Dropdown.Item as={Link} href={"/services/financialtools"}>Financial Calculators</Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
+          <NavItem>
+            <NavLink as={Link} href={"/services"} active={currentPath === '/services'}>Services</NavLink>
+          </NavItem>
 
           {/* Resources Dropdown */}
           <Dropdown
@@ -95,6 +82,7 @@ export default function Navbar() {
             <Dropdown.Toggle as={Link} href={"/resources"} className={"nav-link"}>Resources</Dropdown.Toggle>
 
             <Dropdown.Menu className={"m-0"} >
+              <Dropdown.Item as={Link} href={"/resources/calculators"}>Financial Calculators</Dropdown.Item>
               <Dropdown.Item as={Link} href={"/resources/news"}>News</Dropdown.Item>
               <Dropdown.Item as={Link} href={"/resources/guidestutorials"}>Guides & Tutorials</Dropdown.Item>
               <Dropdown.Item as={Link} href={"/resources/faqs"}>FAQs</Dropdown.Item>
@@ -106,10 +94,6 @@ export default function Navbar() {
           </NavItem>
 
         </div>
-
-          <Button variant={"primary"} className={"py-2 px-5 ms-4"} href={"/dashboard"}>
-            Sign In
-          </Button>
 
       </div>
 

@@ -44,6 +44,9 @@ export function CustomerInquiryForm() {
   };
 
   return (
+    <>
+    <h2 className="mb-4">Send Ron a message:</h2>
+
     <Form action={createCustomerInquiry.bind(null, selectedServices)}>
 
       <Form.Group>
@@ -54,21 +57,18 @@ export function CustomerInquiryForm() {
         <Form.Control
           type={"text"}
           name={"fullName"}
-          placeholder={"Enter your full name"}
           required/>
 
-        <Form.Label>Email</Form.Label>
+        <Form.Label className={"mt-2"}>Email</Form.Label>
         <Form.Control
           type={"email"}
           name={"contactEmail"}
-          placeholder={"Enter your email"}
           required/>
 
-        <Form.Label>Phone Number (Optional)</Form.Label>
+        <Form.Label className={"mt-2"}>Phone Number (Optional)</Form.Label>
         <Form.Control
           type={"tel"}
           name={"contactPhone"}
-          placeholder={"Enter your email"}
           />
 
       </Form.Group>
@@ -92,7 +92,7 @@ export function CustomerInquiryForm() {
 
       <Form.Group>
 
-        <Form.Label>Message</Form.Label>
+        <Form.Label className={"mt-2"}>Message</Form.Label>
         <textarea
           name="message"
           className="form-control"
@@ -110,5 +110,6 @@ export function CustomerInquiryForm() {
       <Button type={"submit"}>Submit</Button>
 
     </Form>
+    </>
   );
 }
