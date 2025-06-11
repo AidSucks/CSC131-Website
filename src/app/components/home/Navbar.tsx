@@ -102,10 +102,6 @@ export default function Navbar() {
           </Dropdown>
 
           <NavItem>
-            <NavLink as={Link} href={"/community"} active={currentPath === "/community"}>Community</NavLink>
-          </NavItem>
-
-          <NavItem>
             <NavLink as={Link} href={"/contact"} active={currentPath === "/contact"}>Contact Us</NavLink>
           </NavItem>
 

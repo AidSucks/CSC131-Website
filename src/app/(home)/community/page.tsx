@@ -1,26 +1,13 @@
 "use client";
 
 import PageTitle from "@/app/components/home/PageTitle";
-import { useRouter } from "next/navigation";
 
 export default function Page() {
-    const router = useRouter();
-
     return (
         <div>
             <PageTitle title="Community" />
 
             <main>
-                {/* Community Forum Section */}
-                <div className="forum-section" style={{marginTop:'-50px', marginBottom:'50px'}}>
-                    <h2>Community Forum</h2>
-                    <p>
-                        Join the discussion! Connect with other community members, ask questions, and share your experiences.
-                    </p>
-                    <button className="forum-button" onClick={() => router.push("/community-forum")}>
-                        Visit Forum
-                    </button>
-                </div>
 
                 {/* Client Testimonials Section */}
                 <div className="testimonials-section">
