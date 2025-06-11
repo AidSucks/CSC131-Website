@@ -22,7 +22,7 @@ export default function Navbar() {
   useEffect(() => {
       const handleScroll = () => {
         const scrollTop = window.scrollY || document.documentElement.scrollTop;
-        
+
         if (scrollTop > 300) {
           setIsScrolledDown(true);
         }
@@ -30,9 +30,9 @@ export default function Navbar() {
           setIsScrolledDown(false);
         }
       };
-  
+
       window.addEventListener('scroll', handleScroll);
-  
+
       return () => {
         window.removeEventListener('scroll', handleScroll);
       };
@@ -42,7 +42,7 @@ export default function Navbar() {
 
   return (
     <div className="container-fluid position-relative p-0">
-      <nav className={`navbar navbar-expand-lg navbar-dark px-5 py-3 py-lg-0 ${isScrolledDown ? 'sticky-top shadow-sm' : ''}`}>
+      <nav className={`navbar navbar-expand-xl navbar-dark px-5 py-3 py-xl-3 ${isScrolledDown ? 'sticky-top shadow-sm' : ''}`}>
       <Link href="/" className="navbar-brand p-0">
         <h1 className="m-0"><i className="fa fa-user-tie me-2"></i>Ron Smithey<br/>Financial Services</h1>
       </Link>
@@ -113,7 +113,7 @@ export default function Navbar() {
 
       </div>
 
-    </nav>  
+    </nav>
   </div>
   );
 };
