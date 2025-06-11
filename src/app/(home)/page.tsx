@@ -1,23 +1,14 @@
-import CarouselSlides from "@/app/components/home/CarouselSlides"
-
-import {AboutPageComponent, ContactPageComponent} from "@/app/components/home/PageComponents";
-import QuickAccess from "../components/home/QuickAccess";
+import CarouselSlides from "@/app/components/home/CarouselSlides";
+import QuickAccess from "@/app/components/home/QuickAccess";
+import Testimonials from "@/app/components/home/Testimonials";
 
 export default function Home() {
-  return (
-    <>
-      <CarouselSlides />
-      <QuickAccess />
+    return (
+        <>
+            <CarouselSlides />
+            <QuickAccess />
+            <Testimonials />
 
-        {/*} <div>
-        <h1>Home Page</h1>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam, cupiditate. Accusamus inventore magnam nihil, consequatur saepe est doloremque quas nostrum fuga esse temporibus similique recusandae tenetur. Quas enim temporibus aperiam?
-        </p>
-      </div> */}
-
-        {/* <AboutPageComponent /> */}
-        {/*} <ContactPageComponent /> */}
-    </>
-  );
+        </>
+    );
 }
