@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import * as calcFunctions from './calcFunctions';
+import { Form, Button } from 'react-bootstrap';
 
 type CalculatorFieldProps = {
   data: {
@@ -60,18 +61,28 @@ const CalculatorField = ({ data }: CalculatorFieldProps) => {
 
   return (
     <div>
-      {data.inputTitles.map((label, idx) => (
-        <input
-          key={idx}
-          type="number"
-          placeholder={label}
-          onChange={(e) => handleInputChange(e, idx)}
-        />
-      ))}
-      <button onClick={handleSubmit}>Calculate</button>
-      <div>
+      <h3>{data.title}</h3>
+      <p>{data.description}</p>
+      <Form>
+        {data.inputTitles.map((label, idx) => (
+          <Form.Group className="mb-3" controlId={`input-${idx}`} key={idx}>
+            <Form.Label>{label}</Form.Label>
+            <Form.Control
+              type="number"
+              placeholder={label}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange(e, idx)}
+            />
+          </Form.Group>
+        ))}
+        <Button variant="primary" onClick={handleSubmit}>
+          Calculate
+        </Button>
+      </Form>
+      <div className="mt-3">
         {outputs.map((output, idx) => (
-          <div key={idx}>{data.outputTitles[idx]}: {output}</div>
+          <p key={idx}>
+            <strong>{data.outputTitles[idx]}:</strong> {output}
+          </p>
         ))}
       </div>
     </div>

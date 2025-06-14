@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from "react";
+import { Accordion, Card, Button } from "react-bootstrap";
 import CalculatorField from "./calculatorField";
 import calculatorData from "../data/calculatorData.json";
 
@@ -60,25 +61,39 @@ const CalculatorSelector = () => {
   const selectedData = calculatorData.find((calc) => calc.id === selectedCalc);
 
   return (
-    <div>
-      {calculators.map((calculator) => (
-        <div key={calculator.id}>
-          <h2>{calculator.title}</h2>
-          <div>
-            {calculator.calcs.map((calc, index) => (
-              <button
-                key={calc}
-                onClick={() => setSelectedCalc(calculator.keys[index])}
-              >
-                {calc}
-              </button>
+    <div className="container py-4">
+      <div className="row">
+        <div className="col-md-4">
+          <Accordion defaultActiveKey="0">
+            {calculators.map((category, idx) => (
+              <Accordion.Item eventKey={String(idx)} key={category.id}>
+                <Accordion.Header>{category.title}</Accordion.Header>
+                <Accordion.Body>
+                  {category.calcs.map((calc, index) => (
+                    <Button
+                      key={calc}
+                      variant="outline-secondary"
+                      className="d-block mb-2 w-100 text-start"
+                      onClick={() => setSelectedCalc(category.keys[index])}
+                    >
+                      {calc}
+                    </Button>
+                  ))}
+                </Accordion.Body>
+              </Accordion.Item>
             ))}
-          </div>
+          </Accordion>
         </div>
-      ))}
-      {selectedData && (
-        <CalculatorField data={selectedData} />
-      )}
+        <div className="col-md-8">
+          {selectedData && (
+            <Card>
+              <Card.Body>
+                <CalculatorField data={selectedData} />
+              </Card.Body>
+            </Card>
+          )}
+        </div>
+      </div>
     </div>
   );
 };
