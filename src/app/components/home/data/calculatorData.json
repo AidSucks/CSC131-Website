@@ -1,0 +1,257 @@
+[
+  {
+    "id": 1,
+    "title": "Loan Payoff",
+    "description": "Calculate the true cost of your loan.",
+    "inputTitles": ["Borrow Amount", "Interest Rate (%)", "Length (Months)"],
+    "outputTitles": ["Monthly Payment", "Total Interest Payments"],
+    "badges": ["Loans"]
+  },
+  {
+    "id": 2,
+    "title": "Home Affordability",
+    "description": "Estimate the amount of financing to expect on a house.",
+    "inputTitles": [
+      "Monthly Income",
+      "Monthly Obligations",
+      "Mortage Interest Rate (%)",
+      "Length of Loan (Months)",
+      "Down Payment"
+    ],
+    "outputTitles": ["Monthly Payment", "Maximum House Price"],
+    "badges": ["Home"]
+  },
+  {
+    "id": 3,
+    "title": "Mortage Refinancing",
+    "description": "Estimate the change in your loan if you refinanced.",
+    "inputTitles": [
+      "Current Loan Balance",
+      "New Interest Rate (%)",
+      "New Loan Term (Months)",
+      "Closing Costs"
+    ],
+    "outputTitles": ["Monthly Payment", "Total Cost"],
+    "badges": ["Finance", "Home"]
+  },
+  {
+    "id": 4,
+    "title": "Mortage Acceleration",
+    "description": "Estimate how soon you could pay off your mortgage.",
+    "inputTitles": [
+      "Original Value of Loan",
+      "Original Interest Rate (%)",
+      "Original Loan Term (Months)",
+      "Payments Made (Months)",
+      "Addition to Monthly Payment"
+    ],
+    "outputTitles": ["Interest Saved", "Time Saved (Months)"],
+    "badges": ["Finance", "Home"]
+  },
+  {
+    "id": 5,
+    "title": "Credit Card Debt",
+    "description": "Estimate how long it will take to pay off your balance.",
+    "inputTitles": [
+      "Current Credit Card Balance",
+      "Interest Rate on Your Card (%)",
+      "Amount You'll Pay Each Month ($)"
+    ],
+    "outputTitles": ["Total Months", "Total Interest Paid"],
+    "badges": ["Finance", "Budgeting"]
+  },
+  {
+    "id": 6,
+    "title": "Lease Payment",
+    "description": "Estimate how much your monthly lease payment would be.",
+    "inputTitles": [
+      "Lease Amount ($)",
+      "Down Payment ($)",
+      "Residual ($)",
+      "Lease Period (Months)",
+      "Interest Rate (%)"
+    ],
+    "outputTitles": ["Monthly Payment", "Total Lease Interest Payments"],
+    "badges": ["Finance", "Home"]
+  },
+  {
+    "id": 7,
+    "title": "Car Affordability",
+    "description": "Estimate how much you can afford to pay for a car.",
+    "inputTitles": [
+      "Monthly Amount Willing to Pay ($)",
+      "Downpayment ($)",
+      "Current Interest Rate (%)",
+      "Number of Months of the Loan"
+    ],
+    "outputTitles": [
+      "Total Amount You Can Afford",
+      "Total Interest You Would Pay"
+    ],
+    "badges": ["Finance"]
+  },
+  {
+    "id": 8,
+    "title": "College Funding",
+    "description": "Estimate the cost of your child's college education.",
+    "inputTitles": [
+      "Number of Years Until Child Enters College",
+      "Number of Years Child Will Attend College",
+      "Estimated Annual Cost of College ($)",
+      "Amount Currently Saved ($)"
+    ],
+    "outputTitles": [
+      "Total Cost Of Child's Education",
+      "Amount Needed to Save Each Year to Cover the Costs"
+    ],
+    "badges": ["Savings", "Home"]
+  },
+  {
+    "id": 9,
+    "title": "Saving Goals",
+    "description": "Estimate how much you need to save in order to meet your savings goals.",
+    "inputTitles": [
+      "Total Amount of Current Savings ($)",
+      "Amount You'd Like to Have ($)",
+      "Number of Years You Have to Save Up"
+    ],
+    "outputTitles": ["Total Amount Needed to Save Each Year ($)"],
+    "badges": ["Savings", "Budgeting", "Finance"]
+   },
+  {
+    "id": 10,
+    "title": "Savings Accumulation",
+    "description": "Estimate how much money you are on track to save.",
+    "inputTitles": [
+      "Current Savings",
+      "Anticipated Upcoming Yearly Savings",
+      "Number of Years You Have to Save Up"
+    ],
+    "outputTitles": ["Total Savings Accumulated"],
+    "badges": ["Savings", "Finance"]
+     },
+  {
+    "id": 11,
+    "title": "Taxable Equivalent Yield",
+    "description": "Calculate the rate of return you would have to receive from a taxable investment to realize an equivalent tax-exempt yield.",
+    "inputTitles": [
+      "Tax Bracket (%)",
+      "Municipal Bond Yield (%)"
+    ],
+    "outputTitles": ["Equivalent Risk"],
+    "badges": ["Finance", "Tax"]
+     },
+  {
+    "id": 12,
+    "title": "Cost of Retirement",
+    "description": "How much you will be able to spend in your retirement.",
+    "inputTitles": [
+      "Current Age",
+      "Retirement Age",
+      "Current Retirement Savings",
+      "Current Annual Contribution"
+    ],
+    "outputTitles": ["Total Savings at Retirement", "Yearly Spending during Retirement"],
+    "badges": ["Finance", "Budgeting", "Retirement", "Inflation"]
+     },
+  {
+    "id": 13,
+    "title": "Required Minimum Distributions",
+    "description": "How much money are you required withdraw over the age of 73",
+    "inputTitles": [
+      "Current Age",
+      "Retirement Account Balance"
+    ],
+    "outputTitles": ["Minimum Distribution"],
+    "badges": ["Finance", "Retirement", "Inflation"]
+  },
+  {
+    "id": 14,
+    "title": "Impact of Inflaction",
+    "description": "Estimate the future cost of an item based on todays prices and the expected rate of inflation.",
+    "inputTitles": [
+      "Item Cost",
+      "Time Passed in Years",
+      "Inflation (%)"
+    ],
+    "outputTitles": ["Future Cost"],
+    "badges": ["Budgeting", "Inflation"]
+  },
+    {
+    "id": 15,
+    "title": "Retirement Plan Early Distribution",
+    "description": "Estimate how much would remain after paying income taxes and penalties if you took an early distribution from a retirement plan.",
+    "inputTitles": [
+      "Expected Federal Income Tax",
+      "Withdraw Amount"
+    ],
+    "outputTitles": ["Taxes and Penalties", "Remaining Withdrawal"],
+    "badges": ["Finance", "Budgeting", "Retirement", "Inflation"]
+  },
+    {
+    "id": 16,
+    "title": "Retirement Portfolio Lifespan",
+    "description": "Estimate how long your funds will last.",
+    "inputTitles": [
+      "Expected Retirement Porfolio Balance",
+      "Expected Annual Rate of Return (%)",
+      "Expected Rate of Inflation (%)",
+      "Monthly Costs"
+    ],
+    "outputTitles": ["Porfolio Lifespan in Years"],
+    "badges": ["Finance", "Budgeting", "Retirement"]
+  },
+    {
+    "id": 17,
+    "title": "Federal Income Tax",
+    "description": "Deduction Amounts: Single 15,000; Head of Household 22,500; Married Filing Seperately 15,000; Married Filing Jointly 30,000",
+    "inputTitles": [
+      "Deduction Amount",
+      "Pre-tax Income",
+      "Pre-tax Contributions to Employee Plans",
+      "Deductions"
+    ],
+    "outputTitles": ["Income Tax"],
+    "badges": ["Finance", "Tax"]
+  },
+    {
+    "id": 18,
+    "title": "Tax-Deferred Savings",
+    "description": "Compare tax-deferedd investments to taxable investments.",
+    "inputTitles": [
+      "Saved Amount",
+      "Future Annual Savings",
+      "Expected Amount of Years",
+      "Expected Pre-tax Annual Rate of Return (%)",
+      "Tax Bracket"
+    ],
+    "outputTitles": ["Taxable Account Growth", "Tax-deffered Acount Growth"],
+    "badges": ["Finance", "Tax", "Savings"]
+  },
+    {
+    "id": 19,
+    "title": "Roth IRA Conversion",
+    "description": "Estimate values after converting to Roth IRA",
+    "inputTitles": [
+      "Current Age",
+      "Current IRA Balance",
+      "Pre-tax Rate of Return on IRA",
+      "Working Tax Bracket",
+      "Expected Age of First Withdrawal",
+      "Expected Pre-Tax Rate of Return on Withdrawals"
+    ],
+    "outputTitles": ["Projected IRA Balance", "IRA After-tax Value", "Roth IRA After-tax Value"],
+    "badges": ["Finance", "IRA"]
+  },
+    {
+    "id": 20,
+    "title": "Estate Taxes",
+    "description": "Estimate federal estate taxes that could be due on your estate after you die.",
+    "inputTitles": [
+      "Gross Value of Estate",
+      "Allowable Debts, Expenses, and Deductions"
+    ],
+    "outputTitles": ["Future Cost"],
+    "badges": ["Finance", "Tax", "Home"]
+  }
+]
