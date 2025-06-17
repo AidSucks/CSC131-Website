@@ -38,7 +38,7 @@ const CalculatorSelector = () => {
       calcs: [
         "Cost of Retirement",
         "Required Minimum Distributions",
-        "Impact of Inflation",
+        "Impact of Inflaction",
         "Retirement Plan Early Distribution",
         "Retirement Portfolio Lifespan"
       ],
