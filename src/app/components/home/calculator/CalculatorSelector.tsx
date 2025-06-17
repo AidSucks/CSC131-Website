@@ -88,7 +88,7 @@ const CalculatorSelector = () => {
           {selectedData && (
             <Card>
               <Card.Body>
-                <CalculatorField data={selectedData} />
+                <CalculatorField key={selectedCalc} data={selectedData} />
               </Card.Body>
             </Card>
           )}
