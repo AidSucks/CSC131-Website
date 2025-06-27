@@ -29,7 +29,7 @@ export default function Testimonials() {
                     style={{ maxWidth: "600px" }}
                 >
                     <h2 className="fw-bold text-primary text-uppercase">Testimonials</h2>
-                    <h4 className="mb-0">What Our Clients Say about Our Services</h4>
+                    <h4 className="mb-0">Read what Ron's customers have to say!</h4>
                 </div>
 
                 <Carousel className="carousel" interval={4500}>
