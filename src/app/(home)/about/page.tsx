@@ -2,12 +2,8 @@ import PageTitle from "@/app/components/home/PageTitle";
 
 import {TelephoneFill} from "react-bootstrap-icons";
 import Image from "next/image";
-import {fetchBusinessInfo} from "@/app/lib/actions";
 
-
-export default async function AboutPage() {
-
-    const businessInfo = await fetchBusinessInfo();
+export default function AboutPage() {
 
   return(
     <div>
@@ -53,7 +49,7 @@ export default async function AboutPage() {
                         </div>
                         <div className="ps-4">
                             <h5 className="mb-2">Still have questions? Give us a call!</h5>
-                            <h4 className="text-primary mb-0">{businessInfo?.businessPhone}</h4>
+                            <h4 className="text-primary mb-0">(714) 202-9858</h4>
                         </div>
                     </div>
                     <a href="/contact" className="btn btn-primary py-3 px-5 mt-3 wow zoomIn" data-wow-delay="0.9s">Contact Us</a>

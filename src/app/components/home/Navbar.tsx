@@ -5,7 +5,8 @@ import {usePathname} from "next/navigation";
 
 import Link from 'next/link';
 
-import {Button, Dropdown, NavItem, NavLink} from "react-bootstrap";
+import {Dropdown, NavItem, NavLink} from "react-bootstrap";
+import {List} from "react-bootstrap-icons";
 
 export default function Navbar() {
   // Toggle navbar hamburger menu.
@@ -14,7 +15,6 @@ export default function Navbar() {
     setIsOpen(!isOpen);
   };
 
-  const [servicesHovered, setServicesHovered] = useState(false);
   const [resourcesHovered, setResourcesHovered] = useState(false);
 
   // Sticky Navbar
@@ -22,7 +22,7 @@ export default function Navbar() {
   useEffect(() => {
       const handleScroll = () => {
         const scrollTop = window.scrollY || document.documentElement.scrollTop;
-        
+
         if (scrollTop > 300) {
           setIsScrolledDown(true);
         }
@@ -30,9 +30,9 @@ export default function Navbar() {
           setIsScrolledDown(false);
         }
       };
-  
+
       window.addEventListener('scroll', handleScroll);
-  
+
       return () => {
         window.removeEventListener('scroll', handleScroll);
       };
@@ -42,9 +42,9 @@ export default function Navbar() {
 
   return (
     <div className="container-fluid position-relative p-0">
-      <nav className={`navbar navbar-expand-lg navbar-dark px-5 py-3 py-lg-0 ${isScrolledDown ? 'sticky-top shadow-sm' : ''}`}>
+      <nav className={`navbar navbar-expand-xl navbar-dark px-5 py-3 py-xl-3 ${isScrolledDown ? 'sticky-top shadow-sm' : ''}`}>
       <Link href="/" className="navbar-brand p-0">
-        <h1 className="m-0"><i className="fa fa-user-tie me-2"></i>Ron Smithey<br/>Financial Services</h1>
+        <h1 className="m-0">Ron Smithey<br/>Financial</h1>
       </Link>
       <button
         className="navbar-toggler"
@@ -53,7 +53,7 @@ export default function Navbar() {
         data-bs-target="#navbarCollapse"
         onClick={toggleMenu}
       >
-        <span className="fa fa-bars"></span>
+        <List/>
       </button>
 
       {/* Nav links */}
@@ -68,21 +68,9 @@ export default function Navbar() {
             <NavLink as={Link} href={"/about"} active={currentPath === "/about"}>About Us</NavLink>
           </NavItem>
 
-          {/* Services Dropdown */}
-          <Dropdown
-            defaultShow={false}
-            align={"start"}
-            onMouseEnter={() => setServicesHovered(true)}
-            onMouseLeave={() => setServicesHovered(false)}
-            show={servicesHovered}>
-
-            <Dropdown.Toggle as={Link} href={"/services"} className={"nav-link"}>Services</Dropdown.Toggle>
-
-            <Dropdown.Menu className={"m-0"} >
-              <Dropdown.Item as={Link} href={"/appointment"}>Book an Appointment</Dropdown.Item>
-              <Dropdown.Item as={Link} href={"/services/financialtools"}>Financial Calculators</Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
+          <NavItem>
+            <NavLink as={Link} href={"/services"} active={currentPath === '/services'}>Services</NavLink>
+          </NavItem>
 
           {/* Resources Dropdown */}
           <Dropdown
@@ -95,6 +83,7 @@ export default function Navbar() {
             <Dropdown.Toggle as={Link} href={"/resources"} className={"nav-link"}>Resources</Dropdown.Toggle>
 
             <Dropdown.Menu className={"m-0"} >
+              <Dropdown.Item as={Link} href={"/resources/calculators"}>Financial Calculators</Dropdown.Item>
               <Dropdown.Item as={Link} href={"/resources/news"}>News</Dropdown.Item>
               <Dropdown.Item as={Link} href={"/resources/guidestutorials"}>Guides & Tutorials</Dropdown.Item>
               <Dropdown.Item as={Link} href={"/resources/faqs"}>FAQs</Dropdown.Item>
@@ -102,22 +91,14 @@ export default function Navbar() {
           </Dropdown>
 
           <NavItem>
-            <NavLink as={Link} href={"/community"} active={currentPath === "/community"}>Community</NavLink>
-          </NavItem>
-
-          <NavItem>
             <NavLink as={Link} href={"/contact"} active={currentPath === "/contact"}>Contact Us</NavLink>
           </NavItem>
 
         </div>
 
-          <Button variant={"primary"} className={"py-2 px-5 ms-4"} href={"/dashboard"}>
-            Sign In
-          </Button>
-
       </div>
 
-    </nav>  
+    </nav>
   </div>
   );
 };

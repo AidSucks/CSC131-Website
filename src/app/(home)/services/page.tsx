@@ -1,6 +1,4 @@
 import PageTitle from "@/app/components/home/PageTitle";
-import Testimonials from "@/app/components/home/Testimonials";
-
 
 export default function Page() {  
   return(
@@ -86,8 +84,6 @@ export default function Page() {
             </div>
         </div>
       </div>
-
-      <Testimonials/>
     </>
   );
 }

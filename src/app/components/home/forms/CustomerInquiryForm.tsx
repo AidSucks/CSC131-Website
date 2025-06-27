@@ -1,114 +1,99 @@
 'use client';
 
-import {Button, Form} from "react-bootstrap";
-import React, {ChangeEvent, useState} from "react";
-import {createCustomerInquiry} from "@/app/lib/actions";
+import { useState } from "react";
+import { Button, Form, Alert } from "react-bootstrap";
 
 const servicesList = [
-  "Roth IRA",
-  "Traditional IRA",
-  "Rollover 401k",
-  "Life Insurance",
-  "College Planning",
-  "Health Insurance",
-  "Long Term Care",
-  "Comprehensive Plan",
-  "Retirement Planning",
-  "Other"
+  "Roth IRA", "Traditional IRA", "Rollover 401k", "Life Insurance",
+  "College Planning", "Health Insurance", "Long Term Care",
+  "Comprehensive Plan", "Retirement Planning", "Other"
 ];
 
 export function CustomerInquiryForm() {
-
+  const [status, setStatus] = useState<string | null>(null);
   const [messageLength, setMessageLength] = useState(0);
-  const [selectedServices, setSelectedServices] = useState(new Array<string>(0));
+  const [selectedServices, setSelectedServices] = useState<string[]>([]);
 
-  const handleChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
-    const { value } = event.target;
-    setMessageLength(value.length);
+  const handleCheckbox = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { value, checked } = event.target;
+    setSelectedServices((prev) =>
+      checked ? [...prev, value] : prev.filter((v) => v !== value)
+    );
   };
 
-  const handleCheckbox = (event: ChangeEvent<HTMLInputElement>) => {
-    const { value } = event.target;
+const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+  const form = e.currentTarget;
+  const formData = new FormData(form);
+  formData.append("services", selectedServices.join(", "));
 
-    const fromIndex: number = selectedServices.indexOf(value);
+  const res = await fetch("/api/contact", {
+    method: "POST",
+    body: formData,
+  });
 
-    let newSelectedServices = selectedServices;
+  if (res.ok) {
+    setStatus("Message sent successfully.");
+    form.reset();
+    setSelectedServices([]);
+    setMessageLength(0);
+  } else {
+    setStatus("Failed to send message. Please try again later.");
+  }
+};
 
-    if(fromIndex !== -1) {
-      newSelectedServices.splice(fromIndex, 1);
-    }else {
-      newSelectedServices.push(value);
-    }
-
-    setSelectedServices(newSelectedServices);
-  };
 
   return (
-    <Form action={createCustomerInquiry.bind(null, selectedServices)}>
+    <>
+      <h2 className="mb-4">Send Ron a message:</h2>
 
-      <Form.Group>
+      {status && <Alert variant="info">{status}</Alert>}
 
-        <h5>Personal Information</h5>
+      <Form onSubmit={handleSubmit}>
+        <Form.Group>
+          <h5>Personal Information</h5>
 
-        <Form.Label>Full Name</Form.Label>
-        <Form.Control
-          type={"text"}
-          name={"fullName"}
-          placeholder={"Enter your full name"}
-          required/>
+          <Form.Label>Full Name</Form.Label>
+          <Form.Control type="text" name="fullName" required />
 
-        <Form.Label>Email</Form.Label>
-        <Form.Control
-          type={"email"}
-          name={"contactEmail"}
-          placeholder={"Enter your email"}
-          required/>
+          <Form.Label className="mt-2">Email</Form.Label>
+          <Form.Control type="email" name="contactEmail" required />
 
-        <Form.Label>Phone Number (Optional)</Form.Label>
-        <Form.Control
-          type={"tel"}
-          name={"contactPhone"}
-          placeholder={"Enter your email"}
+          <Form.Label className="mt-2">Phone Number (Optional)</Form.Label>
+          <Form.Control type="tel" name="contactPhone" />
+        </Form.Group>
+
+        <Form.Group>
+          <h5 className="my-3">Select Services Requested (Optional)</h5>
+          {servicesList.map((service) => (
+            <Form.Check type="checkbox" key={service}>
+              <Form.Check.Input
+                type="checkbox"
+                value={service}
+                onChange={handleCheckbox}
+              />
+              <Form.Check.Label>{service}</Form.Check.Label>
+            </Form.Check>
+          ))}
+        </Form.Group>
+
+        <Form.Group>
+          <Form.Label className="mt-2">Message</Form.Label>
+          <Form.Control
+            as="textarea"
+            name="message"
+            rows={4}
+            maxLength={300}
+            placeholder="Enter any additional details..."
+            onChange={(e) => setMessageLength(e.target.value.length)}
           />
+          <small className="form-text text-muted">
+            {300 - messageLength} characters remaining
+          </small>
+        </Form.Group>
 
-      </Form.Group>
-
-      <Form.Group>
-
-        <h5 className="my-3">Select Services Requested (Optional)</h5>
-
-        {servicesList.map((service) => {
-          return (
-            <div key={service}>
-              <Form.Check type={"checkbox"}>
-                <Form.Check.Input value={service} onChange={handleCheckbox} type={"checkbox"}/>
-                <Form.Check.Label>{service}</Form.Check.Label>
-              </Form.Check>
-            </div>
-          );
-        })}
-
-      </Form.Group>
-
-      <Form.Group>
-
-        <Form.Label>Message</Form.Label>
-        <textarea
-          name="message"
-          className="form-control"
-          rows={4}
-          placeholder="Enter any additional details..."
-          onChange={handleChange}
-          maxLength={300}
-        />
-        <small className="form-text text-muted">
-          {300 - messageLength} characters remaining
-        </small>
-
-      </Form.Group>
-
-      <Button type={"submit"}>Submit</Button>
-
-    </Form>
+        <Button type="submit" className="mt-3">Submit</Button>
+      </Form>
+    </>
   );
 }
