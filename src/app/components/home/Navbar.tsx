@@ -44,7 +44,7 @@ export default function Navbar() {
     <div className="container-fluid position-relative p-0">
       <nav className={`navbar navbar-expand-xl navbar-dark px-5 py-3 py-xl-3 ${isScrolledDown ? 'sticky-top shadow-sm' : ''}`}>
       <Link href="/" className="navbar-brand p-0">
-        <h1 className="m-0">Ron Smithey<br/>Financial</h1>
+        <h1 className="m-0">Ron Smithey<br/>Financial Services</h1>
       </Link>
       <button
         className="navbar-toggler"

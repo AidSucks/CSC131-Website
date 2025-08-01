@@ -41,7 +41,7 @@ export default function Topbar() {
                     <Button href={"https://x.com/RonSmitheyLPL"} target="_blank" variant="outline-light" size="sm" className="rounded-circle">
                       <TwitterX size={14} />
                     </Button>
-                    <Button href={"https://www.facebook.com/"} target="_blank" variant="outline-light" size="sm" className="rounded-circle">
+                    <Button href={"https://www.facebook.com/profile.php?id=61577343456410"} target="_blank" variant="outline-light" size="sm" className="rounded-circle">
                       <Facebook size={14} />
                     </Button>
                     <Button href={"https://www.linkedin.com/in/ron-smithey/"} target="_blank" variant="outline-light" size="sm" className="rounded-circle">

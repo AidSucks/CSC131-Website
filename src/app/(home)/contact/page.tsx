@@ -27,7 +27,7 @@ export default function ContactPage() {
             <div className="mt-3">
               <h5>Follow Ron's Socials</h5>
 
-              <a href={"https://www.facebook.com"} target="_blank" rel="noopener noreferrer" className="me-3">
+              <a href={"https://www.facebook.com/profile.php?id=61577343456410"} target="_blank" rel="noopener noreferrer" className="me-3">
                 <Facebook width={32} height={32} style={{ color: '#4267B2', marginTop: '5px' }} />
               </a>
               <a href={"https://www.youtube.com/@RonSmithey"} target="_blank" rel="noopener noreferrer">
