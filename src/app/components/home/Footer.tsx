@@ -31,7 +31,7 @@ export default function Footer() {
                   </h1>
                 </Link>
                 <p className="mt-3 mb-4">
-                  Ronnie entered the financial field over 23 years ago, because he wanted to help
+                  Ron entered the financial field over 23 years ago, because he wanted to help
                   individuals and business owners build, protect, and distribute their financial wealth.
                   After all these years in the industry he continues to be passionate about helping his clients navigate
                   their financial journeys from college saving plans, long term care and retirement.
@@ -45,7 +45,7 @@ export default function Footer() {
               <div className="row">
 
                 {/** Get In Touch/Contact **/}
-                <div className="col-lg-4 col-md-12 pt-5 mb-5">
+                <div className="col-lg-5 col-md-12 pt-5 mb-5">
                   <Stack direction={"vertical"} gap={3}>
                     <div
                       className="section-title section-title-sm position-relative pb-3">
@@ -54,7 +54,7 @@ export default function Footer() {
 
                     <Col className={"d-flex align-items-center"}>
                       <GeoAlt size={18} className={"text-primary me-2"}/>
-                      <span className={"w-100"}>5101 East La Palma Avenue, Suite #202-D, Anaheim Hills, CA 92807</span>
+                      <span className={"w-100"}>5101 East La Palma Avenue<br/>Suite #202-D, Anaheim Hills, CA 92807</span>
                     </Col>
 
                     <Col className={"d-flex align-items-center"}>
@@ -72,7 +72,7 @@ export default function Footer() {
                               className={"d-flex align-items-center justify-content-center btn-square me-2"}>
                         <TwitterX size={20}/>
                       </Button>
-                      <Button href={"https://www.facebook.com"} target={"_blank"} variant={"primary"} size={"sm"}
+                      <Button href={"https://www.facebook.com/profile.php?id=61577343456410"} target={"_blank"} variant={"primary"} size={"sm"}
                               className={"d-flex align-items-center justify-content-center btn-square me-2"}>
                         <Facebook size={20}/>
                       </Button>
@@ -110,26 +110,20 @@ export default function Footer() {
 
 
                 {/** Compliance & Legal Disclaimers **/}
-                <div className="col-lg-5 col-md-12 pt-0 pt-lg-5 mb-5">
+                <div className="col-lg-4 col-md-12 pt-0 pt-lg-5 mb-5">
                   <div className="section-title section-title-sm position-relative pb-3 mb-4">
                     <h3 className="text-light mb-0">Compliance</h3>
                   </div>
                   <div className="">
-                    <p>Securities offered through LPL Financial, Member
-                    <Link className="text-blue border-bottom" target="_blank" href="http://www.finra.org/"> FINRA </Link>
-                    /
-                    <Link className="text-blue border-bottom" target="_blank" href="https://www.sipc.org/"> SIPC</Link>
-                    .</p>
-                    <br/>
-                    <p>The LPL FinSecurities offered through LPL Financial, Member
-                    <Link className="text-blue border-bottom" target="_blank" href="http://www.finra.org/"> FINRA </Link>
-                    /
-                    <Link className="text-blue border-bottom" target="_blank" href="https://www.sipc.org/"> SIPC</Link>
-                    .</p>
+                    <p>
+                      Securities offered through LPL Financial<br/>
+                      Member SIPC
+                      <Link className="text-blue border-bottom ms-2" target="_blank" href="https://www.sipc.org/">sipc.org</Link>
+                    </p>
                     <br/>
                     <p>
                       The LPL Financial Registered Representative associated with this site may only discuss and/or transact securities business with residents
-                       of the following states: AR, AZ, CA, FL,TN, ID.
+                       of the following states: AZ, CA, FL, ID, NV, OH, OR, TX, WA
                     </p>
                     </div>
                 </div>
@@ -152,10 +146,8 @@ export default function Footer() {
                 style={{height: '75px'}}>
                 <p className="mb-0">
                   &copy;
-                  <Link className="text-white border-bottom" href="#">Ron Smithey Financial Services</Link>.
-                  All Rights Reserved. 
-                  {/* Designed by
-                  <Link className="text-white border-bottom" href="https://htmlcodex.com">HTML Codex.</Link> */}
+                  <Link className="text-white border-bottom" href="/">Ron Smithey Financial Services</Link>.
+                  All Rights Reserved.
                 </p>
               </div>
             </div>

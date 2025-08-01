@@ -24,7 +24,7 @@ export default function CarouselSlides() {
                             Welcome!
                         </h5>
                         <h1 className="display-1 text-white mb-md-4 animated zoomIn">
-                            Ron Smithey Financial
+                            Ron Smithey Financial Services
                         </h1>
                     </div>
                 </CarouselCaption>
