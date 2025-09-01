@@ -23,7 +23,7 @@ export default function Topbar() {
                 <div className="d-flex flex-column flex-lg-row justify-content-lg-start align-items-center gap-3">
                   <div className="d-flex align-items-center">
                     <GeoAlt size={18} className="me-2" />
-                    <small>5101 East La Palma Avenue, Suite #202-D, Anaheim Hills, CA 92807</small>
+                    <small>5101 E. La Palma Avenue, Suite #202-D, Anaheim Hills, CA 92807</small>
                   </div>
                   <div className="d-flex align-items-center">
                     <Telephone size={18} className="me-2" />

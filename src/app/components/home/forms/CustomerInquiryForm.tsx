@@ -1,12 +1,30 @@
 'use client';
 
-import { useState } from "react";
-import { Button, Form, Alert } from "react-bootstrap";
+import React, { useState } from "react";
+import { Button, Form, Alert, Col } from "react-bootstrap";
+import Link from "next/link";
+import Row from "react-bootstrap/Row";
 
-const servicesList = [
-  "Roth IRA", "Traditional IRA", "Rollover 401k", "Life Insurance",
-  "College Planning", "Health Insurance", "Long Term Care",
-  "Comprehensive Plan", "Retirement Planning", "Other"
+const personalServices = [
+  "401 (k) Rollovers",
+  "College Planning",
+  "Comprehensive Planning",
+  "Disability Insurance",
+  "Estate Planning",
+  "Health Insurance",
+  "Life Insurance",
+  "Long Term Care",
+  "Retirement Planning",
+  "Roth IRA",
+  "Traditional IRA",
+  "Other"
+];
+
+const businessServices = [
+  "Business Disability Insurance Plans",
+  "Business Health Insurance Plans",
+  "Business Life Insurance Plans",
+  "Business Retirement Plans"
 ];
 
 export function CustomerInquiryForm() {
@@ -42,58 +60,78 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
   }
 };
 
+  if(status)
+    return <Alert variant="info">{status} <Link href={"/"}>Back to home</Link></Alert>;
 
   return (
-    <>
-      <h2 className="mb-4">Send Ron a message:</h2>
+    <div className={"d-flex flex-column"}>
 
-      {status && <Alert variant="info">{status}</Alert>}
+      <div className={"d-flex flex-column w-75 align-self-center"}>
+      <h2 className="mb-4">Send a message:</h2>
+        <Form onSubmit={handleSubmit}>
+          <Form.Group>
 
-      <Form onSubmit={handleSubmit}>
-        <Form.Group>
-          <h5>Personal Information</h5>
+            <Form.Label>Name</Form.Label>
+            <Form.Control type="text" name="fullName" required />
 
-          <Form.Label>Full Name</Form.Label>
-          <Form.Control type="text" name="fullName" required />
+            <Form.Label className="mt-2">Email</Form.Label>
+            <Form.Control type="email" name="contactEmail" required />
 
-          <Form.Label className="mt-2">Email</Form.Label>
-          <Form.Control type="email" name="contactEmail" required />
+            <Form.Label className="mt-2">Phone (Optional)</Form.Label>
+            <Form.Control type="tel" name="contactPhone" />
 
-          <Form.Label className="mt-2">Phone Number (Optional)</Form.Label>
-          <Form.Control type="tel" name="contactPhone" />
-        </Form.Group>
+          </Form.Group>
 
-        <Form.Group>
-          <h5 className="my-3">Select Services Requested (Optional)</h5>
-          {servicesList.map((service) => (
-            <Form.Check type="checkbox" key={service}>
-              <Form.Check.Input
-                type="checkbox"
-                value={service}
-                onChange={handleCheckbox}
-              />
-              <Form.Check.Label>{service}</Form.Check.Label>
-            </Form.Check>
-          ))}
-        </Form.Group>
+          <Form.Group>
+            <Row className={"mt-3"}>
+              <Col lg={3} sm={4}>
+                <strong className={"text-dark"}>Personal Focus Areas:</strong>
+                {personalServices.map((service) => (
+                  <Form.Check type="checkbox" key={service}>
+                    <Form.Check.Input
+                      type="checkbox"
+                      value={service}
+                      onChange={handleCheckbox}
+                    />
+                    <Form.Check.Label>{service}</Form.Check.Label>
+                  </Form.Check>
+                ))}
+              </Col>
 
-        <Form.Group>
-          <Form.Label className="mt-2">Message</Form.Label>
-          <Form.Control
-            as="textarea"
-            name="message"
-            rows={4}
-            maxLength={300}
-            placeholder="Enter any additional details..."
-            onChange={(e) => setMessageLength(e.target.value.length)}
-          />
-          <small className="form-text text-muted">
-            {300 - messageLength} characters remaining
-          </small>
-        </Form.Group>
+              <Col lg={3} sm={4}>
+                <strong className={"text-dark"}>Business Focus Areas:</strong>
+                {businessServices.map((service) => (
+                  <Form.Check type="checkbox" key={service}>
+                    <Form.Check.Input
+                      type="checkbox"
+                      value={service}
+                      onChange={handleCheckbox}
+                    />
+                    <Form.Check.Label>{service}</Form.Check.Label>
+                  </Form.Check>
+                ))}
+              </Col>
+            </Row>
+          </Form.Group>
 
-        <Button type="submit" className="mt-3">Submit</Button>
-      </Form>
-    </>
+          <Form.Group>
+            <Form.Label className="mt-2">Message (Optional)</Form.Label>
+            <Form.Control
+              as="textarea"
+              name="message"
+              rows={4}
+              maxLength={300}
+              placeholder="Enter any additional details..."
+              onChange={(e) => setMessageLength(e.target.value.length)}
+            />
+            <small className="form-text text-muted">
+              {300 - messageLength} characters remaining
+            </small>
+          </Form.Group>
+
+          <Button type="submit" className="mt-3">Submit</Button>
+        </Form>
+      </div>
+    </div>
   );
 }

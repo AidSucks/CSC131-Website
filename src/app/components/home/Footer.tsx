@@ -31,7 +31,7 @@ export default function Footer() {
                   </h1>
                 </Link>
                 <p className="mt-3 mb-4">
-                  Ron entered the financial field over 23 years ago, because he wanted to help
+                  Ron entered the financial field over 23 years ago in 2002 because he wanted to help
                   individuals and business owners build, protect, and distribute their financial wealth.
                   After all these years in the industry he continues to be passionate about helping his clients navigate
                   their financial journeys from college saving plans, long term care and retirement.
@@ -45,7 +45,7 @@ export default function Footer() {
               <div className="row">
 
                 {/** Get In Touch/Contact **/}
-                <div className="col-lg-5 col-md-12 pt-5 mb-5">
+                <div className="col-lg-4 col-md-12 pt-5 mb-5">
                   <Stack direction={"vertical"} gap={3}>
                     <div
                       className="section-title section-title-sm position-relative pb-3">
@@ -54,7 +54,7 @@ export default function Footer() {
 
                     <Col className={"d-flex align-items-center"}>
                       <GeoAlt size={18} className={"text-primary me-2"}/>
-                      <span className={"w-100"}>5101 East La Palma Avenue<br/>Suite #202-D, Anaheim Hills, CA 92807</span>
+                      <span className={"w-100"}>5101 E. La Palma Avenue<br/>Suite #202-D<br/>Anaheim Hills, CA 92807</span>
                     </Col>
 
                     <Col className={"d-flex align-items-center"}>
@@ -90,7 +90,7 @@ export default function Footer() {
 
 
                 {/** Quick Links **/}
-                <div className="col-lg-3 col-md-12 pt-0 pt-lg-5 mb-5">
+                <div className="col-lg-4 col-md-12 pt-0 pt-lg-5 mb-5">
                   <div
                     className="section-title section-title-sm position-relative pb-3 mb-4">
                     <h3 className="text-light mb-0">Quick Links</h3>
@@ -98,12 +98,10 @@ export default function Footer() {
                   <div className="link-animated d-flex flex-column justify-content-start">
                     <Stack direction={"vertical"} gap={2}>
                       <Link className={"text-light"} href="/"><ArrowRight className={"text-primary me-2"}/>Home</Link>
-                      <Link className={"text-light"} href="/about"><ArrowRight className={"text-primary me-2"}/>About Us</Link>
-                      <Link className={"text-light"} href="/services"><ArrowRight className={"text-primary me-2"}/>Our Services</Link>
+                      <Link className={"text-light"} href="/about"><ArrowRight className={"text-primary me-2"}/>About</Link>
+                      <Link className={"text-light"} href="/services"><ArrowRight className={"text-primary me-2"}/>Services</Link>
                       <Link className={"text-light"} href="/resources"><ArrowRight className={"text-primary me-2"}/>Resources</Link>
-                      <Link className={"text-light"} href="/contact"><ArrowRight className={"text-primary me-2"}/>Contact Us</Link>
-                      <Link className={"text-light"} href="/legal/privacy-policy"><ArrowRight className={"text-primary me-2"}/>Privacy Policy</Link>
-                      <Link className={"text-light"} href="/legal/terms-conditions"><ArrowRight className={"text-primary me-2"}/>Terms & Conditions</Link>
+                      <Link className={"text-light"} href="/contact"><ArrowRight className={"text-primary me-2"}/>Contact</Link>
                     </Stack>
                   </div>
                 </div>
