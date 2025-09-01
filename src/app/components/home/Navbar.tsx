@@ -65,7 +65,7 @@ export default function Navbar() {
           </NavItem>
 
           <NavItem>
-            <NavLink as={Link} href={"/about"} active={currentPath === "/about"}>About Us</NavLink>
+            <NavLink as={Link} href={"/about"} active={currentPath === "/about"}>About</NavLink>
           </NavItem>
 
           <NavItem>
@@ -91,7 +91,7 @@ export default function Navbar() {
           </Dropdown>
 
           <NavItem>
-            <NavLink as={Link} href={"/contact"} active={currentPath === "/contact"}>Contact Us</NavLink>
+            <NavLink as={Link} href={"/contact"} active={currentPath === "/contact"}>Contact</NavLink>
           </NavItem>
 
         </div>

@@ -7,17 +7,17 @@ export default function QuickAccess() {
         <div className="row gx-0">
           <div className="col-lg-4 wow zoomIn" data-wow-delay="0.1s">
             <div className="bg-primary shadow d-flex flex-column align-items-center justify-content-center p-4" style={{height: '220px'}}>
-                <h2 className="pt-4 text-white mb-2">Contact Us</h2>
-                <h5 className="text-white text-break mb-0" style={{textAlign: "center"}}>Please feel free to contact us with any question.</h5>
+                <h2 className="pt-4 text-white mb-2">Contact</h2>
+                <h5 className="text-white text-break mb-0" style={{textAlign: "center"}}>Can't find what you're looking for? Get in touch with Ron</h5>
                 <Link href="/contact"
-                className="btn btn-light quick-access-btn px-4 mt-4 mb-4 py-md-3 px-md-5">Contact Us</Link>
+                className="btn btn-light quick-access-btn px-4 mt-4 mb-4 py-md-3 px-md-5">Contact</Link>
             </div>
           </div>
 
           <div className="col-lg-4 wow zoomIn" data-wow-delay="0.3s">
             <div className="bg-light shadow d-flex flex-column align-items-center justify-content-center p-4" style={{height: '220px'}}>
                 <h2 className="text-primary pt-4 mb-2">Calculators</h2>
-                <h5 className=" text-break mb-0" style={{textAlign: "center"}}>Click the button below to see the financial calculators we offer</h5>
+                <h5 className=" text-break mb-0" style={{textAlign: "center"}}>Click below to see the financial calculators we have to offer</h5>
                 <Link href={"/resources/calculators"}
                 className="btn btn-primary px-4 mt-4 mb-4 py-md-3 px-md-5">View Calculators</Link>
             </div>

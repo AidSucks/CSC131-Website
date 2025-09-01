@@ -9,7 +9,7 @@ export default function AboutPage() {
 
   return(
     <div>
-      <PageTitle title="About Us" />
+      <PageTitle title="About" />
 
       <div className="container-fluid py-5 fadeInUp" style={{marginTop:'-150px', marginBottom:'-100px'}}>
         <div className="container py-5">
@@ -22,7 +22,7 @@ export default function AboutPage() {
               <div className="mb-4">
 
                 <p>
-                  Ron’s journey as a Financial Advisor began over 23 years ago. He entered the financial field because he wanted to help individuals and business owners build, protect, and distribute their financial wealth. After all these years in the industry he continues to be passionate about helping his clients navigate their financial journeys from college saving plans, long term care and retirement.
+                  Ron’s journey as a Financial Advisor began over 23 years ago in 2002. He entered the financial field because he wanted to help individuals and business owners build, protect, and distribute their financial wealth. After all these years in the industry he continues to be passionate about helping his clients navigate their financial journeys from college saving plans, long term care and retirement.
                 </p>
                 <p>
                   Ron is well versed in all of the latest trends which enables him to successfully guide his clients through the highs and lows of economic cycles. He considers himself a partner in his clients financial journey, and continuously works towards building the strong foundations of a secure financial future. When he is not advising clients he enjoys spending time with his wife and four children. He is an active member in the local church and he volunteers his free time to his local Little League, having been a baseball coach for over 6 years and serving on the board for three years as the vice president and coaching coordinator.
@@ -54,7 +54,7 @@ export default function AboutPage() {
                   <h4 className="text-primary mb-0">(714) 202-9858</h4>
                 </div>
               </div>
-              <Link href={"/contact"} className={"btn btn-primary py-3 px-5 mt-3 wow zoomIn"} data-wow-delay="0.9s">Contact Us</Link>
+              <Link href={"/contact"} className={"btn btn-primary py-3 px-5 mt-3 wow zoomIn"} data-wow-delay="0.9s">Send a message</Link>
             </div>
 
 
